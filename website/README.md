@@ -1,5 +1,7 @@
 # System-Programming-Language-Benchmarks
 
+Website for System Programming Language Benchmarks — C, C++, Rust, Go, and Zig only.
+
 ## Build Setup
 
 ```sh

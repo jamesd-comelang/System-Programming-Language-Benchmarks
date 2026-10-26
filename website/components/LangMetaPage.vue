@@ -2,7 +2,7 @@
   <div class="flex flex-wrap relative">
     <menu-button @toggle="toggleMenu"></menu-button>
     <aside :class="sideBarClass">
-      <h2 title="Benchmarks for other computer languages" class="text-xl">
+      <h2 title="Benchmarks for system programming languages" class="text-xl">
         Languages
       </h2>
       <ul class="text-base">
@@ -447,7 +447,7 @@ export default class LangMetaPage extends Vue {
 
   head() {
     const suffix =
-      'benchmarks, Which programming language or compiler is faster'
+      'benchmarks, Which system programming language or compiler is faster'
     let title = ''
     if (this.problem) {
       title = `${this.problem} - ${suffix}`

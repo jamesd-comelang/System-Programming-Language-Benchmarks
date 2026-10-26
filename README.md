@@ -2,6 +2,16 @@
 
 A trimmed fork of Programming Language Benchmarks, keeping only system programming languages: C, C++, Rust, Go, and Zig.
 
+## Languages
+
+- **C** — gcc, clang, zig cc
+- **C++** — g++, clang++, zig c++
+- **Go** — go, TinyGo
+- **Rust** — stable, nightly
+- **Zig** — zig
+
+All other languages from the upstream project are intentionally removed, not merely unlisted: their implementations, bench configs, include templates, CI setup scripts, and website results are gone.
+
 [![bench](https://github.com/jamesd-comelang/System-Programming-Language-Benchmarks/actions/workflows/bench.yml/badge.svg)](https://github.com/jamesd-comelang/System-Programming-Language-Benchmarks/actions/workflows/bench.yml)
 [![MIT License](https://img.shields.io/github/license/jamesd-comelang/System-Programming-Language-Benchmarks.svg)](https://github.com/jamesd-comelang/System-Programming-Language-Benchmarks/blob/main/LICENSE)
 
@@ -20,12 +30,11 @@ _Once a change is merged into main branch, the CI job will re-generate and publi
 
 ## Main Goals
 
-- Compare performance differences between different languages. Note that implementations might be using different optimizations, e.g. with or w/o multithreading, please do read the source code to check if it's a fair comparison or not.
+- Compare performance differences between different system programming languages. Note that implementations might be using different optimizations, e.g. with or w/o multithreading, please do read the source code to check if it's a fair comparison or not.
 - Compare performance differences between different compilers or runtimes of the same language with the same source code.
 - Facilitate benchmarking on real server environments as nowadays more and more applications are deployed with docker/k8s. It's likely to get a very different result from what you get on your dev machine.
-- A reference for CI setup / Dev environment setup / package management setup for different languages. Refer to [Github action](https://github.com/jamesd-comelang/System-Programming-Language-Benchmarks/blob/main/.github/workflows/bench.yml)
-- It focuses more on new programming languages, classic
-  programming languages that are covered by [CLBG](https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html) receive limited or no maintenance, based on their popularity.
+- A reference for CI setup / Dev environment setup / package management setup for system programming languages. Refer to [Github action](https://github.com/jamesd-comelang/System-Programming-Language-Benchmarks/blob/main/.github/workflows/bench.yml)
+- It covers only system programming languages. Benchmark problems and implementations are borrowed from [CLBG](https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html), but languages outside C, C++, Rust, Go, and Zig are out of scope here.
 
 # Website
 
@@ -70,12 +79,12 @@ _Current benchmarks problems and their implementations are from [The Computer La
 
 ## Build
 
-_The 1st step is to build source code from various of languages_
+_The 1st step is to build source code from the five system programming languages_
 
 ```bash
 cd bench
 # To build a subset
-dotnet run --project tool -- --task build --langs lisp go --problems nbody helloworld --force-rebuild
+dotnet run --project tool -- --task build --langs c go --problems nbody helloworld --force-rebuild
 # To build all
 dotnet run --project tool -- --task build
 ```
@@ -87,7 +96,7 @@ _The 2nd step is to test built binaries to ensure the correctness of their imple
 ```bash
 cd bench
 # To test a subset
-dotnet run --project tool -- --task test --langs lisp go --problems nbody helloworld
+dotnet run --project tool -- --task test --langs c go --problems nbody helloworld
 # To test all
 dotnet run --project tool -- --task test
 ```
@@ -99,7 +108,7 @@ _The 3rd step is to generate benchmarks_
 ```bash
 cd bench
 # To bench a subset
-dotnet run --project tool -- --task bench --langs lisp go --problems nbody helloworld
+dotnet run --project tool -- --task bench --langs c go --problems nbody helloworld
 # To bench all
 dotnet run --project tool -- --task bench
 ```
@@ -128,7 +137,7 @@ Options:
   --build-pool                   A flag that indicates whether builds that can run in parallel [default: False]
   --verbose                      A Flag that indicates whether to print verbose information [default: False]
   --no-docker                    A Flag that forces disabling docker [default: False]
-  --langs <langs>                Languages to include, e.g. --langs go csharp [default: ]
+  --langs <langs>                Languages to include, e.g. --langs go rust [default: ]
   --problems <problems>          Problems to include, e.g. --problems binarytrees nbody [default: ]
   --environments <environments>  OS environments to include, e.g. --environments linux windows [default: ]
   --version                      Show version information

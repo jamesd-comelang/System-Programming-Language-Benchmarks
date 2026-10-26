@@ -2,7 +2,7 @@
   <div class="flex flex-wrap relative">
     <menu-button @toggle="toggleMenu"></menu-button>
     <aside :class="sideBarClass">
-      <h2 title="Benchmarks for other computer languages" class="text-xl">
+      <h2 title="Benchmarks for system programming languages" class="text-xl">
         Languages
       </h2>
       <ul class="text-base">
@@ -21,8 +21,9 @@
       <div class="px-5 max-w-prose">
         <div class="text-lg tracking-widest leading-8">
           <p class="pt-5">
-            This site provides side by side comparison of several programming
-            languages and their different compilers or runtime
+            This site provides side by side comparison of five system
+            programming languages — C, C++, Rust, Go, and Zig — and their
+            different compilers or runtimes
           </p>
           <p class="pt-5">
             It currently uses CI to generate benchmark results to guarantee all
@@ -36,7 +37,7 @@
           <p class="pt-5 font-bold">Main goals:</p>
           <ul class="list-disc list-outside italic text-base">
             <li class="pt-5">
-              Compare performance differences between different languages. Note
+              Compare performance differences between different system programming languages. Note
               that implementations might be using different optimizations, e.g.
               with or without multithreading, please do read the source code to
               check if it's a fair comparision or not.
@@ -55,7 +56,7 @@
             </li>
             <li class="pt-5">
               A reference for CI setup / Dev environment setup / package
-              management setup for different languages. Refer to
+              management setup for system programming languages. Refer to
               <a
                 href="https://github.com/jamesd-comelang/System-Programming-Language-Benchmarks/blob/main/.github/workflows/bench.yml"
                 class="underline text-blue-500"
@@ -64,15 +65,15 @@
               >
             </li>
             <li class="pt-5">
-              It focuses more on new programming languages, classic programming
-              languages that are covered by
+              It covers only system programming languages: C, C++, Rust, Go,
+              and Zig. Other languages from the upstream project are not
+              included here. Benchmark problems are borrowed from
               <a
                 href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html"
                 class="underline text-blue-500"
                 target="_blank"
                 >CLBG</a
-              >
-              receive limited or no maintainence, based on their popularity.
+              >.
             </li>
           </ul>
         </div>
@@ -190,12 +191,12 @@ export default class IndexPage extends Vue {
 
     const metaInfo: MetaInfo = {
       title:
-        'Benchmarks for programming languages and compilers, Which programming language or compiler is faster',
+        'Benchmarks for system programming languages and compilers, Which system programming language or compiler is faster',
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: `programming languages,benchmark,benchmarks,performance,${langsStrs.join(
+          content: `system programming languages,benchmark,benchmarks,performance,${langsStrs.join(
             ','
           )},${langsStrs.join(' lang,')} lang,${this.problems.join(',')}`,
         },

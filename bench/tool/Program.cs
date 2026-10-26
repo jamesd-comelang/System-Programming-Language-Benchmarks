@@ -49,7 +49,7 @@ namespace BenchTool
         /// <param name="verbose">A Flag that indicates whether to print verbose infomation</param>
         /// <param name="noDocker">A Flag that forces disabling docker</param>
         /// <param name="ignoreMissing">A Flag that indicates whether to ignore test/bench failure when build artifacts is missing</param>
-        /// <param name="langs">Languages to incldue, e.g. --langs go csharp</param>
+        /// <param name="langs">Languages to incldue, e.g. --langs go rust</param>
         /// <param name="problems">Problems to incldue, e.g. --problems binarytrees nbody</param>
         /// <param name="environments">OS environments to incldue, e.g. --environments linux windows</param>
         public static async Task Main(

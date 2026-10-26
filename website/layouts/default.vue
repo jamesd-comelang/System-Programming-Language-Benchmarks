@@ -4,7 +4,7 @@
   >
     <div class="bg-pink-800 text-white p-5 mb-5 text-3xl rounded">
       <a href="/"
-        ><small class="text-lg">Programming Language and compiler</small> <br />
+        ><small class="text-lg">System Programming Language and compiler</small> <br />
         Benchmarks</a
       >
     </div>
