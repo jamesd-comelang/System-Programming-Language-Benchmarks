@@ -118,9 +118,128 @@
             >show numbers with parallelization</label
           >
         </div>
+        <div class="mt-2 form-check form-check-inline">
+          <input
+            v-model="showRaw"
+            class="form-check-input inline-block"
+            type="checkbox"
+            style="vertical-align: bottom"
+          />
+          <label class="form-check-label inline-block text-gray-500"
+            >show raw result tables (every compiler and code)</label
+          >
+        </div>
+        <div class="mt-2 form-check form-check-inline">
+          <input
+            v-model="chartLog"
+            class="form-check-input inline-block"
+            type="checkbox"
+            style="vertical-align: bottom"
+          />
+          <label class="form-check-label inline-block text-gray-500"
+            >charts use log scale</label
+          >
+        </div>
       </div>
 
-      <div v-for="test in testOptions" :key="test">
+      <div v-for="test in testOptions" :key="'matrix-' + test">
+        <h2 class="text-2xl my-5 mb-2 underline text-blue-500">
+          <a :id="'matrix-' + test" :href="`/problem/${test}`"> {{ test }} </a>
+        </h2>
+        <p class="text-sm italic">{{ matrixSummary(test) }}</p>
+        <p class="text-sm italic">
+          Each cell is the fastest time for that row in that input. The
+          number in brackets is × vs the fastest row in the same input
+          column (1.00× is fastest); the bar length is proportional to
+          time, so a longer bar is slower. — means no result, timeout
+          means the run timed out.
+        </p>
+        <table class="table-auto w-full text-sm leading-loose mt-2">
+          <tr class="border-b-2 border-dotted">
+            <th class="text-left">Series</th>
+            <th
+              v-for="input in matrixInputs(test)"
+              :key="input"
+              class="text-right"
+            >
+              Input: {{ input }}
+            </th>
+          </tr>
+          <tbody>
+            <tr
+              v-for="(row, ridx) in matrixRows(test)"
+              :key="row.key"
+              class="border-b-2 border-dotted"
+            >
+              <td class="text-left font-bold">
+                <span :style="{ color: colorFor(row.key, ridx) }">■</span>
+                {{ row.label }}
+              </td>
+              <td
+                v-for="input in matrixInputs(test)"
+                :key="input"
+                class="text-right"
+              >
+                <span v-if="row.cells[input].missing">—</span>
+                <span v-else-if="row.cells[input].timeout">timeout</span>
+                <span v-else>
+                  <span :class="row.cells[input].ratio === 1 ? 'font-bold' : ''"
+                    >{{ msToText(row.cells[input].timeMS) }} ({{
+                      row.cells[input].ratio.toFixed(2)
+                    }}×)</span
+                  >
+                  <div class="bg-gray-200" style="height: 6px; margin-top: 2px">
+                    <div
+                      :style="{
+                        width:
+                          matrixBarWidth(
+                            test,
+                            input,
+                            row.cells[input].timeMS
+                          ) + '%',
+                        background: colorFor(row.key, ridx),
+                        height: '6px',
+                      }"
+                    ></div>
+                  </div>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="mt-4">
+          <h3 class="text-base font-bold">
+            Chart — largest input: {{ largestMatrixInput(test) }}
+          </h3>
+          <div
+            v-for="(row, ridx) in chartRows(test)"
+            :key="'chart-' + row.key"
+            class="flex items-center mt-1 text-sm"
+          >
+            <span class="w-32 text-right pr-2 truncate" :title="row.label">{{
+              row.label
+            }}</span>
+            <div class="flex-1 bg-gray-200" style="height: 14px">
+              <div
+                v-if="row.timeMS !== null"
+                :style="{
+                  width: chartBarWidth(test, row) + '%',
+                  background: colorFor(row.key, ridx),
+                  height: '14px',
+                }"
+              ></div>
+            </div>
+            <span class="w-40 pl-2">{{
+              row.timeMS === null
+                ? row.timeout
+                  ? 'timeout'
+                  : '—'
+                : msToText(row.timeMS) + ' (' + row.ratio.toFixed(2) + '×)'
+            }}</span>
+          </div>
+        </div>
+      </div>
+      <div v-show="showRaw" v-for="test in testOptions" :key="test">
         <h2 class="text-2xl my-5 mb-2 underline text-blue-500">
           <a :id="test" :href="`/problem/${test}`"> {{ test }} </a>
         </h2>
@@ -260,6 +379,14 @@ import _ from 'lodash'
 import { MetaInfo } from 'vue-meta'
 import MenuButton from './MenuButton.vue'
 import { getFullCompilerVersion, mergeLangBenchResults } from '~/contentUtils'
+import {
+  barWidth,
+  isVisible,
+  largestInput,
+  matrixForProblem,
+  seriesColor as seriesColorFn,
+  sortInputs,
+} from '~/resultSummary'
 import { importGoogleTagIfNeeded } from '~/gtmUtils'
 
 function requireAll(requireContext: any) {
@@ -285,6 +412,8 @@ export default class LangMetaPage extends Vue {
   isMenuOn = false
   show_st = true
   show_mt = true
+  showRaw = false
+  chartLog = false
   meta?: LangPageMeta
   problem?: string
   allProblems?: string[] = problems
@@ -427,6 +556,120 @@ export default class LangMetaPage extends Vue {
     )
 
     return exp.value()
+  }
+
+  matrixBenches(test: string) {
+    let benches = this.activeBenchmarks.filter(
+      (i) => i.test === test && i.os === this.osSelected
+    )
+    if (this.other?.benchmarks && this.other?.benchmarks?.length > 0) {
+      benches = benches.concat(
+        this.other.benchmarks.filter(
+          (i) => i.test === test && i.os === this.osSelected
+        )
+      )
+    }
+    return benches.filter((i) => isVisible(i, this.show_st, this.show_mt))
+  }
+
+  matrixSeriesKey(i: BenchResult) {
+    if (this.problem || this.other) return i.lang
+    return `${i.compiler} ${i.code}`
+  }
+
+  matrixSeriesLabel(key: string) {
+    if (this.problem || this.other) {
+      const found = this.langs.filter((l) => l.lang === key)[0]
+      return found ? found.langDisplay : key
+    }
+    return key
+  }
+
+  matrixInputs(test: string) {
+    return sortInputs(
+      _.chain(this.matrixBenches(test))
+        .map((i) => i.input)
+        .uniq()
+        .value()
+    )
+  }
+
+  matrixRows(test: string) {
+    return matrixForProblem(
+      this.matrixBenches(test),
+      this.matrixInputs(test),
+      (i) => this.matrixSeriesKey(i),
+      (key) => this.matrixSeriesLabel(key)
+    )
+  }
+
+  matrixSummary(test: string) {
+    const rows = this.matrixRows(test)
+    const inputs = this.matrixInputs(test)
+    if (rows.length === 0 || inputs.length === 0) return 'No results.'
+    let best = rows[0]
+    rows.forEach((r) => {
+      if (r.wins > best.wins) best = r
+    })
+    if (best.wins === 0) return `No fastest row across ${inputs.length} input(s).`
+    return `Fastest in ${best.wins} of ${inputs.length} input(s): ${best.label}.`
+  }
+
+  largestMatrixInput(test: string) {
+    return largestInput(this.matrixInputs(test))
+  }
+
+  chartRows(test: string) {
+    const input = this.largestMatrixInput(test)
+    const rows = this.matrixRows(test)
+    return rows
+      .map((r) => {
+        const cell = r.cells[input]
+        return {
+          key: r.key,
+          label: r.label,
+          timeMS: cell ? cell.timeMS : null,
+          ratio: cell ? cell.ratio : null,
+          timeout: cell ? cell.timeout : false,
+          missing: !cell || cell.missing,
+        }
+      })
+      .sort((a, b) => {
+        if (a.timeMS === null && b.timeMS === null) return 0
+        if (a.timeMS === null) return 1
+        if (b.timeMS === null) return -1
+        return a.timeMS - b.timeMS
+      })
+  }
+
+  colorFor(key: string, index: number) {
+    return seriesColorFn(key, index)
+  }
+
+  matrixBarWidth(test: string, input: string, timeMS: number) {
+    const rows = this.matrixRows(test)
+    const times = rows
+      .map((r) => r.cells[input])
+      .filter((c) => c && c.timeMS !== null)
+      .map((c) => c.timeMS as number)
+    if (times.length === 0) return 0
+    const fastest = Math.min.apply(null, times)
+    const slowest = Math.max.apply(null, times)
+    return barWidth(timeMS, fastest, slowest, false)
+  }
+
+  chartBarWidth(test: string, row: any) {
+    const timed = this.chartRows(test).filter((r) => r.timeMS !== null)
+    if (timed.length === 0 || row.timeMS === null) return 0
+    const fastest = Math.min.apply(
+      null,
+      timed.map((r) => r.timeMS as number)
+    )
+    const slowest = Math.max.apply(
+      null,
+      timed.map((r) => r.timeMS as number)
+    )
+    return barWidth(row.timeMS, fastest, slowest, this.chartLog)
   }
 
   getNormalizedCode(i: BenchResult) {
