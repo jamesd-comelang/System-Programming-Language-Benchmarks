@@ -13,14 +13,14 @@ const config: NuxtConfig = {
   cache: true,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Benchmarks for programming languages and compilers',
+    title: 'Benchmarks for system programming languages and compilers',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: 'benchmarks for programming languages and compilers',
+        content: 'benchmarks for system programming languages and compilers: C, C++, Rust, Go, Zig',
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],

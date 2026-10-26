@@ -24,43 +24,10 @@ jobs:
       matrix:
         os: [ubuntu-22.04]
         lang: [
-            acton,
             c,
-            chapel,
-            codon,
             cpp,
-            csharp,
-            crystal,
-            d,
-            dart,
-            # elixir,
-            # fortran,
             go,
-            # hacklang,
-            # haskell,
-            haxe,
-            java,
-            javascript,
-            # julia,
-            kotlin,
-            # lisp,
-            lua,
-            # nelua,
-            nim,
-            ocaml,
-            odin,
-            perl,
-            php,
-            # pony,
-            python,
-            # racket,
-            ruby,
             rust,
-            swift,
-            typescript,
-            v,
-            wasm,
-            # wren,
             zig,
           ]
     steps:
@@ -77,29 +44,17 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: recursive
-      - name: Install acton
-        if: matrix.lang == 'acton'
-        run: ./.github/acton.sh
-      - name: Install codon
-        if: matrix.lang == 'codon'
-        run: ./.github/codon.sh
       - name: Install rust stable
         uses: actions-rs/toolchain@v1
-        if: matrix.lang == 'rust' || matrix.lang == 'wasm'
+        if: matrix.lang == 'rust'
         with:
           toolchain: stable
           override: true
       - name: Install rust nightly
         if: matrix.lang == 'rust'
         run: |
-          # https://github.com/rust-lang/portable-simd/issues/156
-          # rustup update nightly-2021-08-28
-          # sudo ln -sf $HOME/.rustup/toolchains/nightly-2021-08-28-x86_64-unknown-linux-gnu $HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu
           rustup update nightly
           cargo +nightly --version
-      # - name: Install graal
-      #   if: matrix.lang == 'java' || matrix.lang == 'javascript' || matrix.lang == 'python' || matrix.lang == 'ruby' || matrix.lang == 'wasm'
-      #   run: ./.github/graalvm.sh
       - name: Install clang deps
         if: matrix.lang == 'c' || matrix.lang == 'cpp'
         run: ./.github/clang.sh
@@ -109,112 +64,9 @@ jobs:
       # - name: Install cpp deps
       #   if: matrix.lang == 'cpp'
       #   run: ./.github/cpp.sh
-      - name: Install lisp
-        if: matrix.lang == 'lisp'
-        env:
-          LISP: sbcl-bin
-        run: ./.github/lisp.sh
-      - name: Install racket
-        if: matrix.lang == 'racket'
-        run: ./.github/racket.sh
-      - name: Install fortran
-        if: matrix.lang == 'fortran'
-        run: ./.github/fortran.sh
-      - name: Install lua
-        if: matrix.lang == 'lua'
-        run: ./.github/lua.sh
-      - name: Install dotnet
-        if: matrix.lang == 'csharp'
-        run: ./.github/dotnet.sh
-      # - name: Install graalvm native-image
-      #   if: matrix.lang == 'java'
-      #   run: ./.github/graalvm-native-image.sh
-      # - name: Install graalnode
-      #   if: matrix.lang == 'javascript'
-      #   run: ./.github/graalvm-node.sh
-      - name: Install bun
-        if: matrix.lang == 'javascript'
-        run: ./.github/bun.sh
-      - uses: julia-actions/setup-julia@v1
-        if: matrix.lang == 'julia'
-      - name: Install haxe
-        if: matrix.lang == 'haxe'
-        run: |
-          ./.github/haxe.sh
-          ./.github/hashlink.sh
       - name: Install zig
-        if: matrix.lang == 'zig' || matrix.lang == 'c' || matrix.lang == 'cpp' || matrix.lang == 'v'
+        if: matrix.lang == 'zig' || matrix.lang == 'c' || matrix.lang == 'cpp'
         run: ./.github/zig.sh
-      - name: Install crystal
-        if: matrix.lang == 'crystal'
-        run: ./.github/crystal.sh
-      - name: Install hhvm
-        if: matrix.lang == 'hacklang'
-        run: ./.github/hhvm.sh
-      - name: Install nelua
-        if: matrix.lang == 'nelua'
-        run: ./.github/nelua.sh
-      - name: Install odin
-        if: matrix.lang == 'odin'
-        run: ./.github/odin.sh
-      - uses: dlang-community/setup-dlang@v1
-        if: matrix.lang == 'd'
-        with:
-          compiler: dmd-latest
-      - uses: dlang-community/setup-dlang@v1
-        if: matrix.lang == 'd'
-        with:
-          compiler: ldc-latest
-      - name: Install nim
-        if: matrix.lang == 'nim'
-        run: ./.github/nim.sh
-      - uses: shogo82148/actions-setup-perl@v1
-        if: matrix.lang == 'perl'
-        with:
-          perl-version: "5"
-          multi-thread: true
-      # - uses: ocaml/setup-ocaml@v2
-      #   if: matrix.lang == 'ocaml'
-      #   with:
-      #     ocaml-compiler: 4.x
-      #     dune-cache: true
-      #     # opam-disable-sandboxing: true
-      - name: Install PHP
-        if: matrix.lang == 'php'
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: "8.2"
-          coverage: none
-      - name: Install python
-        if: matrix.lang == 'python'
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.x"
-          check-latest: true
-      - name: Install python ext
-        if: matrix.lang == 'python'
-        run: ./.github/python.sh
-      - name: Install ruby
-        if: matrix.lang == 'ruby'
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3 # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      # - name: Install truffleruby
-      #   if: matrix.lang == 'ruby'
-      #   run: ./.github/truffleruby.sh
-      - name: Install dart
-        if: matrix.lang == 'dart'
-        run: ./.github/dart.sh
-      - name: Install v
-        if: matrix.lang == 'v'
-        run: ./.github/v.sh
-      - name: Install deno
-        if: matrix.lang == 'typescript' || matrix.lang == 'wasm'
-        run: ./.github/deno.sh
-      - name: Install wasm
-        if: matrix.lang == 'wasm'
-        run: ./.github/wasm.sh
       - run: dotnet --info
       - name: Build
         run: |
@@ -268,41 +120,7 @@ jobs:
       #     pushd bench
       #     dotnet run -c Release --project tool -- --task checkcpu
       #     popd
-      - run: ./.github/acton.sh
-      - run: ./.github/codon.sh
       - run: ./.github/clang.sh
-      - run: ./.github/crystal.sh
-      - run: ./.github/dotnet.sh
-      # - run: ./.github/graalvm.sh
-      # - run: ./.github/graalvm-node.sh
-      - run: ./.github/bun.sh
-      # - run: ./.github/truffleruby.sh
-      - run: ./.github/wasm.sh
-      # - run: ./.github/fortran.sh
-      - uses: julia-actions/setup-julia@v1
-      - run: ./.github/lua.sh
-      # - run: ./.github/racket.sh
-      - run: ./.github/hashlink.sh
-      # - run: ./.github/hhvm.sh
-      # - run: ./.github/dart.sh
-      - uses: shogo82148/actions-setup-perl@v1
-        with:
-          perl-version: "5"
-          multi-thread: true
-      - name: Install PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: "8.2"
-          coverage: none
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.x"
-          check-latest: true
-      - run: ./.github/python.sh
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3 # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - uses: actions/download-artifact@v4
         with:
           pattern: build-*

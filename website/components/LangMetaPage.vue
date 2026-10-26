@@ -50,7 +50,7 @@
         <p>
           <a
             class="underline bold text-blue-500"
-            href="https://github.com/hanabi1224/Programming-Language-Benchmarks"
+            href="https://github.com/jamesd-comelang/System-Programming-Language-Benchmarks"
             target="_blank"
             >CONTRIBUTIONS</a
           >
@@ -177,7 +177,7 @@
                 </td>
                 <td class="text-right">
                   <a
-                    :href="`https://github.com/hanabi1224/Programming-Language-Benchmarks/blob/main/bench/algorithm/${test}/${i.code}`"
+                    :href="`https://github.com/jamesd-comelang/System-Programming-Language-Benchmarks/blob/main/bench/algorithm/${test}/${i.code}`"
                     target="_blank"
                     class="underline text-blue-500"
                     >{{ getNormalizedCode(i) }}</a
@@ -344,9 +344,8 @@ export default class LangMetaPage extends Vue {
 
   get buildLogUrl() {
     // const buildId = this.activeBenchmarks[0].appveyorBuildId
-    // return `https://ci.appveyor.com/project/hanabi1224/another-benchmarks-game/builds/${buildId}`
     const runId = this.activeBenchmarks[0].githubRunId
-    return `https://github.com/hanabi1224/Programming-Language-Benchmarks/actions/runs/${runId}`
+    return `https://github.com/jamesd-comelang/System-Programming-Language-Benchmarks/actions/runs/${runId}`
   }
 
   get benchmarkDate() {
