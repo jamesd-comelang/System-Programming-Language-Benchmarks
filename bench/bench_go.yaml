@@ -69,7 +69,10 @@ environments:
   - os: linux
     compiler: go
     version: latest
-    docker: golang
+    # Pinned: go mod tidy resolves current x/net, fasthttp and
+    # go-ethereum, which require go >= 1.26, while the untagged
+    # golang image resolved to go 1.24.13 in CI (run 40450118422).
+    docker: golang:1.26
     env:
       GOAMD64: v3 # https://github.com/golang/go/wiki/MinimumRequirements#amd64
     include: go
