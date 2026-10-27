@@ -156,6 +156,7 @@ jobs:
     # The publish job pushes a commit, so it needs write access.
     permissions:
       contents: write
+      actions: write
     strategy:
       matrix:
         os: [ubuntu-22.04]
