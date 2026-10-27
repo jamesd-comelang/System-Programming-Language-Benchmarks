@@ -7,23 +7,23 @@
   "test": "secp256k1",
   "code": "1.c",
   "input": "2000",
-  "timeMS": 390.1778,
-  "timeStdDevMS": 0.6102780131491831,
-  "memBytes": 2375680,
-  "cpuTimeMS": 380.0,
-  "cpuTimeUserMS": 380.0,
+  "timeMS": 391.7641,
+  "timeStdDevMS": 2.3432998641516876,
+  "memBytes": 1908736,
+  "cpuTimeMS": 383.3333,
+  "cpuTimeUserMS": 383.3333,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40549112230",
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-27T17:18:55.0097231+00:00",
-    "finished": "2026-10-27T17:18:55.3045171+00:00",
-    "durationMs": 294
+    "start": "2026-10-27T17:52:57.4327106+00:00",
+    "finished": "2026-10-27T17:52:57.7008704+00:00",
+    "durationMs": 268
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:09.0085076+00:00",
-    "finished": "2026-10-27T17:28:09.015669+00:00",
+    "start": "2026-10-27T18:02:20.356922+00:00",
+    "finished": "2026-10-27T18:02:20.3639869+00:00",
     "durationMs": 7
   }
 }

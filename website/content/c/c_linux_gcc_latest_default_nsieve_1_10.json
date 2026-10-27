@@ -7,23 +7,23 @@
   "test": "nsieve",
   "code": "1.c",
   "input": "10",
-  "timeMS": 67.1369,
-  "timeStdDevMS": 2.718584580254949,
+  "timeMS": 71.9821,
+  "timeStdDevMS": 2.5416794946124273,
   "memBytes": 11567104,
   "cpuTimeMS": 53.3333,
-  "cpuTimeUserMS": 50.0,
-  "cpuTimeKernelMS": 3.3333,
-  "githubRunId": "40549112230",
+  "cpuTimeUserMS": 53.3333,
+  "cpuTimeKernelMS": 0.0,
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-27T17:18:58.196796+00:00",
-    "finished": "2026-10-27T17:18:58.2483161+00:00",
-    "durationMs": 51
+    "start": "2026-10-27T17:53:00.426649+00:00",
+    "finished": "2026-10-27T17:53:00.4770449+00:00",
+    "durationMs": 50
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:09.980732+00:00",
-    "finished": "2026-10-27T17:28:09.9870802+00:00",
-    "durationMs": 6
+    "start": "2026-10-27T18:02:21.3242609+00:00",
+    "finished": "2026-10-27T18:02:21.3302166+00:00",
+    "durationMs": 5
   }
 }

@@ -7,23 +7,23 @@
   "test": "merkletrees",
   "code": "1.go",
   "input": "17",
-  "timeMS": 1301.2733,
-  "timeStdDevMS": 13.039514555509152,
+  "timeMS": 1292.2119,
+  "timeStdDevMS": 27.28577514145413,
   "memBytes": 37265408,
-  "cpuTimeMS": 1283.3333,
-  "cpuTimeUserMS": 1273.3333,
+  "cpuTimeMS": 1276.6666,
+  "cpuTimeUserMS": 1266.6666,
   "cpuTimeKernelMS": 10.0,
-  "githubRunId": "40549112230",
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "tinygo version 0.43.0 linux/amd64 (using go version go1.27.2 and LLVM version 22.1.4)",
-    "start": "2026-10-27T17:20:25.6008092+00:00",
-    "finished": "2026-10-27T17:20:46.2418088+00:00",
-    "durationMs": 20640
+    "start": "2026-10-27T17:54:12.9928029+00:00",
+    "finished": "2026-10-27T17:54:28.4007293+00:00",
+    "durationMs": 15407
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:21.0617266+00:00",
-    "finished": "2026-10-27T17:28:21.0735771+00:00",
+    "start": "2026-10-27T18:02:32.0024004+00:00",
+    "finished": "2026-10-27T18:02:32.0138603+00:00",
     "durationMs": 11
   }
 }

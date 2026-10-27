@@ -7,23 +7,23 @@
   "test": "lru",
   "code": "1.c",
   "input": "1000 3000000",
-  "timeMS": 87.3216,
-  "timeStdDevMS": 2.2718466526888004,
+  "timeMS": 86.4511,
+  "timeStdDevMS": 2.2176989072760356,
   "memBytes": 1363968,
   "cpuTimeMS": 80.0,
   "cpuTimeUserMS": 80.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40549112230",
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-27T17:18:57.2389814+00:00",
-    "finished": "2026-10-27T17:18:57.3252423+00:00",
-    "durationMs": 86
+    "start": "2026-10-27T17:52:59.5304877+00:00",
+    "finished": "2026-10-27T17:52:59.6085107+00:00",
+    "durationMs": 78
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:09.9360871+00:00",
-    "finished": "2026-10-27T17:28:09.9418312+00:00",
+    "start": "2026-10-27T18:02:21.2809873+00:00",
+    "finished": "2026-10-27T18:02:21.2865743+00:00",
     "durationMs": 5
   }
 }

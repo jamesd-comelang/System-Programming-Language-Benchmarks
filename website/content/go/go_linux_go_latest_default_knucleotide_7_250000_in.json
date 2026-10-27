@@ -7,23 +7,23 @@
   "test": "knucleotide",
   "code": "7.go",
   "input": "250000_in",
-  "timeMS": 143.508,
-  "timeStdDevMS": 3.1297653154829095,
-  "memBytes": 24039424,
-  "cpuTimeMS": 379.9999,
-  "cpuTimeUserMS": 366.6666,
+  "timeMS": 136.5364,
+  "timeStdDevMS": 0.772014030528795,
+  "memBytes": 22179840,
+  "cpuTimeMS": 369.9999,
+  "cpuTimeUserMS": 356.6666,
   "cpuTimeKernelMS": 13.3333,
-  "githubRunId": "40549112230",
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "go version go1.26.10 linux/amd64",
-    "start": "2026-10-27T17:24:55.7851301+00:00",
-    "finished": "2026-10-27T17:25:01.793799+00:00",
-    "durationMs": 6008
+    "start": "2026-10-27T17:57:38.9716169+00:00",
+    "finished": "2026-10-27T17:57:43.5520616+00:00",
+    "durationMs": 4580
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:24.2189821+00:00",
-    "finished": "2026-10-27T17:28:24.4394652+00:00",
-    "durationMs": 220
+    "start": "2026-10-27T18:02:35.1885017+00:00",
+    "finished": "2026-10-27T18:02:35.3894119+00:00",
+    "durationMs": 200
   }
 }

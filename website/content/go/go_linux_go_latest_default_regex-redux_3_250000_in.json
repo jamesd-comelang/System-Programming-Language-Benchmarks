@@ -7,23 +7,23 @@
   "test": "regex-redux",
   "code": "3.go",
   "input": "250000_in",
-  "timeMS": 1761.094,
-  "timeStdDevMS": 12.608030623508627,
-  "memBytes": 20484096,
-  "cpuTimeMS": 1786.6666,
-  "cpuTimeUserMS": 1746.6666,
-  "cpuTimeKernelMS": 40.0,
-  "githubRunId": "40549112230",
+  "timeMS": 1798.1494,
+  "timeStdDevMS": 36.36534156817446,
+  "memBytes": 19857408,
+  "cpuTimeMS": 1823.3332,
+  "cpuTimeUserMS": 1776.6666,
+  "cpuTimeKernelMS": 46.6666,
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "go version go1.26.10 linux/amd64",
-    "start": "2026-10-27T17:25:50.973995+00:00",
-    "finished": "2026-10-27T17:25:57.2822205+00:00",
-    "durationMs": 6308
+    "start": "2026-10-27T17:58:20.9496472+00:00",
+    "finished": "2026-10-27T17:58:25.7297417+00:00",
+    "durationMs": 4780
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:24.5691949+00:00",
-    "finished": "2026-10-27T17:28:26.4957893+00:00",
-    "durationMs": 1926
+    "start": "2026-10-27T18:02:35.5113379+00:00",
+    "finished": "2026-10-27T18:02:37.4346638+00:00",
+    "durationMs": 1923
   }
 }

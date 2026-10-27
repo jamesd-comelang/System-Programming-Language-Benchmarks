@@ -7,23 +7,23 @@
   "test": "regex-redux",
   "code": "1.cpp",
   "input": "250000_in",
-  "timeMS": 1214.6643,
-  "timeStdDevMS": 12.740994286292405,
-  "memBytes": 21057536,
-  "cpuTimeMS": 1196.6666,
-  "cpuTimeUserMS": 1186.6666,
-  "cpuTimeKernelMS": 10.0,
-  "githubRunId": "40549112230",
+  "timeMS": 1224.2024,
+  "timeStdDevMS": 3.7841901198715377,
+  "memBytes": 21069824,
+  "cpuTimeMS": 1206.6666,
+  "cpuTimeUserMS": 1200.0,
+  "cpuTimeKernelMS": 6.6666,
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-27T17:18:18.2271643+00:00",
-    "finished": "2026-10-27T17:18:22.6751157+00:00",
-    "durationMs": 4447
+    "start": "2026-10-27T17:53:03.1388143+00:00",
+    "finished": "2026-10-27T17:53:07.0914263+00:00",
+    "durationMs": 3952
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:17.6293229+00:00",
-    "finished": "2026-10-27T17:28:18.9723886+00:00",
-    "durationMs": 1343
+    "start": "2026-10-27T18:02:28.5972018+00:00",
+    "finished": "2026-10-27T18:02:29.9492205+00:00",
+    "durationMs": 1352
   }
 }

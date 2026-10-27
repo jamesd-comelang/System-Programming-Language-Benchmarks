@@ -7,23 +7,23 @@
   "test": "mandelbrot",
   "code": "1.zig",
   "input": "1000",
-  "timeMS": 13.3291,
-  "timeStdDevMS": 0.23398284125123262,
-  "memBytes": 2064384,
+  "timeMS": 13.5758,
+  "timeStdDevMS": 0.4060250895367592,
+  "memBytes": 2191360,
   "cpuTimeMS": 10.0,
   "cpuTimeUserMS": 10.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40549112230",
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-27T17:22:46.6031947+00:00",
-    "finished": "2026-10-27T17:23:02.4513739+00:00",
-    "durationMs": 15848
+    "start": "2026-10-27T17:57:18.8596231+00:00",
+    "finished": "2026-10-27T17:57:35.1840256+00:00",
+    "durationMs": 16324
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:29.3420366+00:00",
-    "finished": "2026-10-27T17:28:29.3508591+00:00",
+    "start": "2026-10-27T18:02:40.1781929+00:00",
+    "finished": "2026-10-27T18:02:40.1867413+00:00",
     "durationMs": 8
   }
 }

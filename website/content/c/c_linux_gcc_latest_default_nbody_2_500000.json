@@ -7,23 +7,23 @@
   "test": "nbody",
   "code": "2.c",
   "input": "500000",
-  "timeMS": 63.2619,
-  "timeStdDevMS": 0.22764929899591768,
-  "memBytes": 2105344,
-  "cpuTimeMS": 60.0,
-  "cpuTimeUserMS": 60.0,
+  "timeMS": 62.1184,
+  "timeStdDevMS": 0.0861814945333399,
+  "memBytes": 2035712,
+  "cpuTimeMS": 50.0,
+  "cpuTimeUserMS": 50.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40549112230",
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-27T17:18:57.5672733+00:00",
-    "finished": "2026-10-27T17:18:57.6730641+00:00",
-    "durationMs": 105
+    "start": "2026-10-27T17:52:59.8264664+00:00",
+    "finished": "2026-10-27T17:52:59.9331983+00:00",
+    "durationMs": 106
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:09.9602071+00:00",
-    "finished": "2026-10-27T17:28:09.9657702+00:00",
+    "start": "2026-10-27T18:02:21.3045326+00:00",
+    "finished": "2026-10-27T18:02:21.3098899+00:00",
     "durationMs": 5
   }
 }

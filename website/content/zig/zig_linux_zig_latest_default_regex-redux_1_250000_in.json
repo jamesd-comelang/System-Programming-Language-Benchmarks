@@ -7,23 +7,23 @@
   "test": "regex-redux",
   "code": "1.zig",
   "input": "250000_in",
-  "timeMS": 538.5709,
-  "timeStdDevMS": 5.704639275478631,
-  "memBytes": 20119552,
-  "cpuTimeMS": 523.3333,
-  "cpuTimeUserMS": 523.3333,
-  "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40549112230",
+  "timeMS": 532.1844,
+  "timeStdDevMS": 5.873622320170006,
+  "memBytes": 19972096,
+  "cpuTimeMS": 519.9999,
+  "cpuTimeUserMS": 513.3333,
+  "cpuTimeKernelMS": 6.6666,
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-27T17:24:53.6985588+00:00",
-    "finished": "2026-10-27T17:25:09.5938549+00:00",
-    "durationMs": 15895
+    "start": "2026-10-27T17:59:27.8765811+00:00",
+    "finished": "2026-10-27T17:59:44.0262699+00:00",
+    "durationMs": 16149
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:29.3975583+00:00",
-    "finished": "2026-10-27T17:28:29.9832753+00:00",
-    "durationMs": 585
+    "start": "2026-10-27T18:02:40.2304392+00:00",
+    "finished": "2026-10-27T18:02:40.8504044+00:00",
+    "durationMs": 619
   }
 }

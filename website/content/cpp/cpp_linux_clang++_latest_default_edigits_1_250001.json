@@ -7,23 +7,23 @@
   "test": "edigits",
   "code": "1.cpp",
   "input": "250001",
-  "timeMS": 3947.793,
-  "timeStdDevMS": 19.32561476564189,
-  "memBytes": 4501504,
-  "cpuTimeMS": 3933.3333,
-  "cpuTimeUserMS": 3933.3333,
+  "timeMS": 3917.9698,
+  "timeStdDevMS": 4.647695926298398,
+  "memBytes": 4665344,
+  "cpuTimeMS": 3903.3333,
+  "cpuTimeUserMS": 3903.3333,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40549112230",
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-27T17:18:05.1405968+00:00",
-    "finished": "2026-10-27T17:18:06.6503913+00:00",
-    "durationMs": 1509
+    "start": "2026-10-27T17:52:51.4792437+00:00",
+    "finished": "2026-10-27T17:52:52.8090926+00:00",
+    "durationMs": 1329
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:17.2361706+00:00",
-    "finished": "2026-10-27T17:28:17.2410845+00:00",
+    "start": "2026-10-27T18:02:28.2117448+00:00",
+    "finished": "2026-10-27T18:02:28.216207+00:00",
     "durationMs": 4
   }
 }

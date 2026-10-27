@@ -7,23 +7,23 @@
   "test": "nbody",
   "code": "0-i.cpp",
   "input": "500000",
-  "timeMS": 19.0767,
-  "timeStdDevMS": 0.13129053025002702,
+  "timeMS": 18.7844,
+  "timeStdDevMS": 0.1074045778043599,
   "memBytes": 1728512,
   "cpuTimeMS": 10.0,
   "cpuTimeUserMS": 10.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40549112230",
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-27T17:18:35.2430323+00:00",
-    "finished": "2026-10-27T17:18:35.7533132+00:00",
-    "durationMs": 510
+    "start": "2026-10-27T17:53:17.1717727+00:00",
+    "finished": "2026-10-27T17:53:17.6417661+00:00",
+    "durationMs": 469
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:19.3590706+00:00",
-    "finished": "2026-10-27T17:28:19.3634146+00:00",
+    "start": "2026-10-27T18:02:30.3133585+00:00",
+    "finished": "2026-10-27T18:02:30.3173881+00:00",
     "durationMs": 4
   }
 }

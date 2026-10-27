@@ -7,23 +7,23 @@
   "test": "knucleotide",
   "code": "1.c",
   "input": "250000_in",
-  "timeMS": 43.6081,
-  "timeStdDevMS": 2.0097279650075297,
-  "memBytes": 16064512,
-  "cpuTimeMS": 129.9999,
-  "cpuTimeUserMS": 123.3333,
-  "cpuTimeKernelMS": 6.6666,
-  "githubRunId": "40549112230",
+  "timeMS": 42.2501,
+  "timeStdDevMS": 4.215686321743274,
+  "memBytes": 16044032,
+  "cpuTimeMS": 123.3333,
+  "cpuTimeUserMS": 113.3333,
+  "cpuTimeKernelMS": 10.0,
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-27T17:18:52.7529276+00:00",
-    "finished": "2026-10-27T17:18:52.942328+00:00",
-    "durationMs": 189
+    "start": "2026-10-27T17:52:55.4807406+00:00",
+    "finished": "2026-10-27T17:52:55.6669437+00:00",
+    "durationMs": 186
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:01.8814063+00:00",
-    "finished": "2026-10-27T17:28:01.9374213+00:00",
-    "durationMs": 56
+    "start": "2026-10-27T18:02:11.624392+00:00",
+    "finished": "2026-10-27T18:02:11.6770481+00:00",
+    "durationMs": 52
   }
 }

@@ -7,23 +7,23 @@
   "test": "knucleotide",
   "code": "8.rs",
   "input": "2500000_in",
-  "timeMS": 397.1566,
-  "timeStdDevMS": 7.436953748903761,
-  "memBytes": 23511040,
-  "cpuTimeMS": 380.0,
-  "cpuTimeUserMS": 370.0,
-  "cpuTimeKernelMS": 10.0,
-  "githubRunId": "40549112230",
+  "timeMS": 428.9951,
+  "timeStdDevMS": 28.43619460265388,
+  "memBytes": 23449600,
+  "cpuTimeMS": 413.3333,
+  "cpuTimeUserMS": 400.0,
+  "cpuTimeKernelMS": 13.3333,
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-    "start": "2026-10-27T17:22:49.8146554+00:00",
-    "finished": "2026-10-27T17:22:53.5577604+00:00",
-    "durationMs": 3743
+    "start": "2026-10-27T17:55:39.7031808+00:00",
+    "finished": "2026-10-27T17:55:42.7529143+00:00",
+    "durationMs": 3049
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:28.1371756+00:00",
-    "finished": "2026-10-27T17:28:28.2180514+00:00",
+    "start": "2026-10-27T18:02:39.0102782+00:00",
+    "finished": "2026-10-27T18:02:39.0904424+00:00",
     "durationMs": 80
   }
 }

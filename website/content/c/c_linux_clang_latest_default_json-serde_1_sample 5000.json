@@ -7,23 +7,23 @@
   "test": "json-serde",
   "code": "1.c",
   "input": "sample 5000",
-  "timeMS": 12.56,
-  "timeStdDevMS": 1.4820388737591643,
-  "memBytes": 2674688,
-  "cpuTimeMS": 10.0,
-  "cpuTimeUserMS": 10.0,
+  "timeMS": 11.9324,
+  "timeStdDevMS": 1.2337467662909312,
+  "memBytes": 2617344,
+  "cpuTimeMS": 0.0,
+  "cpuTimeUserMS": 0.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40549112230",
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-27T17:18:52.3120238+00:00",
-    "finished": "2026-10-27T17:18:52.7522971+00:00",
-    "durationMs": 440
+    "start": "2026-10-27T17:52:55.0999633+00:00",
+    "finished": "2026-10-27T17:52:55.4800666+00:00",
+    "durationMs": 380
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:01.2015651+00:00",
-    "finished": "2026-10-27T17:28:01.8809442+00:00",
-    "durationMs": 679
+    "start": "2026-10-27T18:02:10.9550695+00:00",
+    "finished": "2026-10-27T18:02:11.6239037+00:00",
+    "durationMs": 668
   }
 }

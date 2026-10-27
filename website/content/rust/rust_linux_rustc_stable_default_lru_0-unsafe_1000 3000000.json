@@ -7,23 +7,23 @@
   "test": "lru",
   "code": "0-unsafe.rs",
   "input": "1000 3000000",
-  "timeMS": 142.1076,
-  "timeStdDevMS": 4.753919520073228,
-  "memBytes": 2035712,
-  "cpuTimeMS": 133.3333,
-  "cpuTimeUserMS": 133.3333,
+  "timeMS": 148.4592,
+  "timeStdDevMS": 4.821976744379152,
+  "memBytes": 2031616,
+  "cpuTimeMS": 140.0,
+  "cpuTimeUserMS": 140.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40549112230",
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-    "start": "2026-10-27T17:22:57.2040074+00:00",
-    "finished": "2026-10-27T17:23:00.0709103+00:00",
-    "durationMs": 2866
+    "start": "2026-10-27T17:55:46.2509208+00:00",
+    "finished": "2026-10-27T17:55:48.9092969+00:00",
+    "durationMs": 2658
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:28.2640126+00:00",
-    "finished": "2026-10-27T17:28:28.2704302+00:00",
+    "start": "2026-10-27T18:02:39.1313089+00:00",
+    "finished": "2026-10-27T18:02:39.1375054+00:00",
     "durationMs": 6
   }
 }

@@ -7,23 +7,23 @@
   "test": "fasta",
   "code": "1.c",
   "input": "2500000",
-  "timeMS": 255.3221,
-  "timeStdDevMS": 2.4065115506336845,
-  "memBytes": 2154496,
-  "cpuTimeMS": 243.3333,
-  "cpuTimeUserMS": 243.3333,
+  "timeMS": 258.7688,
+  "timeStdDevMS": 2.6528206667620857,
+  "memBytes": 2134016,
+  "cpuTimeMS": 246.6666,
+  "cpuTimeUserMS": 246.6666,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40549112230",
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-27T17:18:52.0613264+00:00",
-    "finished": "2026-10-27T17:18:52.2007389+00:00",
-    "durationMs": 139
+    "start": "2026-10-27T17:52:54.8283447+00:00",
+    "finished": "2026-10-27T17:52:54.9726723+00:00",
+    "durationMs": 144
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:01.1906299+00:00",
-    "finished": "2026-10-27T17:28:01.1951814+00:00",
-    "durationMs": 4
+    "start": "2026-10-27T18:02:10.945306+00:00",
+    "finished": "2026-10-27T18:02:10.9492042+00:00",
+    "durationMs": 3
   }
 }

@@ -7,23 +7,23 @@
   "test": "edigits",
   "code": "1.go",
   "input": "250001",
-  "timeMS": 119.9757,
-  "timeStdDevMS": 0.863573442157645,
-  "memBytes": 9302016,
-  "cpuTimeMS": 113.3332,
+  "timeMS": 116.2679,
+  "timeStdDevMS": 0.38471814791264913,
+  "memBytes": 9785344,
+  "cpuTimeMS": 109.9999,
   "cpuTimeUserMS": 106.6666,
-  "cpuTimeKernelMS": 6.6666,
-  "githubRunId": "40549112230",
+  "cpuTimeKernelMS": 3.3333,
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "go version go1.26.10 linux/amd64",
-    "start": "2026-10-27T17:23:33.8244327+00:00",
-    "finished": "2026-10-27T17:23:40.3316102+00:00",
-    "durationMs": 6507
+    "start": "2026-10-27T17:56:35.8740891+00:00",
+    "finished": "2026-10-27T17:56:40.6603483+00:00",
+    "durationMs": 4786
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:23.7894879+00:00",
-    "finished": "2026-10-27T17:28:23.7987954+00:00",
-    "durationMs": 9
+    "start": "2026-10-27T18:02:34.7712859+00:00",
+    "finished": "2026-10-27T18:02:34.7774963+00:00",
+    "durationMs": 6
   }
 }

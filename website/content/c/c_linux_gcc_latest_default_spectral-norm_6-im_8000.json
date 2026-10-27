@@ -7,23 +7,23 @@
   "test": "spectral-norm",
   "code": "6-im.c",
   "input": "8000",
-  "timeMS": 940.9356,
-  "timeStdDevMS": 13.822862298019238,
+  "timeMS": 952.5805,
+  "timeStdDevMS": 27.578018647526765,
   "memBytes": 2048000,
-  "cpuTimeMS": 3670.0,
-  "cpuTimeUserMS": 3670.0,
+  "cpuTimeMS": 3683.3333,
+  "cpuTimeUserMS": 3683.3333,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40549112230",
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-27T17:18:58.9490749+00:00",
-    "finished": "2026-10-27T17:18:59.2268283+00:00",
-    "durationMs": 277
+    "start": "2026-10-27T17:53:01.1057796+00:00",
+    "finished": "2026-10-27T17:53:01.3943503+00:00",
+    "durationMs": 288
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:17.2070528+00:00",
-    "finished": "2026-10-27T17:28:17.2100428+00:00",
-    "durationMs": 2
+    "start": "2026-10-27T18:02:28.1809055+00:00",
+    "finished": "2026-10-27T18:02:28.1880711+00:00",
+    "durationMs": 7
   }
 }

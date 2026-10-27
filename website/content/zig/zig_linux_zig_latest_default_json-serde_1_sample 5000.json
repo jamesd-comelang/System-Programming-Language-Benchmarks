@@ -7,23 +7,23 @@
   "test": "json-serde",
   "code": "1.zig",
   "input": "sample 5000",
-  "timeMS": 55.9019,
-  "timeStdDevMS": 1.3228932383227314,
+  "timeMS": 54.1111,
+  "timeStdDevMS": 1.8877044507372838,
   "memBytes": 15118336,
   "cpuTimeMS": 40.0,
   "cpuTimeUserMS": 40.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40549112230",
+  "githubRunId": "40554498732",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-27T17:21:38.1115326+00:00",
-    "finished": "2026-10-27T17:21:56.3198041+00:00",
-    "durationMs": 18208
+    "start": "2026-10-27T17:56:06.8514848+00:00",
+    "finished": "2026-10-27T17:56:25.9930172+00:00",
+    "durationMs": 19141
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T17:28:29.0526412+00:00",
-    "finished": "2026-10-27T17:28:29.1426925+00:00",
-    "durationMs": 90
+    "start": "2026-10-27T18:02:39.9005775+00:00",
+    "finished": "2026-10-27T18:02:39.9899941+00:00",
+    "durationMs": 89
   }
 }
