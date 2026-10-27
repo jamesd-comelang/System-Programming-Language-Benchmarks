@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 9V45 96-Core Processor (Model 2)",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 9V74 80-Core Processor (Model 17)",
   "lang": "c",
   "os": "linux",
   "compiler": "gcc",
@@ -9,21 +9,21 @@
   "input": "2500000_in",
   "timeMS": 0.0,
   "timeStdDevMS": 0.0,
-  "memBytes": 28188672,
-  "cpuTimeMS": 4980.0,
+  "memBytes": 28147712,
+  "cpuTimeMS": 4990.0,
   "cpuTimeUserMS": 4980.0,
-  "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40562951470",
+  "cpuTimeKernelMS": 10.0,
+  "githubRunId": "40568491287",
   "buildLog": {
     "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-27T18:47:28.7124699+00:00",
-    "finished": "2026-10-27T18:47:28.7876722+00:00",
-    "durationMs": 75
+    "start": "2026-10-27T19:23:23.6472134+00:00",
+    "finished": "2026-10-27T19:23:23.738459+00:00",
+    "durationMs": 91
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T18:56:29.9273216+00:00",
-    "finished": "2026-10-27T18:56:33.7463763+00:00",
-    "durationMs": 3819
+    "start": "2026-10-27T19:31:54.401986+00:00",
+    "finished": "2026-10-27T19:32:00.0066313+00:00",
+    "durationMs": 5604
   }
 }

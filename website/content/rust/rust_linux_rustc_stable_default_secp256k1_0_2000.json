@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 9V45 96-Core Processor (Model 2)",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 9V74 80-Core Processor (Model 17)",
   "lang": "rust",
   "os": "linux",
   "compiler": "rustc",
@@ -7,23 +7,23 @@
   "test": "secp256k1",
   "code": "0.rs",
   "input": "2000",
-  "timeMS": 72.799,
-  "timeStdDevMS": 0.7667649074738186,
-  "memBytes": 1957888,
-  "cpuTimeMS": 70.0,
-  "cpuTimeUserMS": 70.0,
+  "timeMS": 107.3977,
+  "timeStdDevMS": 6.941393880914689,
+  "memBytes": 2035712,
+  "cpuTimeMS": 100.0,
+  "cpuTimeUserMS": 100.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40562951470",
+  "githubRunId": "40568491287",
   "buildLog": {
     "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-    "start": "2026-10-27T18:50:34.8062607+00:00",
-    "finished": "2026-10-27T18:50:37.355391+00:00",
-    "durationMs": 2549
+    "start": "2026-10-27T19:28:20.3237939+00:00",
+    "finished": "2026-10-27T19:28:24.3525136+00:00",
+    "durationMs": 4028
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T18:56:40.2081018+00:00",
-    "finished": "2026-10-27T18:56:40.2108796+00:00",
-    "durationMs": 2
+    "start": "2026-10-27T19:32:08.9146613+00:00",
+    "finished": "2026-10-27T19:32:08.9189854+00:00",
+    "durationMs": 4
   }
 }
