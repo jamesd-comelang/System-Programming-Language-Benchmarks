@@ -25,18 +25,21 @@
 const std = @import("std");
 const u8x16 = @Vector(16, u8);
 
-fn get_n() !u4 {
-    var arg_it = std.process.args();
+fn get_n(init: std.process.Init) !u4 {
+    var arg_it = std.process.Args.Iterator.init(init.minimal.args);
     _ = arg_it.skip();
     const arg = arg_it.next() orelse return 10;
     return try std.fmt.parseInt(u4, arg, 10);
 }
 
-pub fn main() !void {
-    const n = try get_n();
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    var out_buf: [4096]u8 = undefined;
+    var out = std.Io.File.stdout().writer(io, &out_buf);
+    const n = try get_n(init);
     const x = fannkuchRedux(n);
-    const stdout = std.io.getStdOut().writer();
-    try stdout.print("{}\nPfannkuchen({}) = {}\n", .{ x[0], n, x[1] });
+    try out.interface.print("{}\nPfannkuchen({}) = {}\n", .{ x[0], n, x[1] });
+    try out.interface.flush();
 }
 
 inline fn shuffle_epi8(x: u8x16, mask: u8x16) u8x16 {
@@ -114,7 +117,7 @@ inline fn advance_array(_array: u128, count: *[16]u8) u128 {
 
 fn fannkuchRedux(n: u4) [2]i32 {
     var _current: u128 = 0x0F_0E_0D_0C_0B_0A_09_08_07_06_05_04_03_02_01_00;
-    const _count = [1]u8{0} ** 16;
+    const _count: [16]u8 = @splat(0);
     var max_rev: i32 = 0;
 
     // Trivial cases, not implemented
@@ -122,7 +125,7 @@ fn fannkuchRedux(n: u4) [2]i32 {
     if (n == 1) return [2]i32{ 0, 0 };
     if (n == 2) return [2]i32{ -1, 1 };
 
-    var arrays = [1]u128{0} ** 16;
+    var arrays: [16]u128 = @splat(0);
     arrays[0] = _current;
     {
         var i: u4 = 1;
@@ -139,7 +142,7 @@ fn fannkuchRedux(n: u4) [2]i32 {
         count[n - 1] = rotate_count;
 
         // Calculating checksum and max_rev
-        var arrays2 = [1]u128{0} ** 16;
+        var arrays2: [16]u128 = @splat(0);
         arrays2[0] = current;
         {
             var i: u4 = 1;
@@ -159,7 +162,9 @@ fn fannkuchRedux(n: u4) [2]i32 {
                 var first = @as(u8x16, @bitCast(tmp))[0];
                 if (first > 0) {
                     while (first > 0) {
-                        const next = @as(u8x16, @bitCast(tmp))[first];
+                        // Zig 0.17 forbids runtime vector indexing; view
+                        // the current tmp as an array each iteration.
+                        const next = @as([16]u8, @bitCast(tmp))[first];
                         tmp = reverse_array(tmp, @as(u4, @truncate(first)));
                         first = next;
                         rev_count += 1;

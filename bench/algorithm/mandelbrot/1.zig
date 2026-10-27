@@ -7,13 +7,14 @@ const Vec = @Vector(VEC_SIZE, f64);
 
 const global_allocator = std.heap.c_allocator;
 
-pub fn main() !void {
-    const n = try get_n();
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    const n = try get_n(init);
     const size = (n + VEC_SIZE - 1) / VEC_SIZE * VEC_SIZE;
     const chunk_size = size / VEC_SIZE;
     const inv = 2.0 / @as(f64, @floatFromInt(size));
-    var xloc = ArrayList(Vec).init(global_allocator);
-    try xloc.ensureTotalCapacityPrecise(chunk_size);
+    var xloc: ArrayList(Vec) = .empty;
+    try xloc.ensureTotalCapacityPrecise(global_allocator, chunk_size);
     var i: usize = 0;
     while (i < chunk_size) : (i += 1) {
         const offset = i * VEC_SIZE;
@@ -27,28 +28,32 @@ pub fn main() !void {
             init_xloc(offset + 6, inv),
             init_xloc(offset + 7, inv),
         };
-        try xloc.append(v);
+        try xloc.append(global_allocator, v);
     }
 
-    const stdout = std.io.getStdOut().writer();
+    var out_buf: [4096]u8 = undefined;
+    var out = std.Io.File.stdout().writer(io, &out_buf);
+    const stdout = &out.interface;
     try stdout.print("P4\n{d} {d}\n", .{ size, size });
 
-    var pixels = ArrayList(u8).init(global_allocator);
-    try pixels.ensureTotalCapacityPrecise(size * chunk_size);
+    var pixels: ArrayList(u8) = .empty;
+    try pixels.ensureTotalCapacityPrecise(global_allocator, size * chunk_size);
     var y: usize = 0;
     while (y < size) : (y += 1) {
         const ci = @as(f64, @floatFromInt(y)) * inv - 1.0;
         var x: usize = 0;
         while (x < chunk_size) : (x += 1) {
             const r = mbrot8(xloc.items[x], ci);
-            try pixels.append(r);
+            try pixels.append(global_allocator, r);
         }
     }
 
     // try stdout.print("{}\n", .{pixels});
     var hash: [16]u8 = undefined;
     md5.hash(pixels.items, &hash, .{});
-    try stdout.print("{}\n", .{std.fmt.fmtSliceHexLower(&hash)});
+    const hex = std.fmt.bytesToHex(hash, .lower);
+    try stdout.print("{s}\n", .{hex});
+    try out.interface.flush();
 }
 
 fn mbrot8(cr: Vec, civ: f64) u8 {
@@ -70,10 +75,12 @@ fn mbrot8(cr: Vec, civ: f64) u8 {
             ti = zi * zi;
         }
         absz = tr + ti;
+        // Zig 0.17 forbids runtime vector indexing; view as an array.
+        const absz_arr: [VEC_SIZE]f64 = @bitCast(absz);
         var terminate = true;
         var i: u8 = 0;
         while (i < VEC_SIZE) : (i += 1) {
-            if (absz[i] <= 4.0) {
+            if (absz_arr[i] <= 4.0) {
                 terminate = false;
                 break;
             }
@@ -82,10 +89,11 @@ fn mbrot8(cr: Vec, civ: f64) u8 {
             return 0;
         }
     }
+    const absz_final: [VEC_SIZE]f64 = @bitCast(absz);
     var accu: u8 = 0;
     var i: u8 = 0;
     while (i < VEC_SIZE) : (i += 1) {
-        if (absz[i] <= 4.0) {
+        if (absz_final[i] <= 4.0) {
             const lhs: u8 = 0x80;
             accu |= (lhs >> @as(u3, @intCast(i)));
         }
@@ -97,8 +105,8 @@ fn init_xloc(i: usize, inv: f64) f64 {
     return @as(f64, @floatFromInt(i)) * inv - 1.5;
 }
 
-fn get_n() !usize {
-    var arg_it = std.process.args();
+fn get_n(init: std.process.Init) !usize {
+    var arg_it = std.process.Args.Iterator.init(init.minimal.args);
     _ = arg_it.skip();
     const arg = arg_it.next() orelse return 200;
     return try std.fmt.parseInt(usize, arg, 10);

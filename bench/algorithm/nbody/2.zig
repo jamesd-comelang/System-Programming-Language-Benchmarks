@@ -104,20 +104,24 @@ var solar_bodies = [_]Body{
     },
 };
 
-pub fn main() !void {
-    const steps = try get_steps();
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    var out_buf: [4096]u8 = undefined;
+    var out = std.Io.File.stdout().writer(io, &out_buf);
+    const stdout = &out.interface;
+    const steps = try get_steps(init);
 
     offset_momentum(&solar_bodies);
     const initial_energy = energy(&solar_bodies);
     for (range(steps)) |_| advance(&solar_bodies, 0.01);
     const final_energy = energy(&solar_bodies);
 
-    const stdout = std.io.getStdOut().writer();
     try stdout.print("{d:.9}\n{d:.9}\n", .{ initial_energy, final_energy });
+    try out.interface.flush();
 }
 
-fn get_steps() !usize {
-    var arg_it = std.process.args();
+fn get_steps(init: std.process.Init) !usize {
+    var arg_it = std.process.Args.Iterator.init(init.minimal.args);
     _ = arg_it.skip();
     const arg = arg_it.next() orelse return 1000;
     return try std.fmt.parseInt(usize, arg, 10);

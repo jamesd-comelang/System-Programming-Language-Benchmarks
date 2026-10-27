@@ -76,15 +76,12 @@ fn generateAndWrap(out: anytype, comptime nucleotides: []const AminoAcid, count:
     }
 }
 
-var buffer: [256]u8 = undefined;
-var fixed_allocator = std.heap.FixedBufferAllocator.init(buffer[0..]);
-var allocator = &fixed_allocator.allocator;
-
-pub fn main() !void {
-    var buffered_stdout = std.io.bufferedWriter(std.io.getStdOut().writer());
-    defer buffered_stdout.flush() catch unreachable;
-    const stdout = buffered_stdout.writer();
-    const n = try get_n();
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    var out_buf: [65536]u8 = undefined;
+    var out = std.Io.File.stdout().writer(io, &out_buf);
+    const stdout = &out.interface;
+    const n = try get_n(init);
     const homo_sapiens_alu = "GGCCGGGCGCGGTGGCTCACGCCTGTAATCCCAGCACTTTGGGAGGCCGAGGCGGGCGGATCACCTGAGGTC" ++
         "AGGAGTTCGAGACCAGCCTGGCCAACATGGTGAAACCCCGTCTCTACTAAAAATACAAAAATTAGCCGGGCG" ++
         "TGGTGGCGCGCGCCTGTAATCCCAGCTACTCGGGAGGCTGAGGCAGGAGAATCGCTTGAACCCGGGAGGCGG" ++
@@ -120,10 +117,11 @@ pub fn main() !void {
     };
     _ = try stdout.write(">THREE Homo sapiens frequency\n");
     generateAndWrap(stdout, homo_sapien_nucleotide_info, 5 * n);
+    try out.interface.flush();
 }
 
-fn get_n() !usize {
-    var arg_it = std.process.args();
+fn get_n(init: std.process.Init) !usize {
+    var arg_it = std.process.Args.Iterator.init(init.minimal.args);
     _ = arg_it.skip();
     const arg = arg_it.next() orelse return 10;
     return try std.fmt.parseInt(u64, arg, 10);

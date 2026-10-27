@@ -16,21 +16,22 @@ fn runInParallel(tasks: []std.Thread, len: usize, comptime f: anytype, args: any
 
 fn reverse_mask(n: u8) Vec {
     // global constant is not used to workaround a compiler bug
-    var v = Vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+    // Zig 0.17 forbids runtime vector indexing; mutate via an array.
+    var a: [max_n]u8 = .{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
     var i: u8 = 0;
-    while (i < n) : (i += 1) v[i] = n - i - 1;
-    return v;
+    while (i < n) : (i += 1) a[i] = n - i - 1;
+    return @bitCast(a);
 }
 
 fn rotate_mask(n: u8) Vec {
-    var v = Vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+    var a: [max_n]u8 = .{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
     var i: u8 = 0;
-    while (i < n) : (i += 1) v[i] = (i + 1) % n;
-    return v;
+    while (i < n) : (i += 1) a[i] = (i + 1) % n;
+    return @bitCast(a);
 }
 
 fn nextPermMask(n: u8) Vec {
-    var v = Vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+    var v: Vec = @bitCast([max_n]u8{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 });
     var i: u8 = 2;
     while (i <= n) : (i += 1) v = applyMask(v, i, rotate_mask);
     return v;
@@ -118,8 +119,12 @@ fn pfannkuchenStats(first: usize, last: usize, n: u8, res: *Stats) void {
     _ = @atomicRmw(i32, &res.checksum, .Add, stats.checksum, .seq_cst);
 }
 
-pub fn main() !void {
-    const n = try get_n();
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    var out_buf: [4096]u8 = undefined;
+    var out = std.Io.File.stdout().writer(io, &out_buf);
+    const stdout = &out.interface;
+    const n = try get_n(init);
 
     var tasks_buf: [64]std.Thread = undefined;
     const task_count = try std.Thread.getCpuCount();
@@ -128,12 +133,12 @@ pub fn main() !void {
     const perms_count = factorialComptime(n);
     try runInParallel(tasks, perms_count, pfannkuchenStats, .{ n, &stats });
 
-    const stdout = std.io.getStdOut().writer();
     try stdout.print("{d}\nPfannkuchen({d}) = {d}\n", .{ stats.checksum, n, stats.max_flips });
+    try out.interface.flush();
 }
 
-fn get_n() !u8 {
-    var arg_it = std.process.args();
+fn get_n(init: std.process.Init) !u8 {
+    var arg_it = std.process.Args.Iterator.init(init.minimal.args);
     _ = arg_it.skip();
     const arg = arg_it.next() orelse return 10;
     return try std.fmt.parseInt(u8, arg, 10);

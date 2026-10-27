@@ -144,13 +144,12 @@ const solar_bodies = [_]Planet{
     },
 };
 
-var buffer: [32]u8 = undefined;
-var fixed_allocator = std.heap.FixedBufferAllocator.init(buffer[0..]);
-var allocator = &fixed_allocator.allocator;
-
-pub fn main() !void {
-    const stdout = std.io.getStdOut().writer();
-    const n = try get_n();
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    var out_buf: [4096]u8 = undefined;
+    var out = std.Io.File.stdout().writer(io, &out_buf);
+    const stdout = &out.interface;
+    const n = try get_n(init);
     var bodies = solar_bodies;
 
     offset_momentum(bodies[0..]);
@@ -160,10 +159,11 @@ pub fn main() !void {
     advance(bodies[0..], 0.01, n);
     ret = energy(bodies[0..]);
     try stdout.print("{d:.9}\n", .{ret});
+    try out.interface.flush();
 }
 
-fn get_n() !usize {
-    var arg_it = std.process.args();
+fn get_n(init: std.process.Init) !usize {
+    var arg_it = std.process.Args.Iterator.init(init.minimal.args);
     _ = arg_it.skip();
     const arg = arg_it.next() orelse return 1000;
     return try std.fmt.parseInt(usize, arg, 10);

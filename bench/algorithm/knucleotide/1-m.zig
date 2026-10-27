@@ -1,7 +1,6 @@
 const std = @import("std");
 
 const gpa = std.heap.c_allocator;
-const stdout = std.io.getStdOut().writer();
 
 const Code = struct {
     data: u64,
@@ -28,7 +27,7 @@ const Code = struct {
     }
 
     pub fn toString(self: Code, frame: usize) ![]const u8 {
-        var result = std.ArrayList(u8).init(gpa);
+        var result: std.ArrayList(u8) = .empty;
         var code = self.data;
         for (0..frame) |_| {
             const c: u8 = switch (@as(u2, @truncate(code))) {
@@ -37,48 +36,44 @@ const Code = struct {
                 Code.encodeByte('G') => 'G',
                 Code.encodeByte('C') => 'C',
             };
-            try result.append(c);
+            try result.append(gpa, c);
             code >>= 2;
         }
         std.mem.reverse(u8, result.items);
-        return result.toOwnedSlice();
+        return result.toOwnedSlice(gpa);
     }
 };
 
-pub fn readInput() ![]const u8 {
-    const args = try std.process.argsAlloc(gpa);
-    defer std.process.argsFree(gpa, args);
-    const file_name = if (args.len > 1) args[1] else "25000_in";
-    const file = try std.fs.cwd().openFile(file_name, .{});
-    var buffered_reader = std.io.bufferedReader(file.reader());
-    const reader = buffered_reader.reader();
-    { // skip past first lines starting with '>'
-        var i: u8 = 0;
-        while (i < 3) : (i += 1) {
-            while (true) {
-                const c = try reader.readByte();
-                if (c == '>') break;
-            }
-        }
-        while (true) {
-            const c = try reader.readByte();
-            if (c == '\n') break;
-        }
+pub fn readInput(init: std.process.Init) ![]const u8 {
+    const io = init.io;
+    var arg_it = std.process.Args.Iterator.init(init.minimal.args);
+    _ = arg_it.skip();
+    const file_name = arg_it.next() orelse "25000_in";
+    const raw = try std.Io.Dir.cwd().readFileAlloc(io, file_name, gpa, .unlimited);
+    // Skip past the 3 header lines, exactly as the old streaming reader
+    // did: consume up to and including the 3rd '>', then up to and
+    // including the next newline.
+    var i: usize = 0;
+    var seen: usize = 0;
+    while (i < raw.len and seen < 3) : (i += 1) {
+        if (raw[i] == '>') seen += 1;
     }
-
-    var buf = try reader.readAllAlloc(gpa, std.math.maxInt(u32));
+    if (seen < 3) return error.EndOfStream;
+    while (i < raw.len and raw[i] != '\n') : (i += 1) {}
+    if (i >= raw.len) return error.EndOfStream;
+    var buf = raw[i + 1 ..];
     // In place, remove all newlines from buf and encode nucleotides
     // using only the last 2 bits in each byte.
     {
-        var i: usize = 0;
+        var j: usize = 0;
         for (buf) |c| {
             if (c != '\n') {
                 // Gives a -> 0x00, c -> 0x01, g -> 0x03, t -> 0x02
-                buf[i] = (c >> 1) & 0x03;
-                i += 1;
+                buf[j] = (c >> 1) & 0x03;
+                j += 1;
             }
         }
-        buf.len = i;
+        buf.len = j;
     }
     return buf;
 }
@@ -112,7 +107,7 @@ const CountCode = struct {
     }
 };
 
-fn printMap(frame: usize, maps: []const Map) !void {
+fn printMap(frame: usize, maps: []const Map, stdout: *std.Io.Writer) !void {
     const code_limit = 16;
     var counts: [code_limit]u32 = @splat(0);
     var total: u64 = 0;
@@ -126,13 +121,17 @@ fn printMap(frame: usize, maps: []const Map) !void {
         }
     }
 
-    var cc: std.BoundedArray(CountCode, code_limit) = .{};
+    // std.BoundedArray was removed in Zig 0.17; same fixed buffer + length.
+    var cc_buf: [code_limit]CountCode = undefined;
+    var cc_len: usize = 0;
     for (counts, 0..) |count, code_data| if (count > 0) {
-        cc.appendAssumeCapacity(.{ .count = count, .code = .{ .data = @intCast(code_data) } });
+        cc_buf[cc_len] = .{ .count = count, .code = .{ .data = @intCast(code_data) } };
+        cc_len += 1;
     };
-    std.mem.sort(CountCode, cc.slice(), {}, CountCode.dsc);
+    const cc = cc_buf[0..cc_len];
+    std.mem.sort(CountCode, cc, {}, CountCode.dsc);
 
-    for (cc.slice()) |c| {
+    for (cc) |c| {
         try stdout.print("{!s} {d:.3}\n", .{
             c.code.toString(frame),
             @as(f32, @floatFromInt(c.count)) / @as(f32, @floatFromInt(total)) * 100.0,
@@ -141,7 +140,7 @@ fn printMap(frame: usize, maps: []const Map) !void {
     try stdout.print("\n", .{});
 }
 
-fn printOcc(occ: []const u8, maps: []const Map) !void {
+fn printOcc(occ: []const u8, maps: []const Map, stdout: *std.Io.Writer) !void {
     const code = Code.fromStr(occ);
     var total: u32 = 0;
     for (maps) |m| {
@@ -168,17 +167,21 @@ fn genMaps(seq: []const u8, frame: usize, maps: []Map) !void {
     try runInParallel(maps.len, seq.len - (frame - 1), genMap, .{seq, frame, maps});
 }
 
-pub fn main() !void {
-    const seq = try readInput();
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    var out_buf: [65536]u8 = undefined;
+    var out = std.Io.File.stdout().writer(io, &out_buf);
+    const stdout = &out.interface;
+    const seq = try readInput(init);
     const task_count = try std.Thread.getCpuCount();
     const maps = try gpa.alloc(Map, task_count);
     defer gpa.free(maps);
     @memset(maps, .empty);
 
     try genMaps(seq, 1, maps);
-    try printMap(1, maps);
+    try printMap(1, maps, stdout);
     try genMaps(seq, 2, maps);
-    try printMap(2, maps);
+    try printMap(2, maps, stdout);
 
     const occs = [_][]const u8{
         "GGT",
@@ -189,6 +192,7 @@ pub fn main() !void {
     };
     for (occs) |occ| {
         try genMaps(seq, occ.len, maps);
-        try printOcc(occ, maps);
+        try printOcc(occ, maps, stdout);
     }
+    try out.interface.flush();
 }

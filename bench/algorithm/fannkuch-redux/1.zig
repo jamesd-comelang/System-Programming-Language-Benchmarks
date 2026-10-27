@@ -8,9 +8,12 @@ var buffer: [1024]u8 = undefined;
 var fixed_allocator = std.heap.FixedBufferAllocator.init(buffer[0..]);
 var allocator = fixed_allocator.allocator();
 
-pub fn main() !void {
-    const stdout = std.io.getStdOut().writer();
-    const n = try get_n();
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    var out_buf: [4096]u8 = undefined;
+    var out = std.Io.File.stdout().writer(io, &out_buf);
+    const stdout = &out.interface;
+    const n = try get_n(init);
 
     var perm = try allocator.alloc(usize, n);
     var perm1 = try allocator.alloc(usize, n);
@@ -84,13 +87,15 @@ pub fn main() !void {
     }
 
     try stdout.print("{d}\nPfannkuchen({d}) = {d}\n", .{ checksum, n, max_flips_count });
+    try out.interface.flush();
 }
 
-fn get_n() !usize {
-    const args = try std.process.argsAlloc(global_allocator);
-    defer std.process.argsFree(global_allocator, args);
-    if (args.len > 1) {
-        return try std.fmt.parseInt(usize, args[1], 10);
+fn get_n(init: std.process.Init) !usize {
+    var arg_it = std.process.Args.Iterator.init(init.minimal.args);
+    _ = arg_it.skip();
+    const arg = arg_it.next();
+    if (arg) |a| {
+        return try std.fmt.parseInt(usize, a, 10);
     } else {
         return 10;
     }

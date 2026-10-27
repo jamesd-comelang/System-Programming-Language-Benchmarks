@@ -3,7 +3,7 @@ const DynamicBitSet = std.bit_set.DynamicBitSet;
 
 const global_allocator = std.heap.c_allocator;
 
-fn nsieve(n: usize) !void {
+fn nsieve(n: usize, stdout: *std.Io.Writer) !void {
     var count: usize = 0;
     var flags = try DynamicBitSet.initEmpty(global_allocator, n);
     defer flags.deinit();
@@ -17,24 +17,28 @@ fn nsieve(n: usize) !void {
             }
         }
     }
-    const stdout = std.io.getStdOut().writer();
     try stdout.print("Primes up to {d:8} {d:8}\n", .{ n, count });
 }
 
-pub fn main() !void {
-    const n = try get_n();
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    var out_buf: [4096]u8 = undefined;
+    var out = std.Io.File.stdout().writer(io, &out_buf);
+    const n = try get_n(init);
     var i: u6 = 0;
     while (i < 3) : (i += 1) {
         const base: usize = 10000;
-        try nsieve(base << (n - i));
+        try nsieve(base << (n - i), &out.interface);
     }
+    try out.interface.flush();
 }
 
-fn get_n() !u6 {
-    const args = try std.process.argsAlloc(global_allocator);
-    defer std.process.argsFree(global_allocator, args);
-    if (args.len > 1) {
-        return try std.fmt.parseInt(u6, args[1], 10);
+fn get_n(init: std.process.Init) !u6 {
+    var arg_it = std.process.Args.Iterator.init(init.minimal.args);
+    _ = arg_it.skip();
+    const arg = arg_it.next();
+    if (arg) |a| {
+        return try std.fmt.parseInt(u6, a, 10);
     } else {
         return 4;
     }

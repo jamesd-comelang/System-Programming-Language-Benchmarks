@@ -12,9 +12,12 @@ const Pair = struct {
     }
 };
 
-pub fn main() !void {
-    const stdout = std.io.getStdOut().writer();
-    const n = try get_n();
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    var out_buf: [4096]u8 = undefined;
+    var out = std.Io.File.stdout().writer(io, &out_buf);
+    const stdout = &out.interface;
+    const n = try get_n(init);
     const k = binary_search(n);
     var pair = try sum_terms(0, k - 1);
     defer pair.deinit();
@@ -50,6 +53,7 @@ pub fn main() !void {
         }
         i += 10;
     }
+    try out.interface.flush();
 }
 
 fn sum_terms(a: i32, b: i32) anyerror!Pair {
@@ -106,11 +110,12 @@ fn test_k(n: i32, k: i32) bool {
     return log_10_k_factorial >= float_n + 50.0;
 }
 
-fn get_n() !i32 {
-    const args = try std.process.argsAlloc(global_allocator);
-    defer std.process.argsFree(global_allocator, args);
-    if (args.len > 1) {
-        return try std.fmt.parseInt(i32, args[1], 10);
+fn get_n(init: std.process.Init) !i32 {
+    var arg_it = std.process.Args.Iterator.init(init.minimal.args);
+    _ = arg_it.skip();
+    const arg = arg_it.next();
+    if (arg) |a| {
+        return try std.fmt.parseInt(i32, a, 10);
     } else {
         return 27;
     }

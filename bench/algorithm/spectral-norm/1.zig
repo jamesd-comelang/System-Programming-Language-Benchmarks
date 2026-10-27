@@ -35,9 +35,12 @@ fn eval_ata_times_u(atau: []f64, u: []const f64, scratch: []f64) void {
     eval_a_times_u(true, atau, scratch);
 }
 
-pub fn main() !void {
-    const stdout = std.io.getStdOut().writer();
-    const n = try get_n();
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    var out_buf: [4096]u8 = undefined;
+    var out = std.Io.File.stdout().writer(io, &out_buf);
+    const stdout = &out.interface;
+    const n = try get_n(init);
 
     const u = try global_allocator.alloc(f64, n);
     const v = try global_allocator.alloc(f64, n);
@@ -63,13 +66,15 @@ pub fn main() !void {
     }
 
     try stdout.print("{d:.9}\n", .{std.math.sqrt(vbv / vv)});
+    try out.interface.flush();
 }
 
-fn get_n() !usize {
-    const args = try std.process.argsAlloc(global_allocator);
-    defer std.process.argsFree(global_allocator, args);
-    if (args.len > 1) {
-        return try std.fmt.parseInt(usize, args[1], 10);
+fn get_n(init: std.process.Init) !usize {
+    var arg_it = std.process.Args.Iterator.init(init.minimal.args);
+    _ = arg_it.skip();
+    const arg = arg_it.next();
+    if (arg) |a| {
+        return try std.fmt.parseInt(usize, a, 10);
     } else {
         return 100;
     }

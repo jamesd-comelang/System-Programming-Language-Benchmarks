@@ -2,9 +2,12 @@ const std = @import("std");
 const bigint = std.math.big.int;
 const global_allocator = std.heap.c_allocator;
 
-pub fn main() !void {
-    const stdout = std.io.getStdOut().writer();
-    const n = try get_n();
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    var out_buf: [4096]u8 = undefined;
+    var out = std.Io.File.stdout().writer(io, &out_buf);
+    const stdout = &out.interface;
+    const n = try get_n(init);
 
     const one = (try bigint.Managed.initSet(global_allocator, 1));
     const two = (try bigint.Managed.initSet(global_allocator, 2));
@@ -77,13 +80,15 @@ pub fn main() !void {
             try bigint.Managed.add(&k, &k, &one);
         }
     }
+    try out.interface.flush();
 }
 
-fn get_n() !i32 {
-    const args = try std.process.argsAlloc(global_allocator);
-    defer std.process.argsFree(global_allocator, args);
-    if (args.len > 1) {
-        return try std.fmt.parseInt(i32, args[1], 10);
+fn get_n(init: std.process.Init) !i32 {
+    var arg_it = std.process.Args.Iterator.init(init.minimal.args);
+    _ = arg_it.skip();
+    const arg = arg_it.next();
+    if (arg) |a| {
+        return try std.fmt.parseInt(i32, a, 10);
     } else {
         return 1;
     }

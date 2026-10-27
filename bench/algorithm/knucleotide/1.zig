@@ -1,7 +1,6 @@
 const std = @import("std");
 
 const global_allocator = std.heap.c_allocator;
-const stdout = std.io.getStdOut().writer();
 
 const Code = struct {
     data: u64,
@@ -28,7 +27,7 @@ const Code = struct {
     }
 
     pub fn toString(self: Code, frame: usize) ![]const u8 {
-        var result = std.ArrayList(u8).init(global_allocator);
+        var result: std.ArrayList(u8) = .empty;
         var code = self.data;
         var i: usize = 0;
         while (i < frame) : (i += 1) {
@@ -39,48 +38,44 @@ const Code = struct {
                 Code.encodeByte('C') => 'C',
                 else => unreachable,
             };
-            try result.append(c);
+            try result.append(global_allocator, c);
             code >>= 2;
         }
         std.mem.reverse(u8, result.items);
-        return result.toOwnedSlice();
+        return result.toOwnedSlice(global_allocator);
     }
 };
 
-pub fn readInput() ![]const u8 {
-    const args = try std.process.argsAlloc(global_allocator);
-    defer std.process.argsFree(global_allocator, args);
-    const file_name = if (args.len > 1) args[1] else "25000_in";
-    const file = try std.fs.cwd().openFile(file_name, .{});
-    var buffered_reader = std.io.bufferedReader(file.reader());
-    const reader = buffered_reader.reader();
-    { // skip past first lines starting with '>'
-        var i: u8 = 0;
-        while (i < 3) : (i += 1) {
-            while (true) {
-                const c = try reader.readByte();
-                if (c == '>') break;
-            }
-        }
-        while (true) {
-            const c = try reader.readByte();
-            if (c == '\n') break;
-        }
+pub fn readInput(init: std.process.Init) ![]const u8 {
+    const io = init.io;
+    var arg_it = std.process.Args.Iterator.init(init.minimal.args);
+    _ = arg_it.skip();
+    const file_name = arg_it.next() orelse "25000_in";
+    const raw = try std.Io.Dir.cwd().readFileAlloc(io, file_name, global_allocator, .unlimited);
+    // Skip past the 3 header lines, exactly as the old streaming reader
+    // did: consume up to and including the 3rd '>', then up to and
+    // including the next newline.
+    var i: usize = 0;
+    var seen: usize = 0;
+    while (i < raw.len and seen < 3) : (i += 1) {
+        if (raw[i] == '>') seen += 1;
     }
-
-    var buf = try reader.readAllAlloc(global_allocator, std.math.maxInt(u32));
+    if (seen < 3) return error.EndOfStream;
+    while (i < raw.len and raw[i] != '\n') : (i += 1) {}
+    if (i >= raw.len) return error.EndOfStream;
+    var buf = raw[i + 1 ..];
     // In place, remove all newlines from buf and encode nucleotides
     // using only the last 2 bits in each byte.
     {
-        var i: usize = 0;
+        var j: usize = 0;
         for (buf) |c| {
             if (c != '\n') {
                 // Gives a -> 0x00, c -> 0x01, g -> 0x03, t -> 0x02
-                buf[i] = (c >> 1) & 0x03;
-                i += 1;
+                buf[j] = (c >> 1) & 0x03;
+                j += 1;
             }
         }
-        buf.len = i;
+        buf.len = j;
     }
     return buf;
 }
@@ -137,15 +132,15 @@ const CountCode = struct {
     }
 };
 
-fn printMap(self: usize, map: Map) !void {
-    var v = std.ArrayList(CountCode).init(global_allocator);
-    defer v.deinit();
+fn printMap(self: usize, map: Map, stdout: *std.Io.Writer) !void {
+    var v: std.ArrayList(CountCode) = .empty;
+    defer v.deinit(global_allocator);
     var iter = map.iterator();
     var total: u64 = 0;
     while (iter.next()) |it| {
         const count = it.value_ptr.*;
         total += count;
-        try v.append(.{ .count = count, .code = it.key_ptr.* });
+        try v.append(global_allocator, .{ .count = count, .code = it.key_ptr.* });
     }
 
     std.mem.sort(CountCode, v.items, {}, comptime CountCode.asc);
@@ -161,12 +156,16 @@ fn printMap(self: usize, map: Map) !void {
     try stdout.print("\n", .{});
 }
 
-fn printOcc(s: []const u8, map: *Map) !void {
+fn printOcc(s: []const u8, map: *Map, stdout: *std.Io.Writer) !void {
     const count = if (map.get(Code.fromStr(s))) |x| x else 0;
     try stdout.print("{}\t{s}\n", .{ count, s });
 }
 
-pub fn main() !void {
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    var out_buf: [65536]u8 = undefined;
+    var out = std.Io.File.stdout().writer(io, &out_buf);
+    const stdout = &out.interface;
     const occs = [_][]const u8{
         "GGT",
         "GGTA",
@@ -174,15 +173,16 @@ pub fn main() !void {
         "GGTATTTTAATT",
         "GGTATTTTAATTTATAGT",
     };
-    const input = try readInput();
+    const input = try readInput(init);
     var map: Map = .{};
     try genMap(input, 1, &map);
-    try printMap(1, map);
+    try printMap(1, map, stdout);
     try genMap(input, 2, &map);
-    try printMap(2, map);
+    try printMap(2, map, stdout);
 
     for (occs) |occ| {
         try genMap(input, occ.len, &map);
-        try printOcc(occ, &map);
+        try printOcc(occ, &map, stdout);
     }
+    try out.interface.flush();
 }

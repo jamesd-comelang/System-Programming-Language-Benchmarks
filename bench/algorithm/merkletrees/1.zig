@@ -6,16 +6,19 @@ const MIN_DEPTH = 4;
 
 const global_allocator = std.heap.c_allocator;
 
-pub fn main() !void {
-    const stdout = std.io.getStdOut().writer();
-    const n = try get_n();
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    var out_buf: [65536]u8 = undefined;
+    var out = std.Io.File.stdout().writer(io, &out_buf);
+    const stdout = &out.interface;
+    const n = try get_n(init);
     const max_depth = @max(MIN_DEPTH + 2, n);
     {
         const stretch_depth = max_depth + 1;
         const stretch_tree = Node.make(stretch_depth, global_allocator).?;
         defer stretch_tree.deinit();
         stretch_tree.cal_hash();
-        try stdout.print("stretch tree of depth {d}\t root hash: {d} check: {!}\n", .{ stretch_depth, stretch_tree.get_hash(), stretch_tree.check() });
+        try stdout.print("stretch tree of depth {d}\t root hash: {d} check: {}\n", .{ stretch_depth, stretch_tree.get_hash(), stretch_tree.check() });
     }
     const long_lived_tree = Node.make(max_depth, global_allocator).?;
     defer long_lived_tree.deinit();
@@ -34,11 +37,12 @@ pub fn main() !void {
         try stdout.print("{d}\t trees of depth {d}\t root hash sum: {d}\n", .{ iterations, depth, sum });
     }
     long_lived_tree.cal_hash();
-    try stdout.print("long lived tree of depth {d}\t root hash: {d} check: {!}\n", .{ max_depth, long_lived_tree.get_hash(), long_lived_tree.check() });
+    try stdout.print("long lived tree of depth {d}\t root hash: {d} check: {}\n", .{ max_depth, long_lived_tree.get_hash(), long_lived_tree.check() });
+    try out.interface.flush();
 }
 
-fn get_n() !usize {
-    var arg_it = std.process.args();
+fn get_n(init: std.process.Init) !usize {
+    var arg_it = std.process.Args.Iterator.init(init.minimal.args);
     _ = arg_it.skip();
     const arg = arg_it.next() orelse return 10;
     return try std.fmt.parseInt(u32, arg, 10);

@@ -1,12 +1,16 @@
 const std = @import("std");
-const global_allocator = std.heap.c_allocator;
-pub fn main() !void {
-    const args = try std.process.argsAlloc(global_allocator);
-    defer std.process.argsFree(global_allocator, args);
-    const stdout = std.io.getStdOut().writer();
-    if (args.len > 1) {
-        try stdout.print("Hello world {s}!\n", .{args[1]});
+
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    var arg_it = std.process.Args.Iterator.init(init.minimal.args);
+    _ = arg_it.skip();
+    const arg = arg_it.next();
+    var out_buf: [4096]u8 = undefined;
+    var out = std.Io.File.stdout().writer(io, &out_buf);
+    if (arg) |a| {
+        try out.interface.print("Hello world {s}!\n", .{a});
     } else {
-        try stdout.print("Hello world!\n", .{});
+        try out.interface.print("Hello world!\n", .{});
     }
+    try out.interface.flush();
 }
