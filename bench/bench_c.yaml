@@ -76,7 +76,11 @@ environments:
     compiler: gcc
     compiler_version_command: gcc --version
     version: latest
-    docker: gcc
+    # No docker image: the gcc image's glibc is newer than the
+    # ubuntu-22.04 host's, so docker-built binaries failed at test
+    # time with "GLIBC_2.38 not found". Host gcc builds and runs
+    # on the same runner, like the clang env already does.
+    docker:
     include: c
     build: gcc @app.rsp
     after_build:

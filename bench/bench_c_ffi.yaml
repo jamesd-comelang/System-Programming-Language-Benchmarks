@@ -25,7 +25,9 @@ environments:
     compiler: gcc
     compiler_version_command: gcc --version
     version: latest
-    docker: gcc
+    # No docker image: same GLIBC mismatch as bench_c.yaml — the
+    # gcc image's glibc is newer than the ubuntu-22.04 host's.
+    docker:
     include: c
     build: gcc @app_ffi.rsp
     after_build:

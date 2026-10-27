@@ -134,6 +134,9 @@ inline void mulVec(const Vec8& a, const Vec8& b, Vec8& r) {
 // remaining functions (mbrot8 and main); the MD5 code above is
 // integer-only and unaffected.
 #pragma GCC optimize ("fp-contract=off")
+#ifdef __clang__
+#pragma clang fp contract(off)
+#endif
 std::uint8_t mbrot8(const Vec8& cr, double civ) {
     Vec8 ci{};
     ci.fill(civ);
