@@ -189,10 +189,17 @@ jobs:
       # website/content/. Previously this step deployed to Vercel and
       # never committed anything back, so Pages kept showing the old
       # upstream snapshot while fresh results only ever reached Vercel.
-      # Committing here triggers the Pages workflow (website/** push);
-      # it does NOT retrigger this workflow (see paths-ignore above),
-      # and it must NOT use [skip ci] for the same reason.
+      # NOTE: a push made with GITHUB_TOKEN deliberately does NOT
+      # trigger new workflow runs (GitHub rule), so the commit below
+      # on its own would never start the Pages workflow — the first
+      # version of this rewire learned that the hard way (results
+      # commit 1f841cb, no Pages run). The Deploy Pages step after it
+      # dispatches the Pages workflow explicitly; workflow_dispatch is
+      # the documented exception to that rule. The commit also does
+      # NOT retrigger this workflow (see paths-ignore above), so no
+      # [skip ci] is needed or wanted on the commit message.
       - name: Commit fresh results
+        id: commit-results
         if: github.ref == 'refs/heads/main'
         run: |
           git config user.name "github-actions[bot]"
@@ -200,7 +207,15 @@ jobs:
           git add website/content
           if git diff --cached --quiet; then
             echo "No result changes to commit."
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git commit -m "Update benchmark results (run ${{ github.run_id }})"
           git push || { git pull --rebase && git push; }
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+      - name: Deploy Pages
+        if: github.ref == 'refs/heads/main' && steps.commit-results.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run pages.yml --ref main
