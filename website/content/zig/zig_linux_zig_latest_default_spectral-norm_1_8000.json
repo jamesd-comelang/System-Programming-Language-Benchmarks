@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][2 cores] Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
   "lang": "zig",
   "os": "linux",
   "compiler": "zig",
@@ -7,23 +7,23 @@
   "test": "spectral-norm",
   "code": "1.zig",
   "input": "8000",
-  "timeMS": 3839.4258,
-  "timeStdDevMS": 2.5066875699480726,
-  "memBytes": 147456,
-  "cpuTimeMS": 3830.0,
-  "cpuTimeUserMS": 3830.0,
+  "timeMS": 3706.6659,
+  "timeStdDevMS": 8.440244307087983,
+  "memBytes": 2056192,
+  "cpuTimeMS": 3696.6666,
+  "cpuTimeUserMS": 3696.6666,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "1531343699",
+  "githubRunId": "40549112230",
   "buildLog": {
-    "compilerVersion": "0.9.0-dev.1815+20e19e75f",
-    "start": "2021-12-02T16:12:14.9966478+00:00",
-    "finished": "2021-12-02T16:12:26.1372258+00:00",
-    "durationMs": 11140
+    "compilerVersion": "0.17.0",
+    "start": "2026-10-27T17:25:25.2770832+00:00",
+    "finished": "2026-10-27T17:25:41.6150692+00:00",
+    "durationMs": 16337
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2021-12-02T16:39:48.5819317+00:00",
-    "finished": "2021-12-02T16:39:48.5858591+00:00",
+    "start": "2026-10-27T17:28:29.9901298+00:00",
+    "finished": "2026-10-27T17:28:29.9937321+00:00",
     "durationMs": 3
   }
 }

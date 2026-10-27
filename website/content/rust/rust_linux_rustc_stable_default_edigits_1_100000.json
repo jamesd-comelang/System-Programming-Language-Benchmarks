@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][2 cores] Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
   "lang": "rust",
   "os": "linux",
   "compiler": "rustc",
@@ -7,23 +7,23 @@
   "test": "edigits",
   "code": "1.rs",
   "input": "100000",
-  "timeMS": 41.3794,
-  "timeStdDevMS": 2.6998426454147233,
-  "memBytes": 3198976,
-  "cpuTimeMS": 30.0,
-  "cpuTimeUserMS": 30.0,
+  "timeMS": 32.4399,
+  "timeStdDevMS": 1.0284243627997125,
+  "memBytes": 3149824,
+  "cpuTimeMS": 23.3333,
+  "cpuTimeUserMS": 23.3333,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "1531343699",
+  "githubRunId": "40549112230",
   "buildLog": {
-    "compilerVersion": "rustc 1.57.0 (f1edd0429 2021-11-29)",
-    "start": "2021-12-02T16:15:47.5694652+00:00",
-    "finished": "2021-12-02T16:15:54.3908392+00:00",
-    "durationMs": 6821
+    "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+    "start": "2026-10-27T17:20:04.0485512+00:00",
+    "finished": "2026-10-27T17:20:08.2447858+00:00",
+    "durationMs": 4196
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2021-12-02T16:39:18.2207759+00:00",
-    "finished": "2021-12-02T16:39:18.227012+00:00",
-    "durationMs": 6
+    "start": "2026-10-27T17:28:26.6221412+00:00",
+    "finished": "2026-10-27T17:28:26.6272116+00:00",
+    "durationMs": 5
   }
 }

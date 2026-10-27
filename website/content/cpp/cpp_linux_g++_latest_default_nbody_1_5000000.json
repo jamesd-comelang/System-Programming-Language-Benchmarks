@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][2 cores] Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
   "lang": "cpp",
   "os": "linux",
   "compiler": "g++",
@@ -7,23 +7,23 @@
   "test": "nbody",
   "code": "1.cpp",
   "input": "5000000",
-  "timeMS": 334.142,
-  "timeStdDevMS": 5.714136519486824,
-  "memBytes": 1003520,
-  "cpuTimeMS": 323.3333,
-  "cpuTimeUserMS": 323.3333,
+  "timeMS": 319.5684,
+  "timeStdDevMS": 3.523070683840069,
+  "memBytes": 2072576,
+  "cpuTimeMS": 310.0,
+  "cpuTimeUserMS": 310.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "1531343699",
+  "githubRunId": "40549112230",
   "buildLog": {
-    "compilerVersion": "g++ (GCC) 11.2.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2021-12-02T16:08:55.6191846+00:00",
-    "finished": "2021-12-02T16:08:56.7704238+00:00",
-    "durationMs": 1151
+    "compilerVersion": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "start": "2026-10-27T17:18:35.75385+00:00",
+    "finished": "2026-10-27T17:18:36.061196+00:00",
+    "durationMs": 307
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2021-12-02T16:36:40.8009368+00:00",
-    "finished": "2021-12-02T16:36:40.8063219+00:00",
+    "start": "2026-10-27T17:28:19.3638585+00:00",
+    "finished": "2026-10-27T17:28:19.3696249+00:00",
     "durationMs": 5
   }
 }

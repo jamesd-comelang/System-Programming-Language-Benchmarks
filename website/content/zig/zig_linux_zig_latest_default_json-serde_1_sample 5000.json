@@ -1,0 +1,29 @@
+{
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "lang": "zig",
+  "os": "linux",
+  "compiler": "zig",
+  "compilerVersion": "latest",
+  "test": "json-serde",
+  "code": "1.zig",
+  "input": "sample 5000",
+  "timeMS": 55.9019,
+  "timeStdDevMS": 1.3228932383227314,
+  "memBytes": 15118336,
+  "cpuTimeMS": 40.0,
+  "cpuTimeUserMS": 40.0,
+  "cpuTimeKernelMS": 0.0,
+  "githubRunId": "40549112230",
+  "buildLog": {
+    "compilerVersion": "0.17.0",
+    "start": "2026-10-27T17:21:38.1115326+00:00",
+    "finished": "2026-10-27T17:21:56.3198041+00:00",
+    "durationMs": 18208
+  },
+  "testLog": {
+    "runtimeVersion": null,
+    "start": "2026-10-27T17:28:29.0526412+00:00",
+    "finished": "2026-10-27T17:28:29.1426925+00:00",
+    "durationMs": 90
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "lang": "rust",
+  "os": "linux",
+  "compiler": "rustc",
+  "compilerVersion": "stable",
+  "test": "fasta",
+  "code": "5c-m.rs",
+  "input": "250000",
+  "timeMS": 21.2688,
+  "timeStdDevMS": 1.3623265846827395,
+  "memBytes": 3665920,
+  "cpuTimeMS": 36.6666,
+  "cpuTimeUserMS": 36.6666,
+  "cpuTimeKernelMS": 0.0,
+  "githubRunId": "40549112230",
+  "buildLog": {
+    "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+    "start": "2026-10-27T17:20:47.9170866+00:00",
+    "finished": "2026-10-27T17:20:51.4186568+00:00",
+    "durationMs": 3501
+  },
+  "testLog": {
+    "runtimeVersion": null,
+    "start": "2026-10-27T17:28:27.4611594+00:00",
+    "finished": "2026-10-27T17:28:27.467106+00:00",
+    "durationMs": 5
+  }
+}
