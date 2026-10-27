@@ -222,7 +222,3 @@ jobs:
         if: github.ref == 'refs/heads/main' && steps.commit-results.outputs.pushed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: |
-          gh workflow run pages.yml --ref main
-        run: |
-          gh workflow run pages.yml --ref main
