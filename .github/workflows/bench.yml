@@ -5,6 +5,12 @@ concurrency:
 on:
   push:
     branches: [main]
+    # The publish job commits fresh results to website/content/ on main.
+    # Those commits must not retrigger this workflow (that would loop:
+    # bench -> publish commit -> bench -> ...). The Pages workflow
+    # triggers on website/** pushes, so it still picks them up.
+    paths-ignore:
+      - 'website/content/**'
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -142,11 +148,17 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs: [bench]
     runs-on: ${{ matrix.os }}
+    # The publish job pushes a commit, so it needs write access.
+    permissions:
+      contents: write
     strategy:
       matrix:
         os: [ubuntu-22.04]
     steps:
       - uses: actions/checkout@v3
+        with:
+          # A full clone so the push below (and a rebase retry) works.
+          fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
           node-version: 18.x
@@ -167,15 +179,28 @@ jobs:
           pushd website
           pnpm i
           pnpm content
+          # Validate that the fresh results still generate a working
+          # site before committing them. The actual Pages deploy is
+          # done by .github/workflows/pages.yml on the commit below.
           pnpm build
-          pnpm archive-dist
         env:
           GOOGLE_TAG_ID: ${{ secrets.GOOGLE_TAG_ID }}
-      - name: Site Publish
+      # The live site is GitHub Pages, which builds from the committed
+      # website/content/. Previously this step deployed to Vercel and
+      # never committed anything back, so Pages kept showing the old
+      # upstream snapshot while fresh results only ever reached Vercel.
+      # Committing here triggers the Pages workflow (website/** push);
+      # it does NOT retrigger this workflow (see paths-ignore above),
+      # and it must NOT use [skip ci] for the same reason.
+      - name: Commit fresh results
         if: github.ref == 'refs/heads/main'
-        env:
-          VERCEL_PUBLISH_TOKEN: ${{ secrets.VERCEL_PUBLISH_TOKEN }}
         run: |
-          npm i -g vercel
-          vercel --version
-          vercel website --prod --yes -t $VERCEL_PUBLISH_TOKEN || echo 'ignore errors'
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add website/content
+          if git diff --cached --quiet; then
+            echo "No result changes to commit."
+            exit 0
+          fi
+          git commit -m "Update benchmark results (run ${{ github.run_id }})"
+          git push || { git pull --rebase && git push; }
