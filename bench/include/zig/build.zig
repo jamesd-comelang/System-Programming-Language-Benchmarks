@@ -11,20 +11,24 @@ pub fn build(b: *std.Build) void {
     // set a preferred release mode, allowing the user to decide how to optimize.
     // const optimize = b.standardOptimizeOption(.{});
 
+    // Zig 0.17: addExecutable takes a root module, not a source file
+    // directly (the old root_source_file field was removed).
     const exe = b.addExecutable(.{
         .name = "app",
-        .root_source_file = b.path("app.zig"),
-        .target = target,
-        .optimize = std.builtin.Mode.ReleaseFast,
+        .root_module = b.createModule(.{
+            .root_source_file = b.path("app.zig"),
+            .target = target,
+            .optimize = .ReleaseFast,
+            .link_libc = true,
+        }),
     });
-    exe.linkLibC();
     b.installArtifact(exe);
 
     const run_cmd = b.addRunArtifact(exe);
     run_cmd.step.dependOn(b.getInstallStep());
-    if (b.args) |args| {
-        run_cmd.addArgs(args);
-    }
+    // Note: Zig 0.17 removed b.args, so `zig build run -- <args>` no
+    // longer forwards arguments here. CI does not use this step: it
+    // runs zig-out/bin/app directly with its arguments.
 
     const run_step = b.step("run", "Run the app");
     run_step.dependOn(&run_cmd.step);
