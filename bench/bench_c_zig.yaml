@@ -15,7 +15,10 @@ problems:
   - name: nbody
     source:
       - 2.c
-      - 5.c
+      # 5.c uses GCC x86 intrinsics (__builtin_ia32_sqrtpd/haddpd)
+      # that zig cc 0.17 rejects; it still builds under clang/gcc
+      # via bench_c.yaml, so it is only excluded here.
+      # - 5.c
       - 8-i.c
   - name: spectral-norm
     source:
