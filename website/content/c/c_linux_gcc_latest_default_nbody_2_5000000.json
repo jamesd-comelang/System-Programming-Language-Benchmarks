@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 9V74 80-Core Processor (Model 17)",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 9V45 96-Core Processor (Model 2)",
   "lang": "c",
   "os": "linux",
   "compiler": "gcc",
@@ -7,23 +7,23 @@
   "test": "nbody",
   "code": "2.c",
   "input": "5000000",
-  "timeMS": 664.6847,
-  "timeStdDevMS": 2.5744500195835758,
-  "memBytes": 2056192,
-  "cpuTimeMS": 653.3333,
-  "cpuTimeUserMS": 653.3333,
+  "timeMS": 353.3616,
+  "timeStdDevMS": 5.213485448654625,
+  "memBytes": 2035712,
+  "cpuTimeMS": 343.3333,
+  "cpuTimeUserMS": 343.3333,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40577348143",
+  "githubRunId": "40586026238",
   "buildLog": {
     "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-27T20:23:00.0779205+00:00",
-    "finished": "2026-10-27T20:23:00.1977063+00:00",
-    "durationMs": 119
+    "start": "2026-10-27T21:22:07.4066926+00:00",
+    "finished": "2026-10-27T21:22:07.4993574+00:00",
+    "durationMs": 92
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T20:32:12.9981598+00:00",
-    "finished": "2026-10-27T20:32:13.0034889+00:00",
-    "durationMs": 5
+    "start": "2026-10-27T21:29:42.811905+00:00",
+    "finished": "2026-10-27T21:29:42.8143562+00:00",
+    "durationMs": 2
   }
 }

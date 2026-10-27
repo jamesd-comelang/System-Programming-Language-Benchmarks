@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 9V74 80-Core Processor (Model 17)",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 9V45 96-Core Processor (Model 2)",
   "lang": "c",
   "os": "linux",
   "compiler": "zigcc",
@@ -7,23 +7,23 @@
   "test": "nsieve",
   "code": "1.c",
   "input": "12",
-  "timeMS": 347.7319,
-  "timeStdDevMS": 1.659814237598067,
-  "memBytes": 42283008,
-  "cpuTimeMS": 330.0,
-  "cpuTimeUserMS": 300.0,
-  "cpuTimeKernelMS": 30.0,
-  "githubRunId": "40577348143",
+  "timeMS": 226.8234,
+  "timeStdDevMS": 6.001309207442407,
+  "memBytes": 42266624,
+  "cpuTimeMS": 216.6666,
+  "cpuTimeUserMS": 206.6666,
+  "cpuTimeKernelMS": 10.0,
+  "githubRunId": "40586026238",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-27T20:23:06.9128081+00:00",
-    "finished": "2026-10-27T20:23:07.2033641+00:00",
-    "durationMs": 290
+    "start": "2026-10-27T21:22:12.9753386+00:00",
+    "finished": "2026-10-27T21:22:13.1962174+00:00",
+    "durationMs": 220
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T20:32:19.8791978+00:00",
-    "finished": "2026-10-27T20:32:19.8851029+00:00",
-    "durationMs": 5
+    "start": "2026-10-27T21:29:47.1772038+00:00",
+    "finished": "2026-10-27T21:29:47.1802002+00:00",
+    "durationMs": 2
   }
 }

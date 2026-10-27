@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 9V74 80-Core Processor (Model 17)",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 9V45 96-Core Processor (Model 2)",
   "lang": "zig",
   "os": "linux",
   "compiler": "zig",
@@ -7,23 +7,23 @@
   "test": "nbody",
   "code": "2.zig",
   "input": "500000",
-  "timeMS": 32.6207,
-  "timeStdDevMS": 0.11100569054482427,
-  "memBytes": 1884160,
-  "cpuTimeMS": 23.3333,
-  "cpuTimeUserMS": 23.3333,
+  "timeMS": 18.2405,
+  "timeStdDevMS": 0.05000583299309504,
+  "memBytes": 1871872,
+  "cpuTimeMS": 10.0,
+  "cpuTimeUserMS": 10.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40577348143",
+  "githubRunId": "40586026238",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-27T20:26:04.1778656+00:00",
-    "finished": "2026-10-27T20:26:14.2481097+00:00",
-    "durationMs": 10070
+    "start": "2026-10-27T21:26:50.1222771+00:00",
+    "finished": "2026-10-27T21:27:05.0550046+00:00",
+    "durationMs": 14932
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T20:32:32.1020979+00:00",
-    "finished": "2026-10-27T20:32:32.107007+00:00",
-    "durationMs": 4
+    "start": "2026-10-27T21:29:56.2061649+00:00",
+    "finished": "2026-10-27T21:29:56.2088412+00:00",
+    "durationMs": 2
   }
 }
