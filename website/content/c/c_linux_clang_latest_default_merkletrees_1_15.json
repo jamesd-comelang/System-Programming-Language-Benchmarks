@@ -7,23 +7,23 @@
   "test": "merkletrees",
   "code": "1.c",
   "input": "15",
-  "timeMS": 32.0326,
-  "timeStdDevMS": 0.22269612330108587,
-  "memBytes": 7593984,
-  "cpuTimeMS": 20.0,
-  "cpuTimeUserMS": 20.0,
+  "timeMS": 39.9847,
+  "timeStdDevMS": 2.7309308712110103,
+  "memBytes": 7647232,
+  "cpuTimeMS": 30.0,
+  "cpuTimeUserMS": 30.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40568491287",
+  "githubRunId": "40577348143",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-27T19:23:17.9700997+00:00",
-    "finished": "2026-10-27T19:23:18.1198017+00:00",
-    "durationMs": 149
+    "start": "2026-10-27T20:22:55.1745319+00:00",
+    "finished": "2026-10-27T20:22:55.326907+00:00",
+    "durationMs": 152
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T19:31:48.1288031+00:00",
-    "finished": "2026-10-27T19:31:48.1336085+00:00",
-    "durationMs": 4
+    "start": "2026-10-27T20:32:05.2163429+00:00",
+    "finished": "2026-10-27T20:32:05.2222058+00:00",
+    "durationMs": 5
   }
 }

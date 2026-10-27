@@ -9,21 +9,21 @@
   "input": "2500000_in",
   "timeMS": 0.0,
   "timeStdDevMS": 0.0,
-  "memBytes": 28147712,
-  "cpuTimeMS": 4990.0,
-  "cpuTimeUserMS": 4980.0,
+  "memBytes": 28123136,
+  "cpuTimeMS": 4980.0,
+  "cpuTimeUserMS": 4970.0,
   "cpuTimeKernelMS": 10.0,
-  "githubRunId": "40568491287",
+  "githubRunId": "40577348143",
   "buildLog": {
     "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-27T19:23:23.6472134+00:00",
-    "finished": "2026-10-27T19:23:23.738459+00:00",
-    "durationMs": 91
+    "start": "2026-10-27T20:23:00.8098725+00:00",
+    "finished": "2026-10-27T20:23:00.904666+00:00",
+    "durationMs": 94
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T19:31:54.401986+00:00",
-    "finished": "2026-10-27T19:32:00.0066313+00:00",
-    "durationMs": 5604
+    "start": "2026-10-27T20:32:13.0283191+00:00",
+    "finished": "2026-10-27T20:32:19.8452334+00:00",
+    "durationMs": 6816
   }
 }

@@ -7,23 +7,23 @@
   "test": "pidigits",
   "code": "8.go",
   "input": "8000",
-  "timeMS": 859.0801,
-  "timeStdDevMS": 3.140681894111556,
-  "memBytes": 9347072,
-  "cpuTimeMS": 846.6666,
-  "cpuTimeUserMS": 836.6666,
-  "cpuTimeKernelMS": 10.0,
-  "githubRunId": "40568491287",
+  "timeMS": 1107.2541,
+  "timeStdDevMS": 8.999312388362467,
+  "memBytes": 9494528,
+  "cpuTimeMS": 1093.3332,
+  "cpuTimeUserMS": 1086.6666,
+  "cpuTimeKernelMS": 6.6666,
+  "githubRunId": "40577348143",
   "buildLog": {
     "compilerVersion": "go version go1.26.10 linux/amd64",
-    "start": "2026-10-27T19:29:23.8029795+00:00",
-    "finished": "2026-10-27T19:29:29.3955256+00:00",
-    "durationMs": 5592
+    "start": "2026-10-27T20:30:16.0407676+00:00",
+    "finished": "2026-10-27T20:30:22.4447435+00:00",
+    "durationMs": 6403
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T19:32:05.8956075+00:00",
-    "finished": "2026-10-27T19:32:05.9004517+00:00",
-    "durationMs": 4
+    "start": "2026-10-27T20:32:27.2007445+00:00",
+    "finished": "2026-10-27T20:32:27.2067274+00:00",
+    "durationMs": 5
   }
 }

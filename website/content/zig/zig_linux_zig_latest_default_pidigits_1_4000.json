@@ -7,23 +7,23 @@
   "test": "pidigits",
   "code": "1.zig",
   "input": "4000",
-  "timeMS": 326.4126,
-  "timeStdDevMS": 0.5371866249265607,
-  "memBytes": 2584576,
-  "cpuTimeMS": 320.0,
-  "cpuTimeUserMS": 320.0,
+  "timeMS": 418.2358,
+  "timeStdDevMS": 4.19273496300449,
+  "memBytes": 2592768,
+  "cpuTimeMS": 406.6666,
+  "cpuTimeUserMS": 406.6666,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40568491287",
+  "githubRunId": "40577348143",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-27T19:29:37.5636695+00:00",
-    "finished": "2026-10-27T19:29:53.8452166+00:00",
-    "durationMs": 16281
+    "start": "2026-10-27T20:26:44.7255214+00:00",
+    "finished": "2026-10-27T20:26:55.64587+00:00",
+    "durationMs": 10920
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T19:32:09.7307304+00:00",
-    "finished": "2026-10-27T19:32:09.73395+00:00",
-    "durationMs": 3
+    "start": "2026-10-27T20:32:32.1281508+00:00",
+    "finished": "2026-10-27T20:32:32.1323187+00:00",
+    "durationMs": 4
   }
 }

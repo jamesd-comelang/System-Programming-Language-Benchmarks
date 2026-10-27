@@ -7,23 +7,23 @@
   "test": "binarytrees",
   "code": "1.c",
   "input": "15",
-  "timeMS": 14.4544,
-  "timeStdDevMS": 0.7352413367958399,
-  "memBytes": 3751936,
+  "timeMS": 17.7666,
+  "timeStdDevMS": 1.2037688828563988,
+  "memBytes": 3764224,
   "cpuTimeMS": 10.0,
   "cpuTimeUserMS": 10.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40568491287",
+  "githubRunId": "40577348143",
   "buildLog": {
     "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-27T19:23:21.4495586+00:00",
-    "finished": "2026-10-27T19:23:21.645345+00:00",
-    "durationMs": 195
+    "start": "2026-10-27T20:22:58.546474+00:00",
+    "finished": "2026-10-27T20:22:58.7431206+00:00",
+    "durationMs": 196
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T19:31:53.6961689+00:00",
-    "finished": "2026-10-27T19:31:53.6994949+00:00",
-    "durationMs": 3
+    "start": "2026-10-27T20:32:12.1246951+00:00",
+    "finished": "2026-10-27T20:32:12.1287431+00:00",
+    "durationMs": 4
   }
 }

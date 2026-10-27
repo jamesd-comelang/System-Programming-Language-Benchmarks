@@ -7,23 +7,23 @@
   "test": "binarytrees",
   "code": "1.cpp",
   "input": "18",
-  "timeMS": 125.0274,
-  "timeStdDevMS": 2.946823402128693,
-  "memBytes": 18657280,
-  "cpuTimeMS": 109.9999,
-  "cpuTimeUserMS": 103.3333,
-  "cpuTimeKernelMS": 6.6666,
-  "githubRunId": "40568491287",
+  "timeMS": 163.4742,
+  "timeStdDevMS": 1.8727231144334762,
+  "memBytes": 18702336,
+  "cpuTimeMS": 150.0,
+  "cpuTimeUserMS": 140.0,
+  "cpuTimeKernelMS": 10.0,
+  "githubRunId": "40577348143",
   "buildLog": {
     "compilerVersion": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-27T19:24:03.7643928+00:00",
-    "finished": "2026-10-27T19:24:05.2437802+00:00",
-    "durationMs": 1479
+    "start": "2026-10-27T20:22:41.6652239+00:00",
+    "finished": "2026-10-27T20:22:42.4910403+00:00",
+    "durationMs": 825
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T19:32:01.4429916+00:00",
-    "finished": "2026-10-27T19:32:01.4464124+00:00",
-    "durationMs": 3
+    "start": "2026-10-27T20:32:21.6560943+00:00",
+    "finished": "2026-10-27T20:32:21.660417+00:00",
+    "durationMs": 4
   }
 }

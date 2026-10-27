@@ -7,23 +7,23 @@
   "test": "fannkuch-redux",
   "code": "1.c",
   "input": "11",
-  "timeMS": 1837.0082,
-  "timeStdDevMS": 5.728656686344604,
-  "memBytes": 1314816,
-  "cpuTimeMS": 1826.6666,
-  "cpuTimeUserMS": 1826.6666,
+  "timeMS": 2357.8937,
+  "timeStdDevMS": 3.135238203071507,
+  "memBytes": 1327104,
+  "cpuTimeMS": 2346.6666,
+  "cpuTimeUserMS": 2346.6666,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40568491287",
+  "githubRunId": "40577348143",
   "buildLog": {
     "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-27T19:23:21.7372596+00:00",
-    "finished": "2026-10-27T19:23:21.8321432+00:00",
-    "durationMs": 94
+    "start": "2026-10-27T20:22:58.8391492+00:00",
+    "finished": "2026-10-27T20:22:58.9363641+00:00",
+    "durationMs": 97
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T19:31:53.7033188+00:00",
-    "finished": "2026-10-27T19:31:53.8573575+00:00",
-    "durationMs": 154
+    "start": "2026-10-27T20:32:12.1336627+00:00",
+    "finished": "2026-10-27T20:32:12.3305308+00:00",
+    "durationMs": 196
   }
 }

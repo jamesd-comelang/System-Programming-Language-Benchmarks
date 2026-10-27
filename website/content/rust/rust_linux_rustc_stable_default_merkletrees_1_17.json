@@ -7,23 +7,23 @@
   "test": "merkletrees",
   "code": "1.rs",
   "input": "17",
-  "timeMS": 578.3977,
-  "timeStdDevMS": 2.582094898204534,
-  "memBytes": 35586048,
-  "cpuTimeMS": 560.0,
-  "cpuTimeUserMS": 550.0,
+  "timeMS": 710.7388,
+  "timeStdDevMS": 8.649708094496583,
+  "memBytes": 35594240,
+  "cpuTimeMS": 696.6666,
+  "cpuTimeUserMS": 686.6666,
   "cpuTimeKernelMS": 10.0,
-  "githubRunId": "40568491287",
+  "githubRunId": "40577348143",
   "buildLog": {
     "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-    "start": "2026-10-27T19:27:42.3711+00:00",
-    "finished": "2026-10-27T19:27:45.2575879+00:00",
-    "durationMs": 2886
+    "start": "2026-10-27T20:27:51.2362877+00:00",
+    "finished": "2026-10-27T20:27:54.2946194+00:00",
+    "durationMs": 3058
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T19:32:08.8255635+00:00",
-    "finished": "2026-10-27T19:32:08.8322297+00:00",
-    "durationMs": 6
+    "start": "2026-10-27T20:32:30.9763255+00:00",
+    "finished": "2026-10-27T20:32:30.9846988+00:00",
+    "durationMs": 8
   }
 }

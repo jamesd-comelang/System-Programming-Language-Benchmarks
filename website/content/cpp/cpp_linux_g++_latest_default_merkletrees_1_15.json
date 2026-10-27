@@ -7,23 +7,23 @@
   "test": "merkletrees",
   "code": "1.cpp",
   "input": "15",
-  "timeMS": 29.3528,
-  "timeStdDevMS": 0.8227365495710073,
-  "memBytes": 13250560,
-  "cpuTimeMS": 16.6666,
-  "cpuTimeUserMS": 16.6666,
+  "timeMS": 38.7009,
+  "timeStdDevMS": 0.20573864488714216,
+  "memBytes": 13000704,
+  "cpuTimeMS": 23.3333,
+  "cpuTimeUserMS": 23.3333,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40568491287",
+  "githubRunId": "40577348143",
   "buildLog": {
     "compilerVersion": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-27T19:24:11.6054868+00:00",
-    "finished": "2026-10-27T19:24:12.0820228+00:00",
-    "durationMs": 476
+    "start": "2026-10-27T20:22:46.5160247+00:00",
+    "finished": "2026-10-27T20:22:46.7892579+00:00",
+    "durationMs": 273
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T19:32:01.9374557+00:00",
-    "finished": "2026-10-27T19:32:01.9414542+00:00",
-    "durationMs": 3
+    "start": "2026-10-27T20:32:21.991982+00:00",
+    "finished": "2026-10-27T20:32:21.9969199+00:00",
+    "durationMs": 4
   }
 }
