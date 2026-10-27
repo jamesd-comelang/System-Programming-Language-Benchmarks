@@ -1,85 +1,102 @@
-// Digits of e, in fixed-point decimal arithmetic:
-//   e = sum_{k>=0} 1/k!
-// The k-th term is obtained from the previous one by division by
-// the small integer k, so no big-integer library is needed. 30
-// guard digits past the requested count make the truncation error
-// from the small divisions invisible in the first n digits
-// (verified against the _out files).
-//
-// Output format matches bench/algorithm/edigits/1.go: groups of 10
-// digits, "%s\t:%d\n", last group space-padded to width 10.
-
+#include <errno.h>
+#include <gmp.h>
+#include <limits.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-#define BASE 10000
-#define GUARD 30
+static void sum_terms(mpz_t p, mpz_t q, unsigned long a,
+                      unsigned long b) {
+    if (b == a + 1) {
+        mpz_set_ui(p, 1);
+        mpz_set_ui(q, b);
+        return;
+    }
 
-static int L;
+    unsigned long mid = a + (b - a) / 2;
+    mpz_t pl, ql, pr, qr;
+    mpz_inits(pl, ql, pr, qr, NULL);
 
-// Divide a[] (length L, little-endian base BASE) by d in place.
-// Returns 1 if the result is non-zero.
-static int div_small(int *a, int d) {
-  long rem = 0;
-  int nz = 0;
-  for (int i = L - 1; i >= 0; i--) {
-    long cur = rem * BASE + a[i];
-    a[i] = (int)(cur / d);
-    rem = cur % d;
-    if (a[i]) nz = 1;
-  }
-  return nz;
+    sum_terms(pl, ql, a, mid);
+    sum_terms(pr, qr, mid, b);
+
+    mpz_mul(p, pl, qr);
+    mpz_add(p, p, pr);
+    mpz_mul(q, ql, qr);
+
+    mpz_clears(pl, ql, pr, qr, NULL);
 }
 
-static void add_into(int *dst, const int *src) {
-  long carry = 0;
-  for (int i = 0; i < L; i++) {
-    long s = (long)dst[i] + src[i] + carry;
-    dst[i] = (int)(s % BASE);
-    carry = s / BASE;
-  }
+static int enough_terms(unsigned long n, unsigned long k) {
+    if (!k) return 0;
+    double x = (double)k;
+    double ln_fact = x * log(x) - x +
+        0.5 * log(2.0 * 3.14159265358979323846 * x);
+    return ln_fact / log(10.0) >= (double)n + 50.0;
+}
+
+static unsigned long term_count(unsigned long n) {
+    unsigned long a = 0, b = 1;
+    while (!enough_terms(n, b)) {
+        if (b > ULONG_MAX / 2) {
+            fprintf(stderr, "input too large\n");
+            exit(EXIT_FAILURE);
+        }
+        a = b;
+        b *= 2;
+    }
+    while (b - a > 1) {
+        unsigned long m = a + (b - a) / 2;
+        if (enough_terms(n, m)) b = m;
+        else a = m;
+    }
+    return b;
 }
 
 int main(int argc, char **argv) {
-  int n = 27;
-  if (argc > 1) n = atoi(argv[1]);
-  int digits = n + GUARD;
-  L = digits / 4 + 4;
-
-  int *term = calloc((size_t)L, sizeof(int));
-  int *sum = calloc((size_t)L, sizeof(int));
-  // term = sum = 10^digits (the k=0 term).
-  int q = digits / 4, r = digits % 4;
-  if (r == 0) {
-    term[q] = 1;
-  } else {
-    int v = 1;
-    for (int i = 0; i < r; i++) v *= 10;
-    term[q] = v;
-  }
-  memcpy(sum, term, (size_t)L * sizeof(int));
-
-  for (int k = 1;; k++) {
-    if (!div_small(term, k)) break;
-    add_into(sum, term);
-  }
-
-  // Convert to a decimal string.
-  int hi = L - 1;
-  while (hi > 0 && sum[hi] == 0) hi--;
-  char *str = malloc((size_t)(digits + 8));
-  int pos = 0;
-  pos += sprintf(str + pos, "%d", sum[hi]);
-  for (int i = hi - 1; i >= 0; i--) pos += sprintf(str + pos, "%04d", sum[i]);
-  str[pos] = '\0';
-
-  for (int i = 0; i < n; i += 10) {
-    if (i + 10 <= n) {
-      printf("%.10s\t:%d\n", str + i, i + 10);
-    } else {
-      printf("%-*.*s\t:%d\n", 10, n - i, str + i, n);
+    unsigned long n = 27;
+    if (argc > 1) {
+        char *end;
+        errno = 0;
+        unsigned long parsed = strtoul(argv[1], &end, 10);
+        if (errno || end == argv[1] || *end ||
+            !parsed || argv[1][0] == '-') {
+            fprintf(stderr, "usage: %s [positive-digit-count]\n",
+                    argv[0]);
+            return EXIT_FAILURE;
+        }
+        n = parsed;
     }
-  }
-  return 0;
+    if (n == ULONG_MAX) return EXIT_FAILURE;
+
+    unsigned long k = term_count(n);
+
+    mpz_t p, q, scale, value;
+    mpz_inits(p, q, scale, value, NULL);
+
+    sum_terms(p, q, 0, k - 1);
+    mpz_add(p, p, q);
+    mpz_ui_pow_ui(scale, 10, n - 1);
+    mpz_mul(value, p, scale);
+    mpz_tdiv_q(value, value, q);
+
+    size_t cap = mpz_sizeinbase(value, 10) + 2;
+    char *s = malloc(cap);
+    if (!s) {
+        perror("malloc");
+        return EXIT_FAILURE;
+    }
+    mpz_get_str(s, 10, value);
+
+    for (unsigned long i = 0; i < n; i += 10) {
+        unsigned long count = (n - i < 10) ? n - i : 10;
+        fwrite(s + i, 1, (size_t)count, stdout);
+        for (unsigned long j = count; j < 10; ++j)
+            putchar(' ');
+        printf("\t:%lu\n", i + count);
+    }
+
+    free(s);
+    mpz_clears(p, q, scale, value, NULL);
+    return 0;
 }
