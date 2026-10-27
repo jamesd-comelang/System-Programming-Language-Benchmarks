@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 9V45 96-Core Processor (Model 2)",
   "lang": "c",
   "os": "linux",
   "compiler": "clang",
@@ -7,23 +7,23 @@
   "test": "mandelbrot",
   "code": "1-ffi.c",
   "input": "5000",
-  "timeMS": 464.6267,
-  "timeStdDevMS": 4.930282949283979,
-  "memBytes": 7016448,
-  "cpuTimeMS": 453.3333,
-  "cpuTimeUserMS": 453.3333,
+  "timeMS": 321.5807,
+  "timeStdDevMS": 2.072628766405968,
+  "memBytes": 6983680,
+  "cpuTimeMS": 310.0,
+  "cpuTimeUserMS": 310.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40554498732",
+  "githubRunId": "40562951470",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-27T17:52:48.1556356+00:00",
-    "finished": "2026-10-27T17:52:48.4786018+00:00",
-    "durationMs": 322
+    "start": "2026-10-27T18:47:16.7773716+00:00",
+    "finished": "2026-10-27T18:47:17.0373101+00:00",
+    "durationMs": 259
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T18:02:10.584195+00:00",
-    "finished": "2026-10-27T18:02:10.6035897+00:00",
-    "durationMs": 19
+    "start": "2026-10-27T18:56:24.4688258+00:00",
+    "finished": "2026-10-27T18:56:24.4793106+00:00",
+    "durationMs": 10
   }
 }

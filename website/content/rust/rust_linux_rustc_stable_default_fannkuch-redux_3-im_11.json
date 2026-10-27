@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 9V45 96-Core Processor (Model 2)",
   "lang": "rust",
   "os": "linux",
   "compiler": "rustc",
@@ -7,23 +7,23 @@
   "test": "fannkuch-redux",
   "code": "3-im.rs",
   "input": "11",
-  "timeMS": 417.4055,
-  "timeStdDevMS": 4.302513454172242,
-  "memBytes": 2334720,
-  "cpuTimeMS": 1600.0,
-  "cpuTimeUserMS": 1600.0,
+  "timeMS": 317.491,
+  "timeStdDevMS": 0.435841947652228,
+  "memBytes": 2314240,
+  "cpuTimeMS": 1230.0,
+  "cpuTimeUserMS": 1230.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40554498732",
+  "githubRunId": "40562951470",
   "buildLog": {
     "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-    "start": "2026-10-27T17:53:44.9275736+00:00",
-    "finished": "2026-10-27T17:53:47.8435281+00:00",
-    "durationMs": 2915
+    "start": "2026-10-27T18:48:21.9977541+00:00",
+    "finished": "2026-10-27T18:48:24.5066331+00:00",
+    "durationMs": 2508
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T18:02:38.2528427+00:00",
-    "finished": "2026-10-27T18:02:38.2918971+00:00",
-    "durationMs": 39
+    "start": "2026-10-27T18:56:39.6475787+00:00",
+    "finished": "2026-10-27T18:56:39.6765936+00:00",
+    "durationMs": 29
   }
 }

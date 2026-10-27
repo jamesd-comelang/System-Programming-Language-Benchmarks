@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 9V45 96-Core Processor (Model 2)",
   "lang": "zig",
   "os": "linux",
   "compiler": "zig",
@@ -7,23 +7,23 @@
   "test": "helloworld",
   "code": "1.zig",
   "input": "QwQ",
-  "timeMS": 1.2401,
-  "timeStdDevMS": 0.10555200140215237,
-  "memBytes": 1994752,
+  "timeMS": 0.6707,
+  "timeStdDevMS": 0.1375108286645091,
+  "memBytes": 2105344,
   "cpuTimeMS": 0.0,
   "cpuTimeUserMS": 0.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40554498732",
+  "githubRunId": "40562951470",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-27T17:55:50.4307877+00:00",
-    "finished": "2026-10-27T17:56:06.841899+00:00",
-    "durationMs": 16411
+    "start": "2026-10-27T18:49:47.1734111+00:00",
+    "finished": "2026-10-27T18:50:03.207019+00:00",
+    "durationMs": 16033
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T18:02:39.8961333+00:00",
-    "finished": "2026-10-27T18:02:39.9003151+00:00",
-    "durationMs": 4
+    "start": "2026-10-27T18:56:40.6803821+00:00",
+    "finished": "2026-10-27T18:56:40.6823636+00:00",
+    "durationMs": 1
   }
 }

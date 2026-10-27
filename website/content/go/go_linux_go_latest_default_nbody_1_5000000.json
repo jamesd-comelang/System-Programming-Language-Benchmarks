@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 9V45 96-Core Processor (Model 2)",
   "lang": "go",
   "os": "linux",
   "compiler": "go",
@@ -7,23 +7,23 @@
   "test": "nbody",
   "code": "1.go",
   "input": "5000000",
-  "timeMS": 345.8795,
-  "timeStdDevMS": 4.2928586283889425,
+  "timeMS": 210.2407,
+  "timeStdDevMS": 2.6017868520179266,
   "memBytes": 2392064,
-  "cpuTimeMS": 336.6666,
-  "cpuTimeUserMS": 336.6666,
+  "cpuTimeMS": 203.3333,
+  "cpuTimeUserMS": 203.3333,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40554498732",
+  "githubRunId": "40562951470",
   "buildLog": {
     "compilerVersion": "go version go1.26.10 linux/amd64",
-    "start": "2026-10-27T17:58:01.6116159+00:00",
-    "finished": "2026-10-27T17:58:06.1951484+00:00",
-    "durationMs": 4583
+    "start": "2026-10-27T18:54:08.8118045+00:00",
+    "finished": "2026-10-27T18:54:15.0179469+00:00",
+    "durationMs": 6206
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-27T18:02:35.476096+00:00",
-    "finished": "2026-10-27T18:02:35.4823058+00:00",
-    "durationMs": 6
+    "start": "2026-10-27T18:56:37.969356+00:00",
+    "finished": "2026-10-27T18:56:37.972761+00:00",
+    "durationMs": 3
   }
 }
