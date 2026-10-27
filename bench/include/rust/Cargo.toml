@@ -26,13 +26,18 @@ default = [
 [dependencies]
 anyhow = "1"
 bitvec = "1"
-elliptic-curve = "0"
+# Pinned to 0.13: secp256k1/0.rs uses ScalarPrimitive::from_slice
+# and AffinePoint::generator(), both removed in elliptic-curve/k256
+# 0.14. With "0" cargo resolved 0.14.3/0.14.0 and the Rust job
+# failed in CI run 40453480717. No Cargo.lock exists, so this pin
+# is what stops the next drift.
+elliptic-curve = "0.13"
 generic-array = "1"
 hashbrown = "0"
 hashlink = "0"
 hex = "0"
 ibig = "0"
-k256 = "0"
+k256 = "0.13"
 lasso = "0"
 lazy_static = "1"
 md5 = "0"
