@@ -13,7 +13,7 @@
         >
           <a
             v-if="!isLinkActive(i.lang, '')"
-            :href="`/${i.lang}`"
+            :href="u('/' + i.lang)"
             :class="getLinkClass(i.lang, '')"
             >{{ i.langDisplay }}</a
           >
@@ -144,7 +144,7 @@
 
       <div v-for="test in testOptions" :key="'matrix-' + test">
         <h2 class="text-2xl my-5 mb-2 underline text-blue-500">
-          <a :id="'matrix-' + test" :href="`/problem/${test}`"> {{ test }} </a>
+          <a :id="'matrix-' + test" :href="u('/problem/' + test)"> {{ test }} </a>
         </h2>
         <p class="text-sm italic">{{ matrixSummary(test) }}</p>
         <p class="text-sm italic">
@@ -241,7 +241,7 @@
       </div>
       <div v-show="showRaw" v-for="test in testOptions" :key="test">
         <h2 class="text-2xl my-5 mb-2 underline text-blue-500">
-          <a :id="test" :href="`/problem/${test}`"> {{ test }} </a>
+          <a :id="test" :href="u('/problem/' + test)"> {{ test }} </a>
         </h2>
         <div v-for="input in getInputs(test)" :key="input" class="mt-5">
           <h3 class="text-base font-bold text-red-800">Input: {{ input }}</h3>
@@ -290,7 +290,7 @@
                   v-show="other || problem"
                   :class="['text-left', 'pl-4', mdHide]"
                 >
-                  <a :href="`/${i.lang}`" class="underline text-blue-500">{{
+                  <a :href="u('/' + i.lang)" class="underline text-blue-500">{{
                     i.lang
                   }}</a>
                 </td>
@@ -338,7 +338,7 @@
           >
             <a
               v-if="i != problem"
-              :href="`/problem/${i}`"
+              :href="u('/problem/' + i)"
               :class="getLinkClass(i, i)"
             >
               {{ i }}</a
@@ -357,7 +357,7 @@
           >
             <a
               v-if="!isLinkActive(lang.lang, i.lang)"
-              :href="`/${lang.lang}-vs-${i.lang}`"
+              :href="u('/' + lang.lang + '-vs-' + i.lang)"
               :class="getLinkClass(lang.lang, i.lang)"
             >
               {{ lang.langDisplay }} VS {{ i.langDisplay }}</a
@@ -385,6 +385,7 @@ import {
   largestInput,
   matrixForProblem,
   seriesColor as seriesColorFn,
+  withBase,
   sortInputs,
 } from '~/resultSummary'
 import { importGoogleTagIfNeeded } from '~/gtmUtils'
@@ -556,6 +557,10 @@ export default class LangMetaPage extends Vue {
     )
 
     return exp.value()
+  }
+
+  u(path: string) {
+    return withBase(this.$router, path)
   }
 
   matrixBenches(test: string) {

@@ -231,3 +231,15 @@ const PALETTE = ['#2563eb', '#7c3aed', '#0891b2', '#ea580c', '#ca8a04', '#16a34a
 export function seriesColor(key: string, index: number): string {
   return LANG_COLORS[key] || PALETTE[index % PALETTE.length]
 }
+
+// Project-site base path (GitHub Pages serves this repo at
+// /System-Programming-Language-Benchmarks/, not at the domain root).
+// Internal links must go through this, or they point at the domain
+// root and 404 on Pages. At the domain root the base is '/' and this
+// is a no-op, so local dev and Vercel are unaffected.
+export function withBase(router: any, path: string): string {
+  const base =
+    router && router.options && router.options.base ? router.options.base : '/'
+  const clean = base.endsWith('/') ? base.slice(0, -1) : base
+  return clean + (path.startsWith('/') ? path : '/' + path)
+}

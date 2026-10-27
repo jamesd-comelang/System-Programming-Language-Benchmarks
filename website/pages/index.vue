@@ -11,7 +11,7 @@
           :key="idx"
           class="text-light-onSurfacePrimary"
         >
-          <a :href="`/${i.lang}`" :class="getLinkClass()">{{
+          <a :href="u('/' + i.lang)" :class="getLinkClass()">{{
             i.langDisplay
           }}</a>
         </li>
@@ -104,7 +104,7 @@
                 <td>{{ idx + 1 }}</td>
                 <td>
                   <a
-                    :href="`/${row.lang}`"
+                    :href="u('/' + row.lang)"
                     class="underline text-blue-500"
                     >{{ row.langDisplay }}</a
                   >
@@ -167,7 +167,7 @@
             class="text-light-onSurfacePrimary"
           >
             <a
-              :href="`/problem/${i}`"
+              :href="u('/problem/' + i)"
               class="p-1 pl-3 flex rounded transition-colors duration-300 ease-linear justify-between underline text-blue-500 hover:text-green-400"
             >
               {{ i }}</a
@@ -185,7 +185,7 @@ import _ from 'lodash'
 import { MetaInfo } from 'vue-meta'
 import MenuButton from './../components/MenuButton.vue'
 import { mergeLangBenchResults } from '~/contentUtils'
-import { leaderboard } from '~/resultSummary'
+import { leaderboard, withBase } from '~/resultSummary'
 import { importGoogleTagIfNeeded } from '~/gtmUtils'
 
 function requireAll(requireContext: any) {
@@ -208,6 +208,10 @@ export default class IndexPage extends Vue {
 
   toggleMenu() {
     this.isMenuOn = !this.isMenuOn
+  }
+
+  u(path: string) {
+    return withBase(this.$router, path)
   }
 
   get leaderboardRows() {

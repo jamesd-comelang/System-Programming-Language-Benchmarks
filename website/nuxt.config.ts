@@ -3,6 +3,11 @@ import { $content } from '@nuxt/content'
 import _ from 'lodash'
 import { getLangBenchResults } from './contentUtils'
 
+// GitHub Pages serves a project site under a subpath. The Pages
+// workflow sets PAGES_BASE to that subpath; everywhere else
+// (local dev, Vercel) it stays '/' and nothing changes.
+const pagesBase = process.env.PAGES_BASE || '/'
+
 const config: NuxtConfig = {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -23,7 +28,13 @@ const config: NuxtConfig = {
         content: 'benchmarks for system programming languages and compilers: C, C++, Rust, Go, Zig',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: `${pagesBase}favicon.ico`,
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -81,6 +92,7 @@ const config: NuxtConfig = {
     plugins: [require('@tailwindcss/forms')],
   },
   router: {
+    base: pagesBase,
     async extendRoutes(routes, resolve) {
       const langBenchResults = await getLangBenchResults($content)
 
