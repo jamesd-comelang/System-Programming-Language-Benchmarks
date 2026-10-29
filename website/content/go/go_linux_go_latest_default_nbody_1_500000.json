@@ -7,23 +7,28 @@
   "test": "nbody",
   "code": "1.go",
   "input": "500000",
-  "timeMS": 38.6897,
-  "timeStdDevMS": 0.8378798302859436,
-  "memBytes": 2392064,
+  "timeMS": 38.1364,
+  "timeStdDevMS": 0.3138678915297503,
+  "memBytes": 2334720,
   "cpuTimeMS": 30.0,
   "cpuTimeUserMS": 30.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40953329177",
+  "ioReadChars": 3729,
+  "ioWriteChars": 13,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 8,
+  "githubRunId": "40958078396",
   "buildLog": {
     "compilerVersion": "go version go1.26.10 linux/amd64",
-    "start": "2026-10-29T20:58:23.8813794+00:00",
-    "finished": "2026-10-29T20:58:28.6662848+00:00",
-    "durationMs": 4784
+    "start": "2026-10-29T21:31:43.8918178+00:00",
+    "finished": "2026-10-29T21:31:49.7901698+00:00",
+    "durationMs": 5898
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:05:33.6602858+00:00",
-    "finished": "2026-10-29T21:05:33.6671726+00:00",
+    "start": "2026-10-29T21:40:32.1143665+00:00",
+    "finished": "2026-10-29T21:40:32.1212033+00:00",
     "durationMs": 6
   }
 }

@@ -7,23 +7,28 @@
   "test": "merkletrees",
   "code": "1.zig",
   "input": "15",
-  "timeMS": 171.8071,
-  "timeStdDevMS": 7.520835221569503,
+  "timeMS": 167.6241,
+  "timeStdDevMS": 12.136952559161358,
   "memBytes": 12484608,
-  "cpuTimeMS": 160.0,
-  "cpuTimeUserMS": 160.0,
+  "cpuTimeMS": 156.6666,
+  "cpuTimeUserMS": 156.6666,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40953329177",
+  "ioReadChars": 4152,
+  "ioWriteChars": 389,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 11,
+  "githubRunId": "40958078396",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-29T20:59:53.5457158+00:00",
-    "finished": "2026-10-29T21:00:04.2492242+00:00",
-    "durationMs": 10703
+    "start": "2026-10-29T21:34:03.8103682+00:00",
+    "finished": "2026-10-29T21:34:18.189992+00:00",
+    "durationMs": 14379
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:05:41.8203823+00:00",
-    "finished": "2026-10-29T21:05:41.8295811+00:00",
-    "durationMs": 9
+    "start": "2026-10-29T21:40:40.2272608+00:00",
+    "finished": "2026-10-29T21:40:40.2362299+00:00",
+    "durationMs": 8
   }
 }

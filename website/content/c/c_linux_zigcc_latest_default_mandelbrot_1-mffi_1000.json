@@ -7,23 +7,28 @@
   "test": "mandelbrot",
   "code": "1-mffi.c",
   "input": "1000",
-  "timeMS": 19.233,
-  "timeStdDevMS": 1.0259830472933436,
-  "memBytes": 3301376,
+  "timeMS": 18.4686,
+  "timeStdDevMS": 0.3482105541191991,
+  "memBytes": 3362816,
   "cpuTimeMS": 10.0,
   "cpuTimeUserMS": 10.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40953329177",
+  "ioReadChars": 4928,
+  "ioWriteChars": 0,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 11,
+  "githubRunId": "40958078396",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-29T20:56:53.385631+00:00",
-    "finished": "2026-10-29T20:56:53.5644085+00:00",
-    "durationMs": 178
+    "start": "2026-10-29T21:30:02.3716034+00:00",
+    "finished": "2026-10-29T21:30:02.7033597+00:00",
+    "durationMs": 331
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:05:12.9835255+00:00",
-    "finished": "2026-10-29T21:05:12.995661+00:00",
-    "durationMs": 12
+    "start": "2026-10-29T21:40:12.1861968+00:00",
+    "finished": "2026-10-29T21:40:12.1978365+00:00",
+    "durationMs": 11
   }
 }

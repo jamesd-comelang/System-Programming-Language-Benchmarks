@@ -7,23 +7,28 @@
   "test": "fannkuch-redux",
   "code": "3.go",
   "input": "11",
-  "timeMS": 858.4805,
-  "timeStdDevMS": 7.563133268912663,
+  "timeMS": 854.7019,
+  "timeStdDevMS": 2.5246237184975455,
   "memBytes": 491520,
-  "cpuTimeMS": 2946.6666,
-  "cpuTimeUserMS": 2900.0,
-  "cpuTimeKernelMS": 46.6666,
-  "githubRunId": "40953329177",
+  "cpuTimeMS": 2940.0,
+  "cpuTimeUserMS": 2890.0,
+  "cpuTimeKernelMS": 50.0,
+  "ioReadChars": 704,
+  "ioWriteChars": 0,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 2,
+  "githubRunId": "40958078396",
   "buildLog": {
     "compilerVersion": "tinygo version 0.44.0 linux/amd64 (using go version go1.27.3 and LLVM version 22.1.4)",
-    "start": "2026-10-29T21:00:27.3330214+00:00",
-    "finished": "2026-10-29T21:00:47.7579175+00:00",
-    "durationMs": 20424
+    "start": "2026-10-29T21:34:16.4992124+00:00",
+    "finished": "2026-10-29T21:34:43.0585416+00:00",
+    "durationMs": 26559
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:05:35.9124605+00:00",
-    "finished": "2026-10-29T21:05:36.0763866+00:00",
-    "durationMs": 163
+    "start": "2026-10-29T21:40:34.3187997+00:00",
+    "finished": "2026-10-29T21:40:34.4832769+00:00",
+    "durationMs": 164
   }
 }

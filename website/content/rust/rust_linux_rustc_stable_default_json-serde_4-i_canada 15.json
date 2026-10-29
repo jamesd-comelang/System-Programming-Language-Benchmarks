@@ -7,23 +7,28 @@
   "test": "json-serde",
   "code": "4-i.rs",
   "input": "canada 15",
-  "timeMS": 278.3325,
-  "timeStdDevMS": 5.009513330653956,
-  "memBytes": 57004032,
-  "cpuTimeMS": 263.3332,
-  "cpuTimeUserMS": 196.6666,
-  "cpuTimeKernelMS": 66.6666,
-  "githubRunId": "40953329177",
+  "timeMS": 267.3304,
+  "timeStdDevMS": 5.3950657651228155,
+  "memBytes": 57008128,
+  "cpuTimeMS": 253.3333,
+  "cpuTimeUserMS": 193.3333,
+  "cpuTimeKernelMS": 60.0,
+  "ioReadChars": 2259683,
+  "ioWriteChars": 66,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 19,
+  "githubRunId": "40958078396",
   "buildLog": {
     "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-    "start": "2026-10-29T21:00:31.2304734+00:00",
-    "finished": "2026-10-29T21:00:34.8892074+00:00",
-    "durationMs": 3658
+    "start": "2026-10-29T21:34:22.6702335+00:00",
+    "finished": "2026-10-29T21:34:27.205909+00:00",
+    "durationMs": 4535
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:05:40.3676758+00:00",
-    "finished": "2026-10-29T21:05:40.4482636+00:00",
-    "durationMs": 80
+    "start": "2026-10-29T21:40:38.7139976+00:00",
+    "finished": "2026-10-29T21:40:38.7923725+00:00",
+    "durationMs": 78
   }
 }

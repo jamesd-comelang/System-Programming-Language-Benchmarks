@@ -7,23 +7,28 @@
   "test": "nsieve",
   "code": "2.go",
   "input": "10",
-  "timeMS": 193.9948,
-  "timeStdDevMS": 2.486766306538117,
-  "memBytes": 6180864,
-  "cpuTimeMS": 183.3333,
-  "cpuTimeUserMS": 183.3333,
+  "timeMS": 191.6897,
+  "timeStdDevMS": 2.820166655241055,
+  "memBytes": 6144000,
+  "cpuTimeMS": 180.0,
+  "cpuTimeUserMS": 180.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40953329177",
+  "ioReadChars": 3729,
+  "ioWriteChars": 62,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 9,
+  "githubRunId": "40958078396",
   "buildLog": {
     "compilerVersion": "go version go1.26.10 linux/amd64",
-    "start": "2026-10-29T20:58:33.1478076+00:00",
-    "finished": "2026-10-29T20:58:39.0353785+00:00",
-    "durationMs": 5887
+    "start": "2026-10-29T21:31:55.4900662+00:00",
+    "finished": "2026-10-29T21:32:02.801885+00:00",
+    "durationMs": 7311
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:05:33.6783513+00:00",
-    "finished": "2026-10-29T21:05:33.6935057+00:00",
-    "durationMs": 15
+    "start": "2026-10-29T21:40:32.1309966+00:00",
+    "finished": "2026-10-29T21:40:32.1446871+00:00",
+    "durationMs": 13
   }
 }

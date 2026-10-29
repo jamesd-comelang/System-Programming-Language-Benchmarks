@@ -7,23 +7,28 @@
   "test": "secp256k1",
   "code": "1.c",
   "input": "500",
-  "timeMS": 150.4876,
-  "timeStdDevMS": 1.1048348307929596,
+  "timeMS": 152.3412,
+  "timeStdDevMS": 3.392906702715745,
   "memBytes": 1261568,
-  "cpuTimeMS": 140.0,
-  "cpuTimeUserMS": 140.0,
+  "cpuTimeMS": 143.3333,
+  "cpuTimeUserMS": 143.3333,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40953329177",
+  "ioReadChars": 4208,
+  "ioWriteChars": 0,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 10,
+  "githubRunId": "40958078396",
   "buildLog": {
     "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-29T20:56:58.0374918+00:00",
-    "finished": "2026-10-29T20:56:58.1392444+00:00",
-    "durationMs": 101
+    "start": "2026-10-29T21:30:10.4174153+00:00",
+    "finished": "2026-10-29T21:30:10.5880191+00:00",
+    "durationMs": 170
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:05:29.3604209+00:00",
-    "finished": "2026-10-29T21:05:29.3681141+00:00",
-    "durationMs": 7
+    "start": "2026-10-29T21:40:27.7894586+00:00",
+    "finished": "2026-10-29T21:40:27.7963781+00:00",
+    "durationMs": 6
   }
 }

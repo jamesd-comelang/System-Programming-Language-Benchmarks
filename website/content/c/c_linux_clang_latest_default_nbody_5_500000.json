@@ -7,23 +7,28 @@
   "test": "nbody",
   "code": "5.c",
   "input": "500000",
-  "timeMS": 36.0998,
-  "timeStdDevMS": 0.6003619019669144,
-  "memBytes": 2441216,
+  "timeMS": 35.7764,
+  "timeStdDevMS": 1.3233027519556306,
+  "memBytes": 2486272,
   "cpuTimeMS": 30.0,
   "cpuTimeUserMS": 30.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40953329177",
+  "ioReadChars": 6704,
+  "ioWriteChars": 0,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 13,
+  "githubRunId": "40958078396",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-29T20:56:54.8258032+00:00",
-    "finished": "2026-10-29T20:56:54.920726+00:00",
-    "durationMs": 94
+    "start": "2026-10-29T21:30:04.9308538+00:00",
+    "finished": "2026-10-29T21:30:05.1035433+00:00",
+    "durationMs": 172
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:05:13.9485222+00:00",
-    "finished": "2026-10-29T21:05:13.9541992+00:00",
+    "start": "2026-10-29T21:40:13.1446998+00:00",
+    "finished": "2026-10-29T21:40:13.1498886+00:00",
     "durationMs": 5
   }
 }

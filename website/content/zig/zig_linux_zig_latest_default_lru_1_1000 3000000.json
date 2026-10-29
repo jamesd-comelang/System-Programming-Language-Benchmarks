@@ -7,23 +7,28 @@
   "test": "lru",
   "code": "1.zig",
   "input": "1000 3000000",
-  "timeMS": 97.8266,
-  "timeStdDevMS": 2.0111643866178586,
-  "memBytes": 3731456,
-  "cpuTimeMS": 90.0,
-  "cpuTimeUserMS": 90.0,
+  "timeMS": 95.772,
+  "timeStdDevMS": 4.0712397305161625,
+  "memBytes": 3661824,
+  "cpuTimeMS": 86.6666,
+  "cpuTimeUserMS": 86.6666,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40953329177",
+  "ioReadChars": 4152,
+  "ioWriteChars": 5,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 10,
+  "githubRunId": "40958078396",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-29T20:59:31.9603357+00:00",
-    "finished": "2026-10-29T20:59:42.8066238+00:00",
-    "durationMs": 10846
+    "start": "2026-10-29T21:33:34.8657768+00:00",
+    "finished": "2026-10-29T21:33:49.3073533+00:00",
+    "durationMs": 14441
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:05:41.8031739+00:00",
-    "finished": "2026-10-29T21:05:41.8106242+00:00",
-    "durationMs": 7
+    "start": "2026-10-29T21:40:40.2118109+00:00",
+    "finished": "2026-10-29T21:40:40.2182003+00:00",
+    "durationMs": 6
   }
 }

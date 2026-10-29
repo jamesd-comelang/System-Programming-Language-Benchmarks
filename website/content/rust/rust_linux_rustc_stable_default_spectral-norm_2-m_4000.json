@@ -7,23 +7,28 @@
   "test": "spectral-norm",
   "code": "2-m.rs",
   "input": "4000",
-  "timeMS": 345.3765,
-  "timeStdDevMS": 0.9517696167315615,
-  "memBytes": 2498560,
-  "cpuTimeMS": 1309.9999,
-  "cpuTimeUserMS": 1306.6666,
-  "cpuTimeKernelMS": 3.3333,
-  "githubRunId": "40953329177",
+  "timeMS": 346.5877,
+  "timeStdDevMS": 4.292625959712798,
+  "memBytes": 2510848,
+  "cpuTimeMS": 1293.3333,
+  "cpuTimeUserMS": 1293.3333,
+  "cpuTimeKernelMS": 0.0,
+  "ioReadChars": 8715,
+  "ioWriteChars": 0,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 21,
+  "githubRunId": "40958078396",
   "buildLog": {
     "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-    "start": "2026-10-29T21:01:39.3250555+00:00",
-    "finished": "2026-10-29T21:01:42.8531922+00:00",
-    "durationMs": 3528
+    "start": "2026-10-29T21:35:46.6712838+00:00",
+    "finished": "2026-10-29T21:35:50.9846658+00:00",
+    "durationMs": 4313
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:05:40.7978765+00:00",
-    "finished": "2026-10-29T21:05:40.8024559+00:00",
+    "start": "2026-10-29T21:40:39.1291199+00:00",
+    "finished": "2026-10-29T21:40:39.1335229+00:00",
     "durationMs": 4
   }
 }

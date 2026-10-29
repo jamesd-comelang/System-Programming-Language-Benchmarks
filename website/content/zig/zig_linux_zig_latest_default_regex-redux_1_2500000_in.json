@@ -9,21 +9,26 @@
   "input": "2500000_in",
   "timeMS": 0.0,
   "timeStdDevMS": 0.0,
-  "memBytes": 151207936,
-  "cpuTimeMS": 4983.3332,
+  "memBytes": 158105600,
+  "cpuTimeMS": 4986.6666,
   "cpuTimeUserMS": 4916.6666,
-  "cpuTimeKernelMS": 66.6666,
-  "githubRunId": "40953329177",
+  "cpuTimeKernelMS": 70.0,
+  "ioReadChars": 25420897,
+  "ioWriteChars": 0,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 11,
+  "githubRunId": "40958078396",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-29T21:01:04.4298109+00:00",
-    "finished": "2026-10-29T21:01:14.0336439+00:00",
-    "durationMs": 9603
+    "start": "2026-10-29T21:35:45.2881162+00:00",
+    "finished": "2026-10-29T21:36:00.0353694+00:00",
+    "durationMs": 14747
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:05:41.8692111+00:00",
-    "finished": "2026-10-29T21:05:42.4628258+00:00",
-    "durationMs": 593
+    "start": "2026-10-29T21:40:40.2720393+00:00",
+    "finished": "2026-10-29T21:40:40.8536948+00:00",
+    "durationMs": 581
   }
 }

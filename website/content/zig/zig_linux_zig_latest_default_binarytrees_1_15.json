@@ -7,23 +7,28 @@
   "test": "binarytrees",
   "code": "1.zig",
   "input": "15",
-  "timeMS": 139.6027,
-  "timeStdDevMS": 2.2860346475939464,
-  "memBytes": 8286208,
-  "cpuTimeMS": 130.0,
-  "cpuTimeUserMS": 130.0,
+  "timeMS": 143.5815,
+  "timeStdDevMS": 7.569911345143571,
+  "memBytes": 8282112,
+  "cpuTimeMS": 133.3333,
+  "cpuTimeUserMS": 133.3333,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40953329177",
+  "ioReadChars": 4152,
+  "ioWriteChars": 211,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 11,
+  "githubRunId": "40958078396",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-29T20:56:31.4026186+00:00",
-    "finished": "2026-10-29T20:57:51.7335941+00:00",
-    "durationMs": 80330
+    "start": "2026-10-29T21:29:36.5320093+00:00",
+    "finished": "2026-10-29T21:31:21.7104277+00:00",
+    "durationMs": 105178
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:05:40.810412+00:00",
-    "finished": "2026-10-29T21:05:40.8176837+00:00",
-    "durationMs": 7
+    "start": "2026-10-29T21:40:39.1412401+00:00",
+    "finished": "2026-10-29T21:40:39.148176+00:00",
+    "durationMs": 6
   }
 }

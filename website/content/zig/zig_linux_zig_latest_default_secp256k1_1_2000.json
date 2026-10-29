@@ -7,23 +7,28 @@
   "test": "secp256k1",
   "code": "1.zig",
   "input": "2000",
-  "timeMS": 295.9245,
-  "timeStdDevMS": 0.31444268688161026,
-  "memBytes": 1925120,
-  "cpuTimeMS": 290.0,
-  "cpuTimeUserMS": 290.0,
+  "timeMS": 303.4103,
+  "timeStdDevMS": 0.3879516765440416,
+  "memBytes": 1921024,
+  "cpuTimeMS": 293.3333,
+  "cpuTimeUserMS": 293.3333,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40953329177",
+  "ioReadChars": 4152,
+  "ioWriteChars": 0,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 10,
+  "githubRunId": "40958078396",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-29T21:01:14.0389535+00:00",
-    "finished": "2026-10-29T21:01:23.8789015+00:00",
-    "durationMs": 9839
+    "start": "2026-10-29T21:36:00.0432741+00:00",
+    "finished": "2026-10-29T21:36:14.523252+00:00",
+    "durationMs": 14479
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:05:42.463292+00:00",
-    "finished": "2026-10-29T21:05:42.4697265+00:00",
+    "start": "2026-10-29T21:40:40.8540948+00:00",
+    "finished": "2026-10-29T21:40:40.8601196+00:00",
     "durationMs": 6
   }
 }

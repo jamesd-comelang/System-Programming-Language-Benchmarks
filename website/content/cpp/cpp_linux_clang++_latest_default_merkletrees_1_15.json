@@ -7,23 +7,28 @@
   "test": "merkletrees",
   "code": "1.cpp",
   "input": "15",
-  "timeMS": 53.6018,
-  "timeStdDevMS": 2.297684027450247,
-  "memBytes": 13873152,
+  "timeMS": 52.3155,
+  "timeStdDevMS": 1.9152277523399988,
+  "memBytes": 13864960,
   "cpuTimeMS": 40.0,
   "cpuTimeUserMS": 40.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40953329177",
+  "ioReadChars": 6760,
+  "ioWriteChars": 0,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 13,
+  "githubRunId": "40958078396",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-29T20:57:18.3128236+00:00",
-    "finished": "2026-10-29T20:57:18.6677717+00:00",
-    "durationMs": 354
+    "start": "2026-10-29T21:30:00.9226406+00:00",
+    "finished": "2026-10-29T21:30:01.3051981+00:00",
+    "durationMs": 382
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:05:29.7474618+00:00",
-    "finished": "2026-10-29T21:05:29.7537872+00:00",
-    "durationMs": 6
+    "start": "2026-10-29T21:40:28.1721114+00:00",
+    "finished": "2026-10-29T21:40:28.1780378+00:00",
+    "durationMs": 5
   }
 }

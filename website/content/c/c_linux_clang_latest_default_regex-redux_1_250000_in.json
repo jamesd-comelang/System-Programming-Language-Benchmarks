@@ -9,21 +9,26 @@
   "input": "250000_in",
   "timeMS": 0.0,
   "timeStdDevMS": 0.0,
-  "memBytes": 7897088,
-  "cpuTimeMS": 4990.0,
-  "cpuTimeUserMS": 4990.0,
+  "memBytes": 7909376,
+  "cpuTimeMS": 4986.6666,
+  "cpuTimeUserMS": 4986.6666,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40953329177",
+  "ioReadChars": 2548449,
+  "ioWriteChars": 0,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 54,
+  "githubRunId": "40958078396",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-29T20:56:55.7573149+00:00",
-    "finished": "2026-10-29T20:56:55.853988+00:00",
-    "durationMs": 96
+    "start": "2026-10-29T21:30:06.3022345+00:00",
+    "finished": "2026-10-29T21:30:06.4778597+00:00",
+    "durationMs": 175
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:05:13.9803376+00:00",
-    "finished": "2026-10-29T21:05:20.7842847+00:00",
-    "durationMs": 6803
+    "start": "2026-10-29T21:40:13.1727521+00:00",
+    "finished": "2026-10-29T21:40:20.0019989+00:00",
+    "durationMs": 6829
   }
 }

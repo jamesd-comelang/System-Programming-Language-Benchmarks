@@ -7,23 +7,28 @@
   "test": "json-serde",
   "code": "5-i.rs",
   "input": "canada 15",
-  "timeMS": 217.0331,
-  "timeStdDevMS": 5.450401270854591,
-  "memBytes": 55332864,
-  "cpuTimeMS": 203.3333,
-  "cpuTimeUserMS": 180.0,
+  "timeMS": 216.6232,
+  "timeStdDevMS": 3.483257545746498,
+  "memBytes": 55238656,
+  "cpuTimeMS": 199.9999,
+  "cpuTimeUserMS": 176.6666,
   "cpuTimeKernelMS": 23.3333,
-  "githubRunId": "40953329177",
+  "ioReadChars": 2259683,
+  "ioWriteChars": 66,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 19,
+  "githubRunId": "40958078396",
   "buildLog": {
     "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-    "start": "2026-10-29T21:00:34.8900332+00:00",
-    "finished": "2026-10-29T21:00:41.0843202+00:00",
-    "durationMs": 6194
+    "start": "2026-10-29T21:34:27.2068269+00:00",
+    "finished": "2026-10-29T21:34:34.7375375+00:00",
+    "durationMs": 7530
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:05:40.4486634+00:00",
-    "finished": "2026-10-29T21:05:40.5104062+00:00",
-    "durationMs": 61
+    "start": "2026-10-29T21:40:38.7927586+00:00",
+    "finished": "2026-10-29T21:40:38.8530211+00:00",
+    "durationMs": 60
   }
 }

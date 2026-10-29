@@ -7,23 +7,28 @@
   "test": "helloworld",
   "code": "1.c",
   "input": "QwQ",
-  "timeMS": 1.6709,
-  "timeStdDevMS": 0.7765254149092613,
-  "memBytes": 1523712,
+  "timeMS": 2.6184,
+  "timeStdDevMS": 1.5249503959145687,
+  "memBytes": 1445888,
   "cpuTimeMS": 0.0,
   "cpuTimeUserMS": 0.0,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40953329177",
+  "ioReadChars": 2458,
+  "ioWriteChars": 3,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 6,
+  "githubRunId": "40958078396",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-29T20:56:45.7975855+00:00",
-    "finished": "2026-10-29T20:56:49.4920352+00:00",
-    "durationMs": 3694
+    "start": "2026-10-29T21:29:49.2873813+00:00",
+    "finished": "2026-10-29T21:29:55.2953862+00:00",
+    "durationMs": 6008
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:05:12.589256+00:00",
-    "finished": "2026-10-29T21:05:12.5966922+00:00",
-    "durationMs": 7
+    "start": "2026-10-29T21:40:11.6078458+00:00",
+    "finished": "2026-10-29T21:40:11.614831+00:00",
+    "durationMs": 6
   }
 }

@@ -7,23 +7,28 @@
   "test": "pidigits",
   "code": "2.rs",
   "input": "4000",
-  "timeMS": 303.7911,
-  "timeStdDevMS": 4.251334793136582,
+  "timeMS": 302.5522,
+  "timeStdDevMS": 4.443178998569954,
   "memBytes": 2621440,
   "cpuTimeMS": 293.3333,
   "cpuTimeUserMS": 293.3333,
   "cpuTimeKernelMS": 0.0,
-  "githubRunId": "40953329177",
+  "ioReadChars": 8612,
+  "ioWriteChars": 0,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 15,
+  "githubRunId": "40958078396",
   "buildLog": {
     "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-    "start": "2026-10-29T21:01:18.2307094+00:00",
-    "finished": "2026-10-29T21:01:21.4463714+00:00",
-    "durationMs": 3215
+    "start": "2026-10-29T21:35:20.55552+00:00",
+    "finished": "2026-10-29T21:35:24.5111281+00:00",
+    "durationMs": 3955
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:05:40.7085213+00:00",
-    "finished": "2026-10-29T21:05:40.7127656+00:00",
+    "start": "2026-10-29T21:40:39.0423628+00:00",
+    "finished": "2026-10-29T21:40:39.0463879+00:00",
     "durationMs": 4
   }
 }
