@@ -25,7 +25,8 @@
         </li>
       </ul>
       <!-- Page info, kept short so it fits this narrow column. -->
-      <div class="mt-8 text-xs">
+      <h2 class="text-xl mt-8">About</h2>
+      <div class="mt-2 text-xs">
         <p class="italic leading-relaxed">
           Data: <span class="text-pink-800">{{ benchmarkDate }}</span
           >, full log
