@@ -40,6 +40,13 @@ namespace BenchTool
                 CpuTimeKernel = avgCpuTimeKernel,
                 CpuTimeUser = avgCpuTimeUser,
                 PeakMemoryBytes = (long)Math.Round(maxPeakMemoryBytes),
+                // IO counters are per-run totals, so they average like
+                // CPU times (peak memory is the odd one out: a max).
+                IoReadChars = (long)Math.Round(array.Average(i => (double)i.IoReadChars)),
+                IoWriteChars = (long)Math.Round(array.Average(i => (double)i.IoWriteChars)),
+                IoReadBytes = (long)Math.Round(array.Average(i => (double)i.IoReadBytes)),
+                IoWriteBytes = (long)Math.Round(array.Average(i => (double)i.IoWriteBytes)),
+                IoSyscalls = (long)Math.Round(array.Average(i => (double)i.IoSyscalls)),
             };
         }
     }
@@ -58,9 +65,23 @@ namespace BenchTool
 
         public long PeakMemoryBytes { get; set; }
 
+        // Totals from /proc/<pid>/io, summed over the process tree
+        // (Linux only; 0 elsewhere). See ParsedIo for what each field
+        // counts. RChar/WChar are the scoring signal; the byte fields
+        // are diagnostic (cached reads can show ~0 block bytes).
+        public long IoReadChars { get; set; }
+
+        public long IoWriteChars { get; set; }
+
+        public long IoReadBytes { get; set; }
+
+        public long IoWriteBytes { get; set; }
+
+        public long IoSyscalls { get; set; }
+
         public override string ToString()
         {
-            return $"[{Environment.ProcessorCount} cores]time: {Elapsed.TotalMilliseconds}ms, stddev: {ElapsedStdDevMS}ms, cpu-time: {CpuTime.TotalMilliseconds}ms, cpu-time-user: {CpuTimeUser.TotalMilliseconds}ms, cpu-time-kernel: {CpuTimeKernel.TotalMilliseconds}ms, peak-mem: {PeakMemoryBytes / 1024}KB";
+            return $"[{Environment.ProcessorCount} cores]time: {Elapsed.TotalMilliseconds}ms, stddev: {ElapsedStdDevMS}ms, cpu-time: {CpuTime.TotalMilliseconds}ms, cpu-time-user: {CpuTimeUser.TotalMilliseconds}ms, cpu-time-kernel: {CpuTimeKernel.TotalMilliseconds}ms, peak-mem: {PeakMemoryBytes / 1024}KB, io: rchar={IoReadChars} wchar={IoWriteChars} syscalls={IoSyscalls}";
         }
     }
 
@@ -225,6 +246,26 @@ namespace BenchTool
                                     totalMemoryBytes = (long)status.VmRSS;
                                 }
                             }
+                            // IO counters are cumulative, so the last
+                            // successful sample before exit approximates
+                            // the run's total. A failed read (process
+                            // gone between samples) keeps the previous
+                            // sample rather than zeroing the total.
+                            // Known limit: a final buffered flush at
+                            // exit can land after the last sample, so a
+                            // program whose whole output fits in one
+                            // stdio buffer may read ~0, while MB-scale
+                            // IO is captured to within a buffer. That
+                            // is fine for the radar, which only needs
+                            // IO to discriminate where IO is substantial.
+                            if (procfs.TryReadIoFile(pid, out procfs.ParsedIo io))
+                            {
+                                m.IoReadChars = (long)io.RChar;
+                                m.IoWriteChars = (long)io.WChar;
+                                m.IoReadBytes = (long)io.ReadBytes;
+                                m.IoWriteBytes = (long)io.WriteBytes;
+                                m.IoSyscalls = (long)(io.Syscr + io.Syscw);
+                            }
                             mainProcess.Refresh();
                         }
                         else
@@ -287,6 +328,20 @@ namespace BenchTool
                                             {
                                                 totalMemoryBytes += (long)cpstatus.VmRSS;
                                             }
+                                        }
+                                        // Unlike CPU times, /proc/pid/io has
+                                        // no child accumulation, so a
+                                        // child's IO is added explicitly,
+                                        // like its memory. A child that
+                                        // already exited simply has no
+                                        // readable io file this sample.
+                                        if (s_isLinux && procfs.TryReadIoFile(cp.Id, out procfs.ParsedIo cpio))
+                                        {
+                                            m.IoReadChars += (long)cpio.RChar;
+                                            m.IoWriteChars += (long)cpio.WChar;
+                                            m.IoReadBytes += (long)cpio.ReadBytes;
+                                            m.IoWriteBytes += (long)cpio.WriteBytes;
+                                            m.IoSyscalls += (long)(cpio.Syscr + cpio.Syscw);
                                         }
                                     }
                                 }

@@ -129,6 +129,71 @@
       >
         {{ problemDescriptionText }}
       </p>
+      <div v-if="problem && radarRows.length > 0" class="mt-6">
+        <h2 class="text-2xl my-5 mb-2">Capability radar</h2>
+        <p class="text-sm italic">
+          Each axis runs 0–1, higher is better. CPU is fastest time,
+          Memory is smallest peak memory, IO is most bytes per
+          read/write call, Concurrency is parallel speedup over the
+          language's own single-thread time. Each score combines
+          per-input ratios against the best language in that input,
+          like the leaderboard. Concurrency is 0 when a language ships
+          no parallel variant for this problem.
+        </p>
+        <svg viewBox="0 0 320 320" class="w-full" style="max-width: 420px">
+          <circle
+            v-for="r in [30, 60, 90, 120]"
+            :key="r"
+            cx="160"
+            cy="160"
+            :r="r"
+            fill="none"
+            stroke="#e5e7eb"
+          />
+          <line
+            v-for="(d, di) in radarDirs"
+            :key="'axis-' + di"
+            x1="160"
+            y1="160"
+            :x2="160 + d[0] * 120"
+            :y2="160 + d[1] * 120"
+            stroke="#e5e7eb"
+          />
+          <polygon
+            v-for="(row, ridx) in radarRows"
+            :key="'radar-' + row.key"
+            :points="radarPoints(row)"
+            :fill="colorFor(row.key, ridx)"
+            fill-opacity="0.15"
+            :stroke="colorFor(row.key, ridx)"
+            stroke-width="2"
+          />
+          <text
+            v-for="(label, li) in radarLabels"
+            :key="'label-' + li"
+            :x="label.x"
+            :y="label.y"
+            :text-anchor="label.anchor"
+            font-size="14"
+            fill="#374151"
+          >
+            {{ label.text }}
+          </text>
+        </svg>
+        <ul class="text-sm mt-2">
+          <li v-for="(row, ridx) in radarRows" :key="'legend-' + row.key">
+            <span :style="{ color: colorFor(row.key, ridx) }">■</span>
+            {{ row.label }} — CPU {{ radarScoreText(row.cpu) }} · Mem
+            {{ radarScoreText(row.mem) }} · IO
+            {{ radarScoreText(row.io) }} · Conc
+            {{ radarScoreText(row.conc) }}
+          </li>
+        </ul>
+        <p v-if="!radarHasIo" class="text-sm italic mt-2">
+          IO data is not in the current results yet — it appears after
+          the next bench run, which records per-process IO.
+        </p>
+      </div>
       <div v-for="test in testOptions" :key="'matrix-' + test">
         <h2 class="text-2xl my-5 mb-2 underline text-blue-500">
           <a :id="'matrix-' + test" :href="u('/problem/' + test)"> {{ test }} </a>
@@ -368,10 +433,12 @@ import MenuButton from './MenuButton.vue'
 import { getFullCompilerVersion, mergeLangBenchResults } from '~/contentUtils'
 import {
   barWidth,
+  hasIoData,
   isVisible,
   largestInput,
   matrixForProblem,
   problemDescription,
+  radarForProblem,
   seriesColor as seriesColorFn,
   withBase,
   sortInputs,
@@ -681,6 +748,63 @@ export default class LangMetaPage extends Vue {
       timed.map((r) => r.timeMS as number)
     )
     return barWidth(row.timeMS, fastest, slowest, this.chartLog)
+  }
+
+  radarRows() {
+    if (!this.problem) return []
+    return radarForProblem(
+      this.matrixBenches(this.problem),
+      this.problemBenchesAll(),
+      (key) => this.matrixSeriesLabel(key)
+    )
+  }
+
+  problemBenchesAll() {
+    if (!this.problem) return []
+    return this.activeBenchmarks.filter(
+      (i) => i.test === this.problem && i.os === this.osSelected
+    )
+  }
+
+  get radarHasIo() {
+    return hasIoData(this.problemBenchesAll())
+  }
+
+  get radarDirs() {
+    // Axes clockwise from the top: CPU, Memory, IO, Concurrency.
+    return [
+      [0, -1],
+      [1, 0],
+      [0, 1],
+      [-1, 0],
+    ]
+  }
+
+  get radarLabels() {
+    const dirs = this.radarDirs
+    const texts = ['CPU', 'Memory', 'IO', 'Concurrency']
+    const anchors = ['middle', 'end', 'middle', 'start']
+    return texts.map((text, i) => ({
+      text,
+      x: 160 + dirs[i][0] * 142,
+      y: 160 + dirs[i][1] * 142 + (i % 2 === 0 ? 0 : 5),
+      anchor: anchors[i],
+    }))
+  }
+
+  radarPoints(row: any) {
+    const values = [row.cpu, row.mem, row.io, row.conc]
+    return values
+      .map((v, i) => {
+        const d = this.radarDirs[i]
+        const s = (v ?? 0) * 120
+        return `${160 + d[0] * s},${160 + d[1] * s}`
+      })
+      .join(' ')
+  }
+
+  radarScoreText(v: number | null) {
+    return v === null ? '—' : v.toFixed(2)
   }
 
   getNormalizedCode(i: BenchResult) {

@@ -21,6 +21,15 @@ type BenchResult = {
   cpuTimeUserMS: number
   cpuTimeKernelMS: number
 
+  // Per-process IO totals from /proc/<pid>/io (Linux bench runs
+  // only). Absent on results from before IO capture was added, and
+  // zero where the platform does not report them.
+  ioReadChars?: number
+  ioWriteChars?: number
+  ioReadBytes?: number
+  ioWriteBytes?: number
+  ioSyscalls?: number
+
   compilerOptions?: string
 
   par?: boolean

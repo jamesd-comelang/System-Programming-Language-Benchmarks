@@ -218,6 +218,191 @@ export function leaderboard(langs: LangBenchResults[]): LeaderboardRow[] {
     .sort((a, b) => a.geomean - b.geomean)
 }
 
+// Capability radar for one problem page: one 0-1 score per language
+// per axis, higher is better, null when the language has no counted
+// input for that axis. Scores follow the leaderboard pattern: within
+// one input, a ratio against the best language in that input, then
+// the geometric mean across inputs.
+// - CPU: fastest time (lower time wins).
+// - Memory: smallest peak memory (lower wins).
+// - IO: most bytes per read/write call (rchar+wchar over syscr+syscw
+//   from /proc/pid/io). This is buffering behavior, not speed: for a
+//   fixed problem and input every correct implementation moves roughly
+//   the same bytes, so bytes/second would just restate CPU. Rows
+//   without IO data (results from before IO capture) are skipped, so
+//   the axis is empty until a bench run with IO capture lands.
+// - Concurrency: parallel speedup over the language's own
+//   single-thread time in the same input (best parallel time vs best
+//   single-thread time), scaled against the best speedup on the page.
+//   Parallel means an explicit parallel variant: a code name matching
+//   /-\w?m/ (e.g. -m, -im, -mffi). The site's i.par flag is NOT used
+//   here, because its CPU-time rule also marks GC-threaded runtimes
+//   as parallel (Go's binarytrees shows a 1.68x "speedup" with no
+//   parallel variant at all). Unlike CPU/memory/IO, concurrency
+//   counts unopposed inputs: a language with the only parallel
+//   variant scores 1.0, the rest 0.
+// CPU/memory/IO count only inputs where at least two languages have
+// a value, like the leaderboard.
+export type RadarRow = {
+  key: string
+  label: string
+  cpu: number | null
+  mem: number | null
+  io: number | null
+  conc: number | null
+}
+
+function geomean(ratios: number[]): number | null {
+  if (ratios.length === 0) return null
+  let logSum = 0
+  ratios.forEach((r) => {
+    logSum += Math.log(r)
+  })
+  return Math.exp(logSum / ratios.length)
+}
+
+function ioBytesPerCall(b: BenchResult): number | null {
+  const bytes = (b.ioReadChars ?? 0) + (b.ioWriteChars ?? 0)
+  const calls = b.ioSyscalls ?? 0
+  if (bytes <= 0 || calls <= 0) return null
+  return bytes / calls
+}
+
+export function hasIoData(benches: BenchResult[]): boolean {
+  return benches.some(
+    (b) => (b.ioReadChars ?? 0) + (b.ioWriteChars ?? 0) > 0
+  )
+}
+
+// `visibleBenches` is the problem's benches after the page's OS and
+// single/parallel toggles (so the radar tracks the matrix on screen);
+// `allBenches` is the same problem without the toggles, because the
+// concurrency score needs both sides of the comparison.
+export function radarForProblem(
+  visibleBenches: BenchResult[],
+  allBenches: BenchResult[],
+  labelOf: (key: string) => string
+): RadarRow[] {
+  const inputs = sortInputs(
+    Array.from(new Set(visibleBenches.map((b) => b.input)))
+  )
+  const keys = Array.from(
+    new Set(
+      visibleBenches.map((b) => b.lang).concat(allBenches.map((b) => b.lang))
+    )
+  ).sort()
+
+  // Per (key, input): best time, best memory, best IO rate among the
+  // visible rows; and best single-thread / parallel times among all
+  // rows for the concurrency split.
+  const best: {
+    [key: string]: {
+      [input: string]: {
+        time: number | null
+        mem: number | null
+        io: number | null
+        st: number | null
+        mt: number | null
+      }
+    }
+  } = {}
+  keys.forEach((k) => {
+    best[k] = {}
+    inputs.forEach((input) => {
+      best[k][input] = { time: null, mem: null, io: null, st: null, mt: null }
+    })
+  })
+  visibleBenches.forEach((b) => {
+    if (isTimeout(b)) return
+    const cell = best[b.lang]?.[b.input]
+    if (!cell) return
+    if (cell.time === null || b.timeMS < cell.time) cell.time = b.timeMS
+    if (
+      b.memBytes > 0 &&
+      (cell.mem === null || b.memBytes < cell.mem)
+    )
+      cell.mem = b.memBytes
+    const bps = ioBytesPerCall(b)
+    if (bps !== null && (cell.io === null || bps > cell.io)) cell.io = bps
+  })
+  allBenches.forEach((b) => {
+    if (isTimeout(b)) return
+    const cell = best[b.lang]?.[b.input]
+    if (!cell) return
+    const parallel = /-\w?m/.test(b.code)
+    if (parallel) {
+      if (cell.mt === null || b.timeMS < cell.mt) cell.mt = b.timeMS
+    } else {
+      if (cell.st === null || b.timeMS < cell.st) cell.st = b.timeMS
+    }
+  })
+
+  // A language with no counted input on any axis (e.g. it only has
+  // parallel results and the parallel toggle is off) has no polygon
+  // to draw; the matrix already shows it as missing.
+  return keys
+    .map((key) => {
+      const cpuRatios: number[] = []
+      const memRatios: number[] = []
+      const ioRatios: number[] = []
+      const concRatios: number[] = []
+      inputs.forEach((input) => {
+        const times = keys
+          .map((k) => best[k][input].time)
+          .filter((t): t is number => t !== null)
+        if (times.length >= 2 && best[key][input].time !== null) {
+          cpuRatios.push(
+            Math.min.apply(null, times) / (best[key][input].time as number)
+          )
+        }
+        const mems = keys
+          .map((k) => best[k][input].mem)
+          .filter((t): t is number => t !== null)
+        if (mems.length >= 2 && best[key][input].mem !== null) {
+          memRatios.push(
+            Math.min.apply(null, mems) / (best[key][input].mem as number)
+          )
+        }
+        const ios = keys
+          .map((k) => best[k][input].io)
+          .filter((t): t is number => t !== null)
+        if (ios.length >= 2 && best[key][input].io !== null) {
+          ioRatios.push(
+            (best[key][input].io as number) / Math.max.apply(null, ios)
+          )
+        }
+        const cell = best[key][input]
+        if (cell.st !== null && cell.mt !== null) {
+          const speedup = cell.st / cell.mt
+          const speeds = keys
+            .map((k) => {
+              const c = best[k][input]
+              return c.st !== null && c.mt !== null ? c.st / c.mt : null
+            })
+            .filter((s): s is number => s !== null)
+          if (speeds.length > 0) {
+            concRatios.push(speedup / Math.max.apply(null, speeds))
+          }
+        }
+    })
+      return {
+        key,
+        label: labelOf(key),
+        cpu: geomean(cpuRatios),
+        mem: geomean(memRatios),
+        io: geomean(ioRatios),
+        conc: geomean(concRatios),
+      }
+    })
+    .filter(
+      (row) =>
+        row.cpu !== null ||
+        row.mem !== null ||
+        row.io !== null ||
+        row.conc !== null
+    )
+}
+
 const LANG_COLORS: { [lang: string]: string } = {
   c: '#2563eb',
   cpp: '#7c3aed',
