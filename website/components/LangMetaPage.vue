@@ -24,6 +24,93 @@
           >
         </li>
       </ul>
+      <!-- Page info, kept short so it fits this narrow column. -->
+      <div class="mt-8 text-xs">
+        <p class="italic leading-relaxed">
+          Data: <span class="text-pink-800">{{ benchmarkDate }}</span
+          >, full log
+          <a
+            :href="buildLogUrl"
+            target="_blank"
+            class="underline bold text-blue-500"
+            >HERE</a
+          >
+        </p>
+        <p class="mt-2 italic">
+          <a
+            class="underline bold text-blue-500"
+            href="https://github.com/jamesd-comelang/System-Programming-Language-Benchmarks"
+            target="_blank"
+            >CONTRIBUTIONS</a
+          >
+          welcome!
+        </p>
+        <div v-if="cpuInfo" class="mt-4">
+          <label class="font-bold">CPU:</label>
+          <span class="italic">{{ shortCpuInfo }}</span>
+        </div>
+        <div class="mt-4">
+          <p class="italic">-m: multi-threaded</p>
+          <p class="italic">-i: direct intrinsics</p>
+          <p class="italic">
+            -ffi: non-stdlib
+            <a
+              href="http://en.wikipedia.org/wiki/Foreign_function_interface"
+              class="underline text-blue-500"
+              >FFI</a
+            >
+          </p>
+          <p class="italic">
+            time can be under user+sys time: GC/JIT may use extra cores.
+          </p>
+        </div>
+        <div class="mt-4">
+          <div class="form-check form-check-inline">
+            <input
+              v-model="show_st"
+              class="form-check-input inline-block"
+              type="checkbox"
+              style="vertical-align: bottom"
+            />
+            <label class="form-check-label inline-block text-gray-500"
+              >without parallelization</label
+            >
+          </div>
+          <div class="mt-2 form-check form-check-inline">
+            <input
+              v-model="show_mt"
+              class="form-check-input inline-block"
+              type="checkbox"
+              style="vertical-align: bottom"
+            />
+            <label class="form-check-label inline-block text-gray-500"
+              >with parallelization</label
+            >
+          </div>
+          <div class="mt-2 form-check form-check-inline">
+            <input
+              v-model="showRaw"
+              class="form-check-input inline-block"
+              type="checkbox"
+              style="vertical-align: bottom"
+            />
+            <label class="form-check-label inline-block text-gray-500"
+              >raw result tables</label
+            >
+          </div>
+          <div class="mt-2 form-check form-check-inline">
+            <input
+              v-model="chartLog"
+              class="form-check-input inline-block"
+              type="checkbox"
+              style="vertical-align: bottom"
+            />
+            <label class="form-check-label inline-block text-gray-500"
+              >log scale charts</label
+            >
+          </div>
+        </div>
+      </div>
     </aside>
     <div :class="contentClass">
       <h1 v-if="lang && !other" class="text-3xl">
@@ -35,113 +122,12 @@
       <h1 v-if="problem" class="text-3xl">
         All {{ problem }} problem benchmarks
       </h1>
-      <div class="text-base italic leading-loose">
-        <p class="py-3">
-          Current benchmark data was generated on
-          <span class="text-pink-800">{{ benchmarkDate }}</span
-          >, full log can be found
-          <a
-            :href="buildLogUrl"
-            target="_blank"
-            class="underline bold text-blue-500"
-            >HERE</a
-          >
-        </p>
-        <p>
-          <a
-            class="underline bold text-blue-500"
-            href="https://github.com/jamesd-comelang/System-Programming-Language-Benchmarks"
-            target="_blank"
-            >CONTRIBUTIONS</a
-          >
-          are WELCOME!
-        </p>
-      </div>
-
-      <!-- <div class="mt-5">
-                            <span>OS</span>
-                            <select v-model="osSelected" class="px-2 py-2 rounded bg-purple-200">
-                              <option v-for="i in osOptions" :key="i" :value="i">{{ i }}</option>
-                            </select>
-                          </div> -->
-
-      <div v-if="cpuInfo" class="mt-5 text-xs">
-        <label class="font-bold">CPU INFO:</label
-        ><span class="italic">{{ cpuInfo }}</span>
-      </div>
-
-      <div class="mt-5 text-xs">
-        <p class="italic">
-          * -m in a file name stands for multi-threading or multi-processing
-        </p>
-        <p class="italic">
-          * -i in a file name stands for direct intrinsics usage. (Usage of simd
-          intrinsics via libraries is not counted)
-        </p>
-        <p class="italic">
-          * -ffi in a file name stands for non-stdlib
-          <a
-            href="http://en.wikipedia.org/wiki/Foreign_function_interface"
-            class="underline text-blue-500"
-            >FFI</a
-          >
-          usage
-        </p>
-        <p class="italic">
-          * (You may find time &lt; time(user) + time(sys) for some
-          non-parallelized programs, the overhead is from GC or JIT compiler,
-          which are allowed to take advantage of multi-cores as that's more
-          close to real-world scenarios.)
-        </p>
-      </div>
-
-      <div class="mt-5 text-xs">
-        <div class="form-check form-check-inline">
-          <input
-            v-model="show_st"
-            class="form-check-input inline-block"
-            type="checkbox"
-            style="vertical-align: bottom"
-          />
-          <label class="form-check-label inline-block text-gray-500"
-            >show numbers without parallelization</label
-          >
-        </div>
-        <div class="mt-2 form-check form-check-inline">
-          <input
-            v-model="show_mt"
-            class="form-check-input inline-block"
-            type="checkbox"
-            style="vertical-align: bottom"
-          />
-          <label class="form-check-label inline-block text-gray-500"
-            >show numbers with parallelization</label
-          >
-        </div>
-        <div class="mt-2 form-check form-check-inline">
-          <input
-            v-model="showRaw"
-            class="form-check-input inline-block"
-            type="checkbox"
-            style="vertical-align: bottom"
-          />
-          <label class="form-check-label inline-block text-gray-500"
-            >show raw result tables (every compiler and code)</label
-          >
-        </div>
-        <div class="mt-2 form-check form-check-inline">
-          <input
-            v-model="chartLog"
-            class="form-check-input inline-block"
-            type="checkbox"
-            style="vertical-align: bottom"
-          />
-          <label class="form-check-label inline-block text-gray-500"
-            >charts use log scale</label
-          >
-        </div>
-      </div>
-
+      <p
+        v-if="problem && problemDescriptionText"
+        class="text-sm italic mt-2"
+      >
+        {{ problemDescriptionText }}
+      </p>
       <div v-for="test in testOptions" :key="'matrix-' + test">
         <h2 class="text-2xl my-5 mb-2 underline text-blue-500">
           <a :id="'matrix-' + test" :href="u('/problem/' + test)"> {{ test }} </a>
@@ -384,6 +370,7 @@ import {
   isVisible,
   largestInput,
   matrixForProblem,
+  problemDescription,
   seriesColor as seriesColorFn,
   withBase,
   sortInputs,
@@ -450,6 +437,24 @@ export default class LangMetaPage extends Vue {
 
   get cpuInfo() {
     return this.activeBenchmarks[0].cpuInfo
+  }
+
+  // Bench CPU strings look like "[x86_64][4 cores] AMD EPYC 9V45
+  // 96-Core Processor (Model 2)". The sidebar is narrow, so show
+  // only the model and the core count.
+  get shortCpuInfo() {
+    const raw = this.cpuInfo || ''
+    const cores = /\[(\d+)\s*cores?\]/.exec(raw)
+    const model = raw
+      .replace(/\[[^\]]*\]/g, '')
+      .replace(/\s*Processor.*$/, '')
+      .trim()
+    if (!model) return raw
+    return cores ? `${model} · ${cores[1]} cores` : model
+  }
+
+  get problemDescriptionText() {
+    return this.problem ? problemDescription(this.problem) : ''
   }
 
   get sideBarClass() {

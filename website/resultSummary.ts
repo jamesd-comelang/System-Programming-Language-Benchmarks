@@ -243,3 +243,35 @@ export function withBase(router: any, path: string): string {
   const clean = base.endsWith('/') ? base.slice(0, -1) : base
   return clean + (path.startsWith('/') ? path : '/' + path)
 }
+
+// One-line description per benchmark problem, shown on the problem's
+// own page under its title. Kept here (not in the component) so the
+// text is shared and easy to correct in one place. Unknown problems
+// return '' so the page renders no empty line.
+const PROBLEM_DESCRIPTIONS: { [problem: string]: string } = {
+  binarytrees:
+    'Allocate and free binary trees; stresses the memory allocator and garbage collection.',
+  'coro-prime-sieve':
+    'Generate primes with a coroutine-based Sieve of Eratosthenes.',
+  edigits: 'Compute digits of e with arbitrary-precision arithmetic.',
+  'fannkuch-redux':
+    'Repeatedly flip prefixes of permutations; stresses array access and loops.',
+  fasta: 'Generate weighted random DNA sequences in FASTA format.',
+  helloworld: "Print 'Hello, World!' — the baseline sanity check.",
+  'http-server': 'Serve simple HTTP responses; measures request handling.',
+  'json-serde': 'Parse and re-emit JSON documents; measures parsing and string handling.',
+  knucleotide: 'Count k-nucleotide frequencies in a DNA sequence.',
+  lru: 'Exercise a least-recently-used cache with get/put churn.',
+  mandelbrot: 'Compute and render the Mandelbrot set as a bitmap.',
+  merkletrees: 'Build Merkle trees and verify hashes; stresses allocation and hashing.',
+  nbody: 'Simulate planetary orbits with Newtonian gravity.',
+  nsieve: 'Find primes with the Sieve of Eratosthenes over growing ranges.',
+  pidigits: 'Compute digits of π with arbitrary-precision arithmetic.',
+  'regex-redux': 'Apply regular-expression matching and substitution to DNA text.',
+  secp256k1: 'Scalar multiplication on the secp256k1 elliptic curve.',
+  'spectral-norm': 'Power iteration for the spectral norm of a matrix.',
+}
+
+export function problemDescription(problem: string): string {
+  return PROBLEM_DESCRIPTIONS[problem] || ''
+}
