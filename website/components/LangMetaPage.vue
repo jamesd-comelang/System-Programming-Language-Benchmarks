@@ -140,6 +140,7 @@
           like the leaderboard. Concurrency is 0 when a language ships
           no parallel variant for this problem.
         </p>
+        <div class="flex flex-wrap items-start gap-6">
         <svg viewBox="0 0 320 320" class="w-full" style="max-width: 420px">
           <circle
             v-for="r in [30, 60, 90, 120]"
@@ -161,6 +162,7 @@
           />
           <polygon
             v-for="(row, ridx) in radarRows"
+            v-show="!isRadarHidden(row.key)"
             :key="'radar-' + row.key"
             :points="radarPoints(row)"
             :fill="colorFor(row.key, ridx)"
@@ -180,15 +182,59 @@
             {{ label.text }}
           </text>
         </svg>
-        <ul class="text-sm mt-2">
-          <li v-for="(row, ridx) in radarRows" :key="'legend-' + row.key">
-            <span :style="{ color: colorFor(row.key, ridx) }">■</span>
-            {{ row.label }} — CPU {{ radarScoreText(row.cpu) }} · Mem
-            {{ radarScoreText(row.mem) }} · IO
-            {{ radarScoreText(row.io) }} · Conc
-            {{ radarScoreText(row.conc) }}
-          </li>
-        </ul>
+        <table class="text-sm border-collapse">
+          <thead>
+            <tr class="border-b">
+              <th class="text-left px-2 py-1">Language</th>
+              <th class="px-2 py-1">CPU</th>
+              <th class="px-2 py-1">Mem</th>
+              <th class="px-2 py-1">IO</th>
+              <th class="px-2 py-1">Conc</th>
+              <th class="px-2 py-1">
+                <span class="mr-1">All</span>
+                <label class="radar-switch" aria-label="Toggle all languages">
+                  <input
+                    type="checkbox"
+                    :checked="allRadarVisible"
+                    @change="toggleAllRadar()"
+                  />
+                  <span class="radar-slider"></span>
+                </label>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="(row, ridx) in radarRows"
+              :key="'radar-table-' + row.key"
+              :class="{ 'opacity-50': isRadarHidden(row.key) }"
+              class="border-b"
+            >
+              <td class="px-2 py-1">
+                <span :style="{ color: colorFor(row.key, ridx) }">■</span>
+                {{ row.label }}
+              </td>
+              <td class="px-2 py-1">{{ radarScoreText(row.cpu) }}</td>
+              <td class="px-2 py-1">{{ radarScoreText(row.mem) }}</td>
+              <td class="px-2 py-1">{{ radarScoreText(row.io) }}</td>
+              <td class="px-2 py-1">{{ radarScoreText(row.conc) }}</td>
+              <td class="px-2 py-1">
+                <label
+                  class="radar-switch"
+                  :aria-label="'Toggle ' + row.label"
+                >
+                  <input
+                    type="checkbox"
+                    :checked="!isRadarHidden(row.key)"
+                    @change="toggleRadarRow(row.key)"
+                  />
+                  <span class="radar-slider"></span>
+                </label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
         <p v-if="!radarHasIo" class="text-sm italic mt-2">
           IO data is not in the current results yet — it appears after
           the next bench run, which records per-process IO.
@@ -470,6 +516,9 @@ export default class LangMetaPage extends Vue {
   show_mt = true
   showRaw = false
   chartLog = false
+  // Radar legend table toggles: keys of languages hidden from the radar.
+  // An array (not a Set) so Vue 2 reactivity picks up changes.
+  radarHidden: string[] = []
   meta?: LangPageMeta
   problem?: string
   allProblems?: string[] = problems
@@ -810,6 +859,26 @@ export default class LangMetaPage extends Vue {
     return v === null ? '—' : v.toFixed(2)
   }
 
+  isRadarHidden(key: string) {
+    return this.radarHidden.indexOf(key) !== -1
+  }
+
+  toggleRadarRow(key: string) {
+    const i = this.radarHidden.indexOf(key)
+    if (i === -1) this.radarHidden.push(key)
+    else this.radarHidden.splice(i, 1)
+  }
+
+  get allRadarVisible() {
+    return this.radarHidden.length === 0
+  }
+
+  toggleAllRadar() {
+    this.radarHidden = this.allRadarVisible
+      ? this.radarRows.map((row: any) => row.key)
+      : []
+  }
+
   getNormalizedCode(i: BenchResult) {
     return !i.code.includes('-') && i.par ? i.code.replace('.', '-m.') : i.code
   }
@@ -920,3 +989,46 @@ export default class LangMetaPage extends Vue {
   }
 }
 </script>
+
+<style scoped>
+.radar-switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  vertical-align: middle;
+}
+.radar-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.radar-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #d1d5db;
+  border-radius: 20px;
+  transition: background-color 0.2s;
+}
+.radar-slider:before {
+  position: absolute;
+  content: '';
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+.radar-switch input:checked + .radar-slider {
+  background-color: #2563eb;
+}
+.radar-switch input:checked + .radar-slider:before {
+  transform: translateX(16px);
+}
+</style>
