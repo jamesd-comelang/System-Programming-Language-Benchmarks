@@ -750,16 +750,19 @@ export default class LangMetaPage extends Vue {
     return barWidth(row.timeMS, fastest, slowest, this.chartLog)
   }
 
-  radarRows() {
+  // Getters, not methods: the template reads these as properties
+  // (radarRows.length, radarHasIo), and a method's .length is its
+  // parameter count (0), which silently hid the whole radar block.
+  get radarRows() {
     if (!this.problem) return []
     return radarForProblem(
       this.matrixBenches(this.problem),
-      this.problemBenchesAll(),
+      this.problemBenchesAll,
       (key) => this.matrixSeriesLabel(key)
     )
   }
 
-  problemBenchesAll() {
+  get problemBenchesAll() {
     if (!this.problem) return []
     return this.activeBenchmarks.filter(
       (i) => i.test === this.problem && i.os === this.osSelected
@@ -767,7 +770,7 @@ export default class LangMetaPage extends Vue {
   }
 
   get radarHasIo() {
-    return hasIoData(this.problemBenchesAll())
+    return hasIoData(this.problemBenchesAll)
   }
 
   get radarDirs() {
