@@ -61,8 +61,8 @@ pub fn main(init: std.process.Init) !void {
 
     var j: usize = 0;
     while (j < n) : (j += 1) {
-        vbv += u[i] * v[i];
-        vv += v[i] * v[i];
+        vbv += u[j] * v[j];
+        vv += v[j] * v[j];
     }
 
     try stdout.print("{d:.9}\n", .{std.math.sqrt(vbv / vv)});

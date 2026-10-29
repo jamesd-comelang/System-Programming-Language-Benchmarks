@@ -34,32 +34,49 @@ fn multAtv(dst: []vec4, src: []const vec4) void {
     return multAvGeneric(true, dst, src);
 }
 
-fn multAtAv(dest: []vec4, src: []const vec4, temp: []vec4) void {
+fn zeroPad(v: []vec4, n: usize) void {
+    // Padded lanes (past n) must stay zero: they are ignored by aggregation
+    // but would otherwise pollute the next matvec as source columns.
+    const scalars = std.mem.bytesAsSlice(f64, std.mem.sliceAsBytes(v));
+    for (scalars[n..]) |*x| x.* = 0;
+}
+
+fn multAtAv(dest: []vec4, src: []const vec4, temp: []vec4, n: usize) void {
     std.debug.assert(dest.len == src.len and src.len == temp.len);
     multAv(temp, src);
+    zeroPad(temp, n);
     multAtv(dest, temp);
+    zeroPad(dest, n);
 }
 
-fn aggregateResults(u: []const vec4, v: []const vec4) f64 {
+fn aggregateResults(u: []const vec4, v: []const vec4, n: usize) f64 {
     @setFloatMode(.optimized);
-    var vbv = vec1to4(0);
-    var vv = vec1to4(0);
-    for (v, 0..) |f, i| {
-        vbv += u[i] * f;
-        vv += f * f;
+    const us = std.mem.bytesAsSlice(f64, std.mem.sliceAsBytes(u));
+    const vs = std.mem.bytesAsSlice(f64, std.mem.sliceAsBytes(v));
+    var vbv: f64 = 0;
+    var vv: f64 = 0;
+    for (us[0..n], vs[0..n]) |a, b| {
+        vbv += a * b;
+        vv += b * b;
     }
-    return std.math.sqrt(@reduce(.Add, vbv) / @reduce(.Add, vv));
+    return std.math.sqrt(vbv / vv);
 }
 
-pub fn main() !void {
-    const n = try get_n();
-    const len = n / @typeInfo(vec4).Vector.len;
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    var out_buf: [4096]u8 = undefined;
+    var out = std.Io.File.stdout().writer(io, &out_buf);
+    const stdout = &out.interface;
+    const n = try get_n(init);
+    // Padded length: whole vec4 blocks; lanes past n stay zero (see zeroPad).
+    const len = (n + @typeInfo(vec4).vector.len - 1) / @typeInfo(vec4).vector.len;
 
     const allocator = std.heap.c_allocator;
 
     const u = try allocator.alloc(vec4, len);
     defer allocator.free(u);
     for (u) |*i| i.* = vec1to4(1);
+    zeroPad(u, n);
 
     const v = try allocator.alloc(vec4, len);
     defer allocator.free(v);
@@ -68,25 +85,25 @@ pub fn main() !void {
     const temp = try allocator.alloc(vec4, len);
     defer allocator.free(temp);
 
-    const task_count = try std.Thread.getCpuCount();
-    const tasks = try allocator.alloc(std.Thread, task_count - 1);
-    defer allocator.free(tasks);
-
     var times: usize = 0;
     while (times < 10) : (times += 1) {
-        multAtAv(v, u, temp);
-        multAtAv(u, v, temp);
+        multAtAv(v, u, temp, n);
+        multAtAv(u, v, temp, n);
     }
 
-    const res = aggregateResults(u, v);
+    const res = aggregateResults(u, v, n);
 
-    const stdout = std.io.getStdOut().writer();
     try stdout.print("{d:.9}\n", .{res});
+    try out.interface.flush();
 }
 
-fn get_n() !usize {
-    var arg_it = std.process.args();
+fn get_n(init: std.process.Init) !usize {
+    var arg_it = std.process.Args.Iterator.init(init.minimal.args);
     _ = arg_it.skip();
-    const arg = arg_it.next() orelse return 100;
-    return try std.fmt.parseInt(usize, arg, 10);
+    const arg = arg_it.next();
+    if (arg) |a| {
+        return try std.fmt.parseInt(usize, a, 10);
+    } else {
+        return 100;
+    }
 }

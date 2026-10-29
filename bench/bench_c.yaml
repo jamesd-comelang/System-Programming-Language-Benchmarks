@@ -10,7 +10,7 @@ problems:
       - 1.c
   - name: knucleotide
     source:
-      - 1.c
+      - 1-m.c
   - name: nbody
     source:
       - 2.c
@@ -53,6 +53,7 @@ problems:
   - name: regex-redux
     source:
       - 1.c
+      - 2.c
   - name: secp256k1
     source:
       - 1.c

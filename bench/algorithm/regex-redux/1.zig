@@ -1,7 +1,7 @@
 // The Computer Language Benchmarks Game
 // https://salsa.debian.org/benchmarksgame-team/benchmarksgame/
 //
-// Zig port of 7.rs (and 3.go, same program). Zig's standard library has no
+// Zig port of 7-m.rs (and 3.go, same program). Zig's standard library has no
 // regex engine, so this file implements a small matcher that is sufficient
 // for exactly the fixed pattern set this problem uses -- no general-purpose
 // regex engine is attempted. Supported pattern features: literals, escapes
@@ -13,8 +13,8 @@
 // quantified class is bounded by a following literal that cannot occur
 // inside the class, so the match extent is unambiguous).
 //
-// Usage: ./app <input-file>   (default "25000_in", as in 7.rs)
-// Output format is exactly 7.rs's: one "<pattern> <count>" line per
+// Usage: ./app <input-file>   (default "25000_in", as in 7-m.rs)
+// Output format is exactly 7-m.rs's: one "<pattern> <count>" line per
 // variant, then a blank line, then input length, cleaned length, and
 // final length.
 
@@ -196,7 +196,7 @@ pub fn main(init: std.process.Init) !void {
     const input_len = input.len;
 
     // Clean: delete FASTA headers (">...<newline>") and all newlines.
-    // This is the ">[^\n]*\n|\n" replacement of 7.rs, done here with a
+    // This is the ">[^\n]*\n|\n" replacement of 7-m.rs, done here with a
     // direct scan (equivalent, and cheaper than running the matcher).
     var sequence: std.ArrayList(u8) = .empty;
     {
@@ -227,14 +227,14 @@ pub fn main(init: std.process.Init) !void {
     var out_buf: [65536]u8 = undefined;
     var out = std.Io.File.stdout().writer(io, &out_buf);
 
-    // Variant counts, in the same order and format as 7.rs.
+    // Variant counts, in the same order and format as 7-m.rs.
     for (variant_patterns) |pattern| {
         const alts = try parsePattern(alloc, pattern);
         const count = countMatches(alts, seq);
         try out.interface.print("{s} {d}\n", .{ pattern, count });
     }
 
-    // Substitutions, applied one at a time, in order, as in 7.rs.
+    // Substitutions, applied one at a time, in order, as in 7-m.rs.
     var current: []u8 = seq;
     for (subst_patterns) |subst| {
         const alts = try parsePattern(alloc, subst.pattern);

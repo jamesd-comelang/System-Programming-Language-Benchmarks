@@ -6,6 +6,7 @@ problems:
   - name: binarytrees
     source:
       - 1.zig
+      - 2.zig
   - name: merkletrees
     source:
       - 1.zig
@@ -17,20 +18,22 @@ problems:
   - name: spectral-norm
     source:
       - 1.zig
-      # - 2.zig
-      # - 2-m.zig
+      - 2.zig
+      - 2-m.zig
   - name: pidigits
     source:
       - 1.zig
   - name: edigits
     source:
       - 1.zig
+      - 2.zig
   - name: fannkuch-redux
     source:
       - 1.zig
       # - 2.zig
       - 2-m.zig
       - 3-i.zig
+      - 4.zig
   - name: fasta
     source:
       - 1.zig

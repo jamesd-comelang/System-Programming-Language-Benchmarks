@@ -8,6 +8,7 @@ problems:
       - 3.rs
       - 4.rs
       - 5.rs
+      - 6.rs
   - name: merkletrees
     source:
       - 1.rs
@@ -39,7 +40,7 @@ problems:
       - 8-m.rs
   - name: regex-redux
     source:
-      - 7.rs
+      - 7-m.rs
   - name: fannkuch-redux
     source:
       - 1.rs

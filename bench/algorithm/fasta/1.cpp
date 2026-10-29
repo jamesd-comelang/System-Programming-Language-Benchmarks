@@ -1,7 +1,7 @@
 // The Computer Language Benchmarks Game
 // https://salsa.debian.org/benchmarksgame-team/benchmarksgame/
 //
-// Port of bench/algorithm/fasta/3.go (The Go Authors, parallel
+// Port of bench/algorithm/fasta/3-m.go (The Go Authors, parallel
 // implementation by Chris Bainbridge). Same algorithm, same output.
 // Deviation: the Go version generates random blocks on several
 // goroutines and reorders their output through a channel chain; the

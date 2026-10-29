@@ -6,16 +6,20 @@ problems:
   - name: binarytrees
     source:
       - 1.go
+      - 2-m.go
+      - 3.go
   - name: merkletrees
     source:
       - 1.go
       - 2.go
+      - 3.go
   - name: nbody
     source:
       - 1.go
   - name: spectral-norm
     source:
       - 1.go
+      - 2.go
       - 4-m.go
   - name: pidigits
     source:
@@ -26,19 +30,21 @@ problems:
   - name: mandelbrot
     source:
       - 1.go
+      - 2-m.go
   - name: fannkuch-redux
     source:
       # - 1.go
       - 3.go
   - name: fasta
     source:
-      - 3.go
+      - 3-m.go
   - name: knucleotide
     source:
-      - 7.go
+      - 7-m.go
   - name: regex-redux
     source:
       - 3.go
+      - 4.go
   - name: json-serde
     source:
       - 1.go

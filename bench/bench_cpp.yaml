@@ -24,6 +24,7 @@ problems:
   - name: edigits
     source:
       - 1.cpp
+      - 2.cpp
   - name: fasta
     source:
       - 1.cpp
@@ -45,9 +46,11 @@ problems:
   - name: pidigits
     source:
       - 1.cpp
+      - 2.cpp
   - name: regex-redux
     source:
       - 1.cpp
+      - 2.cpp
   - name: secp256k1
     source:
       - 1.cpp

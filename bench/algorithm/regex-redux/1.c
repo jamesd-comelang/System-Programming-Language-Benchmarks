@@ -1,4 +1,4 @@
-// Regex-redux, C port of bench/algorithm/regex-redux/7.rs (and 3.go),
+// Regex-redux, C port of bench/algorithm/regex-redux/7-m.rs (and 3.go),
 // using POSIX regex.h.
 //
 // The program reads the whole input file given as argv[1], strips

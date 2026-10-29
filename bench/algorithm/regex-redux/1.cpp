@@ -1,7 +1,7 @@
 // The Computer Language Benchmarks Game
 // https://salsa.debian.org/benchmarksgame-team/benchmarksgame/
 //
-// C++ port of the Go (3.go) / Rust (6.rs, 7.rs) implementations in this
+// C++ port of the Go (3.go) / Rust (6.rs, 7-m.rs) implementations in this
 // directory: same patterns, same order, same output format. Stdlib only,
 // C++20 (<regex>).
 

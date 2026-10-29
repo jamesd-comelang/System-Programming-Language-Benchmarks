@@ -1,4 +1,4 @@
-// Fasta, sequential C port of bench/algorithm/fasta/3.go.
+// Fasta, sequential C port of bench/algorithm/fasta/3-m.go.
 // The Go version generates its random blocks under a mutex in
 // order, so a sequential generator produces identical output.
 

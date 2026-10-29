@@ -45,10 +45,20 @@ fn multAtv(first: usize, last: usize, dst: []vec4, src: []const vec4) void {
     return multAvGeneric(true, first, dst[first..last], src);
 }
 
-fn multAtAv(tasks: []std.Thread, dest: []vec4, src: []const vec4, temp: []vec4) !void {
+fn zeroPad(v: []vec4, n: usize) void {
+    // Padded lanes (past n) must stay zero: they are ignored by aggregation
+    // but would otherwise pollute the next matvec as source columns.
+    // Called only on the main thread, after the parallel step joined.
+    const scalars = std.mem.bytesAsSlice(f64, std.mem.sliceAsBytes(v));
+    for (scalars[n..]) |*x| x.* = 0;
+}
+
+fn multAtAv(tasks: []std.Thread, dest: []vec4, src: []const vec4, temp: []vec4, n: usize) !void {
     std.debug.assert(dest.len == src.len and src.len == temp.len);
     try runInParallel(tasks, dest.len, multAv, .{ temp, src });
+    zeroPad(temp, n);
     try runInParallel(tasks, dest.len, multAtv, .{ dest, temp });
+    zeroPad(dest, n);
 }
 
 fn setOnes(first: usize, last: usize, dst: []vec4) void {
@@ -67,9 +77,14 @@ fn aggregateResults(first: usize, last: usize, u: []const vec4, v: []const vec4,
     _ = @atomicRmw(f64, total_vv, .Add, @reduce(.Add, vv), .seq_cst);
 }
 
-pub fn main() !void {
-    const n = try get_n();
-    const len = n / @typeInfo(vec4).Vector.len;
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    var out_buf: [4096]u8 = undefined;
+    var out = std.Io.File.stdout().writer(io, &out_buf);
+    const stdout = &out.interface;
+    const n = try get_n(init);
+    // Padded length: whole vec4 blocks; lanes past n stay zero (see zeroPad).
+    const len = (n + @typeInfo(vec4).vector.len - 1) / @typeInfo(vec4).vector.len;
 
     const allocator = std.heap.c_allocator;
     const u = try allocator.alloc(vec4, len);
@@ -84,11 +99,12 @@ pub fn main() !void {
     defer allocator.free(tasks);
 
     try runInParallel(tasks, u.len, setOnes, .{u});
+    zeroPad(u, n);
 
     var times: usize = 0;
     while (times < 10) : (times += 1) {
-        try multAtAv(tasks, v, u, temp);
-        try multAtAv(tasks, u, v, temp);
+        try multAtAv(tasks, v, u, temp, n);
+        try multAtAv(tasks, u, v, temp, n);
     }
 
     var vbv: f64 = 0;
@@ -96,13 +112,17 @@ pub fn main() !void {
     try runInParallel(tasks, u.len, aggregateResults, .{ u, v, &vbv, &vv });
     const res = std.math.sqrt(vbv / vv);
 
-    const stdout = std.io.getStdOut().writer();
     try stdout.print("{d:.9}\n", .{res});
+    try out.interface.flush();
 }
 
-fn get_n() !usize {
-    var arg_it = std.process.args();
+fn get_n(init: std.process.Init) !usize {
+    var arg_it = std.process.Args.Iterator.init(init.minimal.args);
     _ = arg_it.skip();
-    const arg = arg_it.next() orelse return 100;
-    return try std.fmt.parseInt(usize, arg, 10);
+    const arg = arg_it.next();
+    if (arg) |a| {
+        return try std.fmt.parseInt(usize, a, 10);
+    } else {
+        return 100;
+    }
 }
