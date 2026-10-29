@@ -19,6 +19,52 @@
     </aside>
     <article :class="contentClass">
       <div class="px-5 max-w-prose">
+        <div class="mt-8">
+          <h2 class="text-2xl font-bold">Fastest overall</h2>
+          <p class="text-sm italic leading-6 mt-2">
+            Average slowness vs the fastest language, single-thread results
+            only. 1.00× means fastest in every counted cell; timeouts are
+            excluded, and a cell only counts when at least two languages have
+            a result. Languages cover different problems, so compare the
+            "cells" column too — a score from few cells is less comparable
+            than one from many.
+          </p>
+          <table class="table-auto w-full text-base leading-loose mt-3">
+            <tr class="border-b-2 border-dotted">
+              <th class="text-left">Rank</th>
+              <th class="text-left">Language</th>
+              <th class="text-right">Avg × vs fastest</th>
+              <th class="text-right">Wins</th>
+              <th class="text-right">Cells</th>
+            </tr>
+            <tbody>
+              <tr
+                v-for="(row, idx) in leaderboardRows"
+                :key="row.lang"
+                class="border-b-2 border-dotted"
+              >
+                <td>{{ idx + 1 }}</td>
+                <td>
+                  <a
+                    :href="u('/' + row.lang)"
+                    class="underline text-blue-500"
+                    >{{ row.langDisplay }}</a
+                  >
+                </td>
+                <td class="text-right font-bold">
+                  {{ row.geomean.toFixed(2) }}×
+                </td>
+                <td class="text-right">{{ row.wins }}</td>
+                <td class="text-right">{{ row.cells }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-sm italic leading-6 mt-2">
+            This is a summary, not a verdict: click a language for the
+            per-problem tables, where the fastest implementation for each
+            input is shown with its × vs fastest.
+          </p>
+        </div>
         <div class="text-lg tracking-widest leading-8">
           <p class="pt-5">
             This site provides side by side comparison of five system
@@ -76,52 +122,6 @@
               >.
             </li>
           </ul>
-        </div>
-        <div class="mt-8">
-          <h2 class="text-2xl font-bold">Fastest overall</h2>
-          <p class="text-sm italic leading-6 mt-2">
-            Average slowness vs the fastest language, single-thread results
-            only. 1.00× means fastest in every counted cell; timeouts are
-            excluded, and a cell only counts when at least two languages have
-            a result. Languages cover different problems, so compare the
-            "cells" column too — a score from few cells is less comparable
-            than one from many.
-          </p>
-          <table class="table-auto w-full text-base leading-loose mt-3">
-            <tr class="border-b-2 border-dotted">
-              <th class="text-left">Rank</th>
-              <th class="text-left">Language</th>
-              <th class="text-right">Avg × vs fastest</th>
-              <th class="text-right">Wins</th>
-              <th class="text-right">Cells</th>
-            </tr>
-            <tbody>
-              <tr
-                v-for="(row, idx) in leaderboardRows"
-                :key="row.lang"
-                class="border-b-2 border-dotted"
-              >
-                <td>{{ idx + 1 }}</td>
-                <td>
-                  <a
-                    :href="u('/' + row.lang)"
-                    class="underline text-blue-500"
-                    >{{ row.langDisplay }}</a
-                  >
-                </td>
-                <td class="text-right font-bold">
-                  {{ row.geomean.toFixed(2) }}×
-                </td>
-                <td class="text-right">{{ row.wins }}</td>
-                <td class="text-right">{{ row.cells }}</td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="text-sm italic leading-6 mt-2">
-            This is a summary, not a verdict: click a language for the
-            per-problem tables, where the fastest implementation for each
-            input is shown with its × vs fastest.
-          </p>
         </div>
         <div class="italic text-base leading-8">
           <p class="pt-5">
