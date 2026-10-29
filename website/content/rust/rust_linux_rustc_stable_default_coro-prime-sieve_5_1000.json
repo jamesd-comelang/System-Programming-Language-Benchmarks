@@ -7,28 +7,28 @@
   "test": "coro-prime-sieve",
   "code": "5.rs",
   "input": "1000",
-  "timeMS": 55.0073,
-  "timeStdDevMS": 1.4660953345536487,
-  "memBytes": 3801088,
-  "cpuTimeMS": 166.6666,
+  "timeMS": 53.6561,
+  "timeStdDevMS": 2.0453162599787205,
+  "memBytes": 3854336,
+  "cpuTimeMS": 159.9999,
   "cpuTimeUserMS": 153.3333,
-  "cpuTimeKernelMS": 13.3333,
+  "cpuTimeKernelMS": 6.6666,
   "ioReadChars": 10092,
-  "ioWriteChars": 3692,
+  "ioWriteChars": 3046,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
-  "ioSyscalls": 284,
-  "githubRunId": "40958078396",
+  "ioSyscalls": 203,
+  "githubRunId": "40971972612",
   "buildLog": {
     "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-    "start": "2026-10-29T21:31:40.2991955+00:00",
-    "finished": "2026-10-29T21:31:45.6026818+00:00",
-    "durationMs": 5303
+    "start": "2026-10-29T23:19:06.9004656+00:00",
+    "finished": "2026-10-29T23:19:12.1140178+00:00",
+    "durationMs": 5213
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:40:37.3569915+00:00",
-    "finished": "2026-10-29T21:40:37.3714658+00:00",
-    "durationMs": 14
+    "start": "2026-10-29T23:30:27.8033086+00:00",
+    "finished": "2026-10-29T23:30:27.8161027+00:00",
+    "durationMs": 12
   }
 }

@@ -7,8 +7,8 @@
   "test": "lru",
   "code": "1.c",
   "input": "1000 3000000",
-  "timeMS": 88.7315,
-  "timeStdDevMS": 0.5124821980648038,
+  "timeMS": 84.966,
+  "timeStdDevMS": 1.0280343103872276,
   "memBytes": 1363968,
   "cpuTimeMS": 80.0,
   "cpuTimeUserMS": 80.0,
@@ -18,17 +18,17 @@
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 10,
-  "githubRunId": "40958078396",
+  "githubRunId": "40971972612",
   "buildLog": {
     "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-29T21:30:08.9941736+00:00",
-    "finished": "2026-10-29T21:30:09.0857383+00:00",
-    "durationMs": 91
+    "start": "2026-10-29T23:17:24.5896732+00:00",
+    "finished": "2026-10-29T23:17:24.6739912+00:00",
+    "durationMs": 84
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:40:20.911557+00:00",
-    "finished": "2026-10-29T21:40:20.9219544+00:00",
-    "durationMs": 10
+    "start": "2026-10-29T23:30:10.8831866+00:00",
+    "finished": "2026-10-29T23:30:10.8884896+00:00",
+    "durationMs": 5
   }
 }

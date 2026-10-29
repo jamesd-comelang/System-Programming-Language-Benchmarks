@@ -7,28 +7,28 @@
   "test": "fasta",
   "code": "5c-m.rs",
   "input": "2500000",
-  "timeMS": 94.4494,
-  "timeStdDevMS": 2.736054572433323,
-  "memBytes": 3670016,
-  "cpuTimeMS": 263.3333,
-  "cpuTimeUserMS": 260.0,
-  "cpuTimeKernelMS": 3.3333,
+  "timeMS": 95.3944,
+  "timeStdDevMS": 0.737868242529328,
+  "memBytes": 3665920,
+  "cpuTimeMS": 263.3332,
+  "cpuTimeUserMS": 256.6666,
+  "cpuTimeKernelMS": 6.6666,
   "ioReadChars": 11741,
-  "ioWriteChars": 25273056,
+  "ioWriteChars": 25210592,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
-  "ioSyscalls": 968,
-  "githubRunId": "40958078396",
+  "ioSyscalls": 967,
+  "githubRunId": "40971972612",
   "buildLog": {
     "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-    "start": "2026-10-29T21:32:30.2627723+00:00",
-    "finished": "2026-10-29T21:32:34.0106321+00:00",
-    "durationMs": 3747
+    "start": "2026-10-29T23:19:55.7867398+00:00",
+    "finished": "2026-10-29T23:19:59.390726+00:00",
+    "durationMs": 3603
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:40:38.2075177+00:00",
-    "finished": "2026-10-29T21:40:38.2131953+00:00",
-    "durationMs": 5
+    "start": "2026-10-29T23:30:28.6510095+00:00",
+    "finished": "2026-10-29T23:30:28.6548596+00:00",
+    "durationMs": 3
   }
 }

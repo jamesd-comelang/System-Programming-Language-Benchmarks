@@ -7,28 +7,28 @@
   "test": "fannkuch-redux",
   "code": "1.zig",
   "input": "10",
-  "timeMS": 239.2977,
-  "timeStdDevMS": 3.3730956498939153,
+  "timeMS": 239.3242,
+  "timeStdDevMS": 1.8491482696996777,
   "memBytes": 1921024,
-  "cpuTimeMS": 233.3333,
-  "cpuTimeUserMS": 233.3333,
+  "cpuTimeMS": 230.0,
+  "cpuTimeUserMS": 230.0,
   "cpuTimeKernelMS": 0.0,
   "ioReadChars": 4152,
   "ioWriteChars": 0,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 10,
-  "githubRunId": "40958078396",
+  "githubRunId": "40971972612",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-29T21:31:37.1892585+00:00",
-    "finished": "2026-10-29T21:31:51.2377288+00:00",
-    "durationMs": 14048
+    "start": "2026-10-29T23:18:31.1588894+00:00",
+    "finished": "2026-10-29T23:18:40.3014841+00:00",
+    "durationMs": 9142
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:40:39.1537714+00:00",
-    "finished": "2026-10-29T21:40:39.3931723+00:00",
+    "start": "2026-10-29T23:30:29.6184858+00:00",
+    "finished": "2026-10-29T23:30:29.8575289+00:00",
     "durationMs": 239
   }
 }

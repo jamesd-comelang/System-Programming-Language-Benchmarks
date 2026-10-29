@@ -7,28 +7,28 @@
   "test": "knucleotide",
   "code": "1.zig",
   "input": "250000_in",
-  "timeMS": 66.1654,
-  "timeStdDevMS": 3.349175888185036,
-  "memBytes": 18169856,
-  "cpuTimeMS": 53.3333,
-  "cpuTimeUserMS": 43.3333,
+  "timeMS": 75.374,
+  "timeStdDevMS": 6.068029048216552,
+  "memBytes": 18173952,
+  "cpuTimeMS": 60.0,
+  "cpuTimeUserMS": 50.0,
   "cpuTimeKernelMS": 10.0,
   "ioReadChars": 2545897,
-  "ioWriteChars": 0,
+  "ioWriteChars": 83,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 11,
-  "githubRunId": "40958078396",
+  "githubRunId": "40971972612",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-29T21:33:03.80566+00:00",
-    "finished": "2026-10-29T21:33:19.2797144+00:00",
-    "durationMs": 15474
+    "start": "2026-10-29T23:19:36.9745462+00:00",
+    "finished": "2026-10-29T23:19:46.7339197+00:00",
+    "durationMs": 9759
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:40:39.9313777+00:00",
-    "finished": "2026-10-29T21:40:40.0264065+00:00",
-    "durationMs": 95
+    "start": "2026-10-29T23:30:30.4277105+00:00",
+    "finished": "2026-10-29T23:30:30.5149281+00:00",
+    "durationMs": 87
   }
 }

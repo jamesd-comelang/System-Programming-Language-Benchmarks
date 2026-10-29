@@ -7,8 +7,8 @@
   "test": "binarytrees",
   "code": "1.c",
   "input": "18",
-  "timeMS": 160.0026,
-  "timeStdDevMS": 5.394380260048428,
+  "timeMS": 159.8915,
+  "timeStdDevMS": 3.257780227905712,
   "memBytes": 18444288,
   "cpuTimeMS": 143.3333,
   "cpuTimeUserMS": 143.3333,
@@ -18,17 +18,17 @@
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 10,
-  "githubRunId": "40958078396",
+  "githubRunId": "40971972612",
   "buildLog": {
     "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-29T21:30:07.8796037+00:00",
-    "finished": "2026-10-29T21:30:08.0676181+00:00",
-    "durationMs": 188
+    "start": "2026-10-29T23:17:23.5665692+00:00",
+    "finished": "2026-10-29T23:17:23.7417687+00:00",
+    "durationMs": 175
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:40:20.0298736+00:00",
-    "finished": "2026-10-29T21:40:20.0339976+00:00",
-    "durationMs": 4
+    "start": "2026-10-29T23:30:09.9791832+00:00",
+    "finished": "2026-10-29T23:30:09.984482+00:00",
+    "durationMs": 5
   }
 }

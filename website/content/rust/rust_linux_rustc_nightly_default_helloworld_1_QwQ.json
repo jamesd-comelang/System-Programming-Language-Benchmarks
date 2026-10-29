@@ -7,28 +7,28 @@
   "test": "helloworld",
   "code": "1.rs",
   "input": "QwQ",
-  "timeMS": 1.3217,
-  "timeStdDevMS": 0.11256827705885879,
-  "memBytes": 2048000,
+  "timeMS": 1.7294,
+  "timeStdDevMS": 0.5628753831888549,
+  "memBytes": 2064384,
   "cpuTimeMS": 0.0,
   "cpuTimeUserMS": 0.0,
   "cpuTimeKernelMS": 0.0,
-  "ioReadChars": 8627,
-  "ioWriteChars": 0,
+  "ioReadChars": 5176,
+  "ioWriteChars": 3,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
-  "ioSyscalls": 15,
-  "githubRunId": "40958078396",
+  "ioSyscalls": 9,
+  "githubRunId": "40971972612",
   "buildLog": {
     "compilerVersion": "rustc 1.101.0-nightly (92ffebece 2026-10-28)",
-    "start": "2026-10-29T21:29:42.6453788+00:00",
-    "finished": "2026-10-29T21:29:54.6763215+00:00",
-    "durationMs": 12030
+    "start": "2026-10-29T23:17:07.4291048+00:00",
+    "finished": "2026-10-29T23:17:16.2259542+00:00",
+    "durationMs": 8796
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:40:37.2647281+00:00",
-    "finished": "2026-10-29T21:40:37.2689236+00:00",
-    "durationMs": 4
+    "start": "2026-10-29T23:30:27.7085371+00:00",
+    "finished": "2026-10-29T23:30:27.7136904+00:00",
+    "durationMs": 5
   }
 }

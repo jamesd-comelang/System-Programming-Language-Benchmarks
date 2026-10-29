@@ -7,28 +7,28 @@
   "test": "nsieve",
   "code": "1.zig",
   "input": "10",
-  "timeMS": 64.7967,
-  "timeStdDevMS": 3.046831453056329,
+  "timeMS": 64.6379,
+  "timeStdDevMS": 5.832223972894043,
   "memBytes": 12156928,
-  "cpuTimeMS": 53.3333,
+  "cpuTimeMS": 50.0,
   "cpuTimeUserMS": 50.0,
-  "cpuTimeKernelMS": 3.3333,
+  "cpuTimeKernelMS": 0.0,
   "ioReadChars": 4152,
   "ioWriteChars": 0,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 10,
-  "githubRunId": "40958078396",
+  "githubRunId": "40971972612",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-29T21:35:01.521285+00:00",
-    "finished": "2026-10-29T21:35:15.7694206+00:00",
-    "durationMs": 14248
+    "start": "2026-10-29T23:20:51.3857435+00:00",
+    "finished": "2026-10-29T23:21:00.3394816+00:00",
+    "durationMs": 8953
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:40:40.2530028+00:00",
-    "finished": "2026-10-29T21:40:40.2594151+00:00",
+    "start": "2026-10-29T23:30:30.6391671+00:00",
+    "finished": "2026-10-29T23:30:30.6455049+00:00",
     "durationMs": 6
   }
 }

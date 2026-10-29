@@ -7,28 +7,28 @@
   "test": "merkletrees",
   "code": "2.go",
   "input": "15",
-  "timeMS": 378.6038,
-  "timeStdDevMS": 4.156724025399485,
-  "memBytes": 12099584,
-  "cpuTimeMS": 709.9999,
+  "timeMS": 373.9683,
+  "timeStdDevMS": 3.4698012162081904,
+  "memBytes": 12410880,
+  "cpuTimeMS": 706.6666,
   "cpuTimeUserMS": 686.6666,
-  "cpuTimeKernelMS": 23.3333,
+  "cpuTimeKernelMS": 20.0,
   "ioReadChars": 3729,
   "ioWriteChars": 316,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 14,
-  "githubRunId": "40958078396",
+  "githubRunId": "40971972612",
   "buildLog": {
     "compilerVersion": "go version go1.26.10 linux/amd64",
-    "start": "2026-10-29T21:31:38.0945354+00:00",
-    "finished": "2026-10-29T21:31:43.8910581+00:00",
-    "durationMs": 5796
+    "start": "2026-10-29T23:19:07.9569528+00:00",
+    "finished": "2026-10-29T23:19:13.4560132+00:00",
+    "durationMs": 5499
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:40:32.0960745+00:00",
-    "finished": "2026-10-29T21:40:32.1140381+00:00",
-    "durationMs": 17
+    "start": "2026-10-29T23:30:22.2769432+00:00",
+    "finished": "2026-10-29T23:30:22.2932133+00:00",
+    "durationMs": 16
   }
 }

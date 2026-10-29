@@ -7,28 +7,28 @@
   "test": "edigits",
   "code": "1.cpp",
   "input": "100000",
-  "timeMS": 659.6839,
-  "timeStdDevMS": 0.9594579424515716,
-  "memBytes": 3620864,
-  "cpuTimeMS": 650.0,
-  "cpuTimeUserMS": 650.0,
+  "timeMS": 667.3147,
+  "timeStdDevMS": 5.237033195744805,
+  "memBytes": 3485696,
+  "cpuTimeMS": 656.6666,
+  "cpuTimeUserMS": 656.6666,
   "cpuTimeKernelMS": 0.0,
   "ioReadChars": 6760,
   "ioWriteChars": 0,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 13,
-  "githubRunId": "40958078396",
+  "githubRunId": "40971972612",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-29T21:29:51.9466995+00:00",
-    "finished": "2026-10-29T21:29:53.3591915+00:00",
-    "durationMs": 1412
+    "start": "2026-10-29T23:16:54.172585+00:00",
+    "finished": "2026-10-29T23:16:54.9284678+00:00",
+    "durationMs": 755
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:40:27.8152089+00:00",
-    "finished": "2026-10-29T21:40:27.8198074+00:00",
+    "start": "2026-10-29T23:30:17.8788892+00:00",
+    "finished": "2026-10-29T23:30:17.8833768+00:00",
     "durationMs": 4
   }
 }

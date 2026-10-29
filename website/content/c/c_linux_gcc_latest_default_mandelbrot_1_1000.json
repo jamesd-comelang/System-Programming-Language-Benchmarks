@@ -7,9 +7,9 @@
   "test": "mandelbrot",
   "code": "1.c",
   "input": "1000",
-  "timeMS": 26.5696,
-  "timeStdDevMS": 1.1934529413987511,
-  "memBytes": 2154496,
+  "timeMS": 28.2862,
+  "timeStdDevMS": 0.47034318321838386,
+  "memBytes": 2121728,
   "cpuTimeMS": 20.0,
   "cpuTimeUserMS": 20.0,
   "cpuTimeKernelMS": 0.0,
@@ -18,17 +18,17 @@
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 11,
-  "githubRunId": "40958078396",
+  "githubRunId": "40971972612",
   "buildLog": {
     "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-29T21:30:09.0861953+00:00",
-    "finished": "2026-10-29T21:30:09.2416594+00:00",
-    "durationMs": 155
+    "start": "2026-10-29T23:17:24.6744585+00:00",
+    "finished": "2026-10-29T23:17:24.8186703+00:00",
+    "durationMs": 144
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:40:20.9222638+00:00",
-    "finished": "2026-10-29T21:40:20.9344594+00:00",
+    "start": "2026-10-29T23:30:10.8887305+00:00",
+    "finished": "2026-10-29T23:30:10.9009137+00:00",
     "durationMs": 12
   }
 }

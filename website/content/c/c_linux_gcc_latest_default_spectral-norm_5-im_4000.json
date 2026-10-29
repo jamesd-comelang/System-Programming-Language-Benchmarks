@@ -7,28 +7,28 @@
   "test": "spectral-norm",
   "code": "5-im.c",
   "input": "4000",
-  "timeMS": 299.7675,
-  "timeStdDevMS": 5.289379397434061,
-  "memBytes": 2277376,
-  "cpuTimeMS": 1149.9999,
-  "cpuTimeUserMS": 1149.9999,
+  "timeMS": 300.1733,
+  "timeStdDevMS": 2.993095809247181,
+  "memBytes": 2306048,
+  "cpuTimeMS": 1143.3333,
+  "cpuTimeUserMS": 1143.3333,
   "cpuTimeKernelMS": 0.0,
   "ioReadChars": 5872,
   "ioWriteChars": 0,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 12,
-  "githubRunId": "40958078396",
+  "githubRunId": "40971972612",
   "buildLog": {
     "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-29T21:30:10.8280922+00:00",
-    "finished": "2026-10-29T21:30:10.9508803+00:00",
-    "durationMs": 122
+    "start": "2026-10-29T23:17:26.4706774+00:00",
+    "finished": "2026-10-29T23:17:26.5818658+00:00",
+    "durationMs": 111
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:40:27.8035138+00:00",
-    "finished": "2026-10-29T21:40:27.8064993+00:00",
+    "start": "2026-10-29T23:30:17.86723+00:00",
+    "finished": "2026-10-29T23:30:17.8701873+00:00",
     "durationMs": 2
   }
 }

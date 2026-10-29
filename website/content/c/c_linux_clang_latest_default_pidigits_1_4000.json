@@ -7,9 +7,9 @@
   "test": "pidigits",
   "code": "1.c",
   "input": "4000",
-  "timeMS": 47.8566,
-  "timeStdDevMS": 0.17527893008953754,
-  "memBytes": 2170880,
+  "timeMS": 47.741,
+  "timeStdDevMS": 0.21167860071343525,
+  "memBytes": 2453504,
   "cpuTimeMS": 40.0,
   "cpuTimeUserMS": 40.0,
   "cpuTimeKernelMS": 0.0,
@@ -18,17 +18,17 @@
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 13,
-  "githubRunId": "40958078396",
+  "githubRunId": "40971972612",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-29T21:30:06.0952793+00:00",
-    "finished": "2026-10-29T21:30:06.3010878+00:00",
-    "durationMs": 205
+    "start": "2026-10-29T23:17:21.9102941+00:00",
+    "finished": "2026-10-29T23:17:22.0814943+00:00",
+    "durationMs": 171
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:40:13.1680919+00:00",
-    "finished": "2026-10-29T21:40:13.1725435+00:00",
+    "start": "2026-10-29T23:30:03.0537242+00:00",
+    "finished": "2026-10-29T23:30:03.0582255+00:00",
     "durationMs": 4
   }
 }

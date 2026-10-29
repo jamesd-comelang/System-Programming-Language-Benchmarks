@@ -7,9 +7,9 @@
   "test": "fannkuch-redux",
   "code": "5-m.rs",
   "input": "10",
-  "timeMS": 57.6915,
-  "timeStdDevMS": 0.17043287046028519,
-  "memBytes": 2322432,
+  "timeMS": 57.0707,
+  "timeStdDevMS": 0.38445910489066776,
+  "memBytes": 2326528,
   "cpuTimeMS": 180.0,
   "cpuTimeUserMS": 180.0,
   "cpuTimeKernelMS": 0.0,
@@ -18,17 +18,17 @@
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 21,
-  "githubRunId": "40958078396",
+  "githubRunId": "40971972612",
   "buildLog": {
     "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-    "start": "2026-10-29T21:32:15.8959216+00:00",
-    "finished": "2026-10-29T21:32:19.8190393+00:00",
-    "durationMs": 3923
+    "start": "2026-10-29T23:19:41.8120233+00:00",
+    "finished": "2026-10-29T23:19:45.6642874+00:00",
+    "durationMs": 3852
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:40:38.1427464+00:00",
-    "finished": "2026-10-29T21:40:38.1964429+00:00",
+    "start": "2026-10-29T23:30:28.5863727+00:00",
+    "finished": "2026-10-29T23:30:28.6402922+00:00",
     "durationMs": 53
   }
 }

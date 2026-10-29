@@ -7,28 +7,28 @@
   "test": "fannkuch-redux",
   "code": "1.c",
   "input": "10",
-  "timeMS": 159.0567,
-  "timeStdDevMS": 0.7936509707253624,
-  "memBytes": 2412544,
+  "timeMS": 158.3162,
+  "timeStdDevMS": 0.15053306392063176,
+  "memBytes": 2228224,
   "cpuTimeMS": 150.0,
   "cpuTimeUserMS": 150.0,
   "cpuTimeKernelMS": 0.0,
   "ioReadChars": 6704,
-  "ioWriteChars": 9,
+  "ioWriteChars": 0,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 13,
-  "githubRunId": "40958078396",
+  "githubRunId": "40971972612",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-29T21:30:03.0250306+00:00",
-    "finished": "2026-10-29T21:30:03.203609+00:00",
-    "durationMs": 178
+    "start": "2026-10-29T23:17:19.4346132+00:00",
+    "finished": "2026-10-29T23:17:19.5693832+00:00",
+    "durationMs": 134
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:40:12.2093469+00:00",
-    "finished": "2026-10-29T21:40:12.3736279+00:00",
-    "durationMs": 164
+    "start": "2026-10-29T23:30:02.1129087+00:00",
+    "finished": "2026-10-29T23:30:02.2740808+00:00",
+    "durationMs": 161
   }
 }

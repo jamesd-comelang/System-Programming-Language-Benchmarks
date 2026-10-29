@@ -7,28 +7,28 @@
   "test": "edigits",
   "code": "2.rs",
   "input": "250001",
-  "timeMS": 118.8118,
-  "timeStdDevMS": 4.821305329818202,
-  "memBytes": 4669440,
-  "cpuTimeMS": 106.6666,
-  "cpuTimeUserMS": 106.6666,
+  "timeMS": 122.1113,
+  "timeStdDevMS": 1.1202941458980034,
+  "memBytes": 4673536,
+  "cpuTimeMS": 110.0,
+  "cpuTimeUserMS": 110.0,
   "cpuTimeKernelMS": 0.0,
   "ioReadChars": 9984,
-  "ioWriteChars": 304774,
+  "ioWriteChars": 275705,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
-  "ioSyscalls": 54,
-  "githubRunId": "40958078396",
+  "ioSyscalls": 51,
+  "githubRunId": "40971972612",
   "buildLog": {
     "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-    "start": "2026-10-29T21:31:49.7308463+00:00",
-    "finished": "2026-10-29T21:31:53.6330927+00:00",
-    "durationMs": 3902
+    "start": "2026-10-29T23:19:16.006952+00:00",
+    "finished": "2026-10-29T23:19:19.8077046+00:00",
+    "durationMs": 3800
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:40:37.3765748+00:00",
-    "finished": "2026-10-29T21:40:37.3808841+00:00",
+    "start": "2026-10-29T23:30:27.821599+00:00",
+    "finished": "2026-10-29T23:30:27.8256873+00:00",
     "durationMs": 4
   }
 }

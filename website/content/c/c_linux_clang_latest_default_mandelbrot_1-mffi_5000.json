@@ -7,28 +7,28 @@
   "test": "mandelbrot",
   "code": "1-mffi.c",
   "input": "5000",
-  "timeMS": 228.4084,
-  "timeStdDevMS": 7.120649876474292,
-  "memBytes": 8339456,
-  "cpuTimeMS": 816.6666,
-  "cpuTimeUserMS": 796.6666,
-  "cpuTimeKernelMS": 20.0,
+  "timeMS": 233.7618,
+  "timeStdDevMS": 2.2668105728828047,
+  "memBytes": 8167424,
+  "cpuTimeMS": 826.6665,
+  "cpuTimeUserMS": 809.9999,
+  "cpuTimeKernelMS": 16.6666,
   "ioReadChars": 6704,
   "ioWriteChars": 0,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 13,
-  "githubRunId": "40958078396",
+  "githubRunId": "40971972612",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-29T21:29:57.9446911+00:00",
-    "finished": "2026-10-29T21:29:58.1880214+00:00",
-    "durationMs": 243
+    "start": "2026-10-29T23:17:14.8259228+00:00",
+    "finished": "2026-10-29T23:17:15.0147486+00:00",
+    "durationMs": 188
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:40:12.1328732+00:00",
-    "finished": "2026-10-29T21:40:12.1476452+00:00",
+    "start": "2026-10-29T23:30:02.0381895+00:00",
+    "finished": "2026-10-29T23:30:02.0522323+00:00",
     "durationMs": 14
   }
 }

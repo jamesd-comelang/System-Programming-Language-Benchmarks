@@ -7,28 +7,28 @@
   "test": "helloworld",
   "code": "1.c",
   "input": "QwQ",
-  "timeMS": 1.1468,
-  "timeStdDevMS": 0.20212599535933035,
-  "memBytes": 1531904,
+  "timeMS": 1.8283,
+  "timeStdDevMS": 0.9588561638744364,
+  "memBytes": 1597440,
   "cpuTimeMS": 0.0,
   "cpuTimeUserMS": 0.0,
   "cpuTimeKernelMS": 0.0,
-  "ioReadChars": 842,
-  "ioWriteChars": 0,
+  "ioReadChars": 4208,
+  "ioWriteChars": 6,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
-  "ioSyscalls": 2,
-  "githubRunId": "40958078396",
+  "ioSyscalls": 10,
+  "githubRunId": "40971972612",
   "buildLog": {
     "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-29T21:30:08.3398353+00:00",
-    "finished": "2026-10-29T21:30:08.3858655+00:00",
-    "durationMs": 46
+    "start": "2026-10-29T23:17:23.9814667+00:00",
+    "finished": "2026-10-29T23:17:24.0185642+00:00",
+    "durationMs": 37
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T21:40:20.2164724+00:00",
-    "finished": "2026-10-29T21:40:20.2206958+00:00",
+    "start": "2026-10-29T23:30:10.1717042+00:00",
+    "finished": "2026-10-29T23:30:10.1757139+00:00",
     "durationMs": 4
   }
 }
