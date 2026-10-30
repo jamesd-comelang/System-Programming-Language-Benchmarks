@@ -7,28 +7,28 @@
   "test": "fasta",
   "code": "3-m.go",
   "input": "2500000",
-  "timeMS": 128.7119,
-  "timeStdDevMS": 1.3889337685193284,
-  "memBytes": 5021696,
-  "cpuTimeMS": 340.0,
-  "cpuTimeUserMS": 340.0,
+  "timeMS": 129.4897,
+  "timeStdDevMS": 5.114360333740019,
+  "memBytes": 5111808,
+  "cpuTimeMS": 343.3333,
+  "cpuTimeUserMS": 343.3333,
   "cpuTimeKernelMS": 0.0,
   "ioReadChars": 3729,
-  "ioWriteChars": 25222032,
+  "ioWriteChars": 25326139,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
-  "ioSyscalls": 1573,
-  "githubRunId": "40971972612",
+  "ioSyscalls": 1575,
+  "githubRunId": "40976864123",
   "buildLog": {
     "compilerVersion": "go version go1.26.10 linux/amd64",
-    "start": "2026-10-29T23:17:35.3163503+00:00",
-    "finished": "2026-10-29T23:17:41.0114847+00:00",
-    "durationMs": 5695
+    "start": "2026-10-30T00:01:51.800987+00:00",
+    "finished": "2026-10-30T00:01:57.2001544+00:00",
+    "durationMs": 5399
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T23:30:21.7018495+00:00",
-    "finished": "2026-10-29T23:30:21.7058252+00:00",
+    "start": "2026-10-30T00:13:43.7223479+00:00",
+    "finished": "2026-10-30T00:13:43.7262457+00:00",
     "durationMs": 3
   }
 }

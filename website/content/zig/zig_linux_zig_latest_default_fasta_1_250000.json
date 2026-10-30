@@ -7,28 +7,28 @@
   "test": "fasta",
   "code": "1.zig",
   "input": "250000",
-  "timeMS": 18.3712,
-  "timeStdDevMS": 2.0366077686519164,
+  "timeMS": 15.6401,
+  "timeStdDevMS": 0.22727459896199043,
   "memBytes": 2048000,
   "cpuTimeMS": 10.0,
   "cpuTimeUserMS": 10.0,
   "cpuTimeKernelMS": 0.0,
   "ioReadChars": 4152,
-  "ioWriteChars": 2382534,
+  "ioWriteChars": 2399174,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
-  "ioSyscalls": 46,
-  "githubRunId": "40971972612",
+  "ioSyscalls": 47,
+  "githubRunId": "40976864123",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-29T23:19:08.1249321+00:00",
-    "finished": "2026-10-29T23:19:17.3102923+00:00",
-    "durationMs": 9185
+    "start": "2026-10-30T00:04:47.1078878+00:00",
+    "finished": "2026-10-30T00:05:01.4675497+00:00",
+    "durationMs": 14359
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T23:30:30.331391+00:00",
-    "finished": "2026-10-29T23:30:30.334481+00:00",
-    "durationMs": 3
+    "start": "2026-10-30T00:13:52.3936424+00:00",
+    "finished": "2026-10-30T00:13:52.3965323+00:00",
+    "durationMs": 2
   }
 }

@@ -7,9 +7,9 @@
   "test": "regex-redux",
   "code": "1.cpp",
   "input": "250000_in",
-  "timeMS": 1228.9181,
-  "timeStdDevMS": 5.699487009664367,
-  "memBytes": 21127168,
+  "timeMS": 1227.3099,
+  "timeStdDevMS": 18.055772243338907,
+  "memBytes": 21049344,
   "cpuTimeMS": 1213.3332,
   "cpuTimeUserMS": 1206.6666,
   "cpuTimeKernelMS": 6.6666,
@@ -18,17 +18,17 @@
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 325,
-  "githubRunId": "40971972612",
+  "githubRunId": "40976864123",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-29T23:17:01.6865908+00:00",
-    "finished": "2026-10-29T23:17:04.4045774+00:00",
-    "durationMs": 2717
+    "start": "2026-10-30T00:01:43.7027797+00:00",
+    "finished": "2026-10-30T00:01:45.97589+00:00",
+    "durationMs": 2273
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T23:30:18.2661864+00:00",
-    "finished": "2026-10-29T23:30:19.6120519+00:00",
-    "durationMs": 1345
+    "start": "2026-10-30T00:13:40.2077161+00:00",
+    "finished": "2026-10-30T00:13:41.5693353+00:00",
+    "durationMs": 1361
   }
 }

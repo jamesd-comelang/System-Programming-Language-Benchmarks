@@ -7,28 +7,28 @@
   "test": "fasta",
   "code": "1.cpp",
   "input": "2500000",
-  "timeMS": 304.7105,
-  "timeStdDevMS": 3.2342628510991727,
-  "memBytes": 27590656,
+  "timeMS": 304.8435,
+  "timeStdDevMS": 3.9782136849763705,
+  "memBytes": 27475968,
   "cpuTimeMS": 289.9999,
   "cpuTimeUserMS": 283.3333,
   "cpuTimeKernelMS": 6.6666,
   "ioReadChars": 6760,
-  "ioWriteChars": 0,
+  "ioWriteChars": 8471893,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 13,
-  "githubRunId": "40971972612",
+  "githubRunId": "40976864123",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-29T23:16:56.3982155+00:00",
-    "finished": "2026-10-29T23:16:56.7202833+00:00",
-    "durationMs": 322
+    "start": "2026-10-30T00:01:38.3840402+00:00",
+    "finished": "2026-10-30T00:01:38.6851051+00:00",
+    "durationMs": 301
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T23:30:17.928729+00:00",
-    "finished": "2026-10-29T23:30:17.9317036+00:00",
+    "start": "2026-10-30T00:13:39.8252197+00:00",
+    "finished": "2026-10-30T00:13:39.8280439+00:00",
     "durationMs": 2
   }
 }

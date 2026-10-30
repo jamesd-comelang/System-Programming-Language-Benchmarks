@@ -7,8 +7,8 @@
   "test": "nbody",
   "code": "2.zig",
   "input": "500000",
-  "timeMS": 30.4469,
-  "timeStdDevMS": 0.7128152939810785,
+  "timeMS": 29.7013,
+  "timeStdDevMS": 0.08780187925095731,
   "memBytes": 1884160,
   "cpuTimeMS": 20.0,
   "cpuTimeUserMS": 20.0,
@@ -18,17 +18,17 @@
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 10,
-  "githubRunId": "40971972612",
+  "githubRunId": "40976864123",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-29T23:20:32.9957216+00:00",
-    "finished": "2026-10-29T23:20:42.1433583+00:00",
-    "durationMs": 9147
+    "start": "2026-10-30T00:07:16.6881614+00:00",
+    "finished": "2026-10-30T00:07:31.3343088+00:00",
+    "durationMs": 14646
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T23:30:30.6298082+00:00",
-    "finished": "2026-10-29T23:30:30.6342896+00:00",
+    "start": "2026-10-30T00:13:52.8409724+00:00",
+    "finished": "2026-10-30T00:13:52.8456154+00:00",
     "durationMs": 4
   }
 }

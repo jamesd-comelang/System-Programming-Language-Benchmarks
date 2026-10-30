@@ -7,28 +7,28 @@
   "test": "edigits",
   "code": "1.zig",
   "input": "100000",
-  "timeMS": 340.072,
-  "timeStdDevMS": 4.394414869278165,
+  "timeMS": 337.173,
+  "timeStdDevMS": 4.106834104676425,
   "memBytes": 2633728,
   "cpuTimeMS": 330.0,
   "cpuTimeUserMS": 330.0,
   "cpuTimeKernelMS": 0.0,
   "ioReadChars": 4152,
-  "ioWriteChars": 0,
+  "ioWriteChars": 57444,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
-  "ioSyscalls": 10,
-  "githubRunId": "40971972612",
+  "ioSyscalls": 24,
+  "githubRunId": "40976864123",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-29T23:18:11.7999255+00:00",
-    "finished": "2026-10-29T23:18:21.697689+00:00",
-    "durationMs": 9897
+    "start": "2026-10-30T00:03:18.1518761+00:00",
+    "finished": "2026-10-30T00:03:33.7884655+00:00",
+    "durationMs": 15636
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T23:30:29.6097108+00:00",
-    "finished": "2026-10-29T23:30:29.6140624+00:00",
+    "start": "2026-10-30T00:13:51.6721584+00:00",
+    "finished": "2026-10-30T00:13:51.6763405+00:00",
     "durationMs": 4
   }
 }

@@ -7,28 +7,28 @@
   "test": "json-serde",
   "code": "2-ffi.go",
   "input": "canada 15",
-  "timeMS": 366.9951,
-  "timeStdDevMS": 12.958805505266831,
-  "memBytes": 135798784,
-  "cpuTimeMS": 470.0,
-  "cpuTimeUserMS": 290.0,
-  "cpuTimeKernelMS": 180.0,
+  "timeMS": 410.0145,
+  "timeStdDevMS": 27.305060488671355,
+  "memBytes": 166617088,
+  "cpuTimeMS": 559.9999,
+  "cpuTimeUserMS": 323.3333,
+  "cpuTimeKernelMS": 236.6666,
   "ioReadChars": 2254780,
   "ioWriteChars": 33,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 10,
-  "githubRunId": "40971972612",
+  "githubRunId": "40976864123",
   "buildLog": {
     "compilerVersion": "go version go1.26.10 linux/amd64",
-    "start": "2026-10-29T23:20:31.873308+00:00",
-    "finished": "2026-10-29T23:20:44.5144189+00:00",
-    "durationMs": 12641
+    "start": "2026-10-30T00:04:51.4557075+00:00",
+    "finished": "2026-10-30T00:05:05.1880465+00:00",
+    "durationMs": 13732
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T23:30:24.3803327+00:00",
-    "finished": "2026-10-29T23:30:24.5311864+00:00",
-    "durationMs": 150
+    "start": "2026-10-30T00:13:46.4049858+00:00",
+    "finished": "2026-10-30T00:13:46.5495495+00:00",
+    "durationMs": 144
   }
 }

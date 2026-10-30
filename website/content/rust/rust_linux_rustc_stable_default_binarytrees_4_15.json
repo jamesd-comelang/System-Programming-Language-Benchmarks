@@ -7,28 +7,28 @@
   "test": "binarytrees",
   "code": "4.rs",
   "input": "15",
-  "timeMS": 124.3141,
-  "timeStdDevMS": 4.3809822304288515,
-  "memBytes": 6135808,
-  "cpuTimeMS": 113.3333,
-  "cpuTimeUserMS": 113.3333,
+  "timeMS": 120.2392,
+  "timeStdDevMS": 2.8347356725686774,
+  "memBytes": 6139904,
+  "cpuTimeMS": 110.0,
+  "cpuTimeUserMS": 110.0,
   "cpuTimeKernelMS": 0.0,
   "ioReadChars": 8627,
-  "ioWriteChars": 275,
+  "ioWriteChars": 289,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 22,
-  "githubRunId": "40971972612",
+  "githubRunId": "40976864123",
   "buildLog": {
     "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-    "start": "2026-10-29T23:18:37.7754123+00:00",
-    "finished": "2026-10-29T23:18:41.1405734+00:00",
-    "durationMs": 3365
+    "start": "2026-10-30T00:03:23.6512283+00:00",
+    "finished": "2026-10-30T00:03:26.6573215+00:00",
+    "durationMs": 3006
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T23:30:27.7416867+00:00",
-    "finished": "2026-10-29T23:30:27.7479928+00:00",
+    "start": "2026-10-30T00:13:49.8047314+00:00",
+    "finished": "2026-10-30T00:13:49.8113376+00:00",
     "durationMs": 6
   }
 }

@@ -7,9 +7,9 @@
   "test": "binarytrees",
   "code": "1.cpp",
   "input": "15",
-  "timeMS": 30.7027,
-  "timeStdDevMS": 2.576373246122024,
-  "memBytes": 4071424,
+  "timeMS": 29.2349,
+  "timeStdDevMS": 0.11550629131494884,
+  "memBytes": 4186112,
   "cpuTimeMS": 20.0,
   "cpuTimeUserMS": 20.0,
   "cpuTimeKernelMS": 0.0,
@@ -18,17 +18,17 @@
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 13,
-  "githubRunId": "40971972612",
+  "githubRunId": "40976864123",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-29T23:16:53.6544372+00:00",
-    "finished": "2026-10-29T23:16:54.0248576+00:00",
-    "durationMs": 370
+    "start": "2026-10-30T00:01:35.2830231+00:00",
+    "finished": "2026-10-30T00:01:35.9791943+00:00",
+    "durationMs": 696
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T23:30:17.8738671+00:00",
-    "finished": "2026-10-29T23:30:17.8786718+00:00",
+    "start": "2026-10-30T00:13:39.7710867+00:00",
+    "finished": "2026-10-30T00:13:39.7758206+00:00",
     "durationMs": 4
   }
 }

@@ -7,8 +7,8 @@
   "test": "fasta",
   "code": "1.c",
   "input": "250000",
-  "timeMS": 37.7757,
-  "timeStdDevMS": 1.6562855621339374,
+  "timeMS": 37.7882,
+  "timeStdDevMS": 1.2121130076578421,
   "memBytes": 1531904,
   "cpuTimeMS": 30.0,
   "cpuTimeUserMS": 30.0,
@@ -18,17 +18,17 @@
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 620,
-  "githubRunId": "40971972612",
+  "githubRunId": "40976864123",
   "buildLog": {
     "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-29T23:17:23.9038413+00:00",
-    "finished": "2026-10-29T23:17:23.9811149+00:00",
-    "durationMs": 77
+    "start": "2026-10-30T00:02:11.7886268+00:00",
+    "finished": "2026-10-30T00:02:11.8358654+00:00",
+    "durationMs": 47
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T23:30:10.1668416+00:00",
-    "finished": "2026-10-29T23:30:10.1714264+00:00",
-    "durationMs": 4
+    "start": "2026-10-30T00:13:31.9891559+00:00",
+    "finished": "2026-10-30T00:13:31.9926539+00:00",
+    "durationMs": 3
   }
 }

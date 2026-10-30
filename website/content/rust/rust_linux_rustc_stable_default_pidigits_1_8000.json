@@ -9,26 +9,26 @@
   "input": "8000",
   "timeMS": 0.0,
   "timeStdDevMS": 0.0,
-  "memBytes": 3248128,
-  "cpuTimeMS": 4963.3332,
-  "cpuTimeUserMS": 3956.6666,
-  "cpuTimeKernelMS": 1006.6666,
+  "memBytes": 3215360,
+  "cpuTimeMS": 4973.3332,
+  "cpuTimeUserMS": 3946.6666,
+  "cpuTimeKernelMS": 1026.6666,
   "ioReadChars": 8612,
   "ioWriteChars": 8188,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 16,
-  "githubRunId": "40971972612",
+  "githubRunId": "40976864123",
   "buildLog": {
     "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-    "start": "2026-10-29T23:22:42.2687297+00:00",
-    "finished": "2026-10-29T23:22:46.058249+00:00",
-    "durationMs": 3789
+    "start": "2026-10-30T00:07:31.7929081+00:00",
+    "finished": "2026-10-30T00:07:35.5154709+00:00",
+    "durationMs": 3722
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T23:30:29.4935881+00:00",
-    "finished": "2026-10-29T23:30:29.4979304+00:00",
-    "durationMs": 4
+    "start": "2026-10-30T00:13:51.5582269+00:00",
+    "finished": "2026-10-30T00:13:51.562202+00:00",
+    "durationMs": 3
   }
 }

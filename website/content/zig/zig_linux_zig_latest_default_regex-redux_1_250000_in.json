@@ -7,28 +7,28 @@
   "test": "regex-redux",
   "code": "1.zig",
   "input": "250000_in",
-  "timeMS": 558.3653,
-  "timeStdDevMS": 39.616796958150644,
-  "memBytes": 20086784,
-  "cpuTimeMS": 546.6666,
-  "cpuTimeUserMS": 543.3333,
+  "timeMS": 532.3139,
+  "timeStdDevMS": 10.71552695966634,
+  "memBytes": 19968000,
+  "cpuTimeMS": 513.3333,
+  "cpuTimeUserMS": 510.0,
   "cpuTimeKernelMS": 3.3333,
   "ioReadChars": 2545897,
-  "ioWriteChars": 188,
+  "ioWriteChars": 94,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
-  "ioSyscalls": 12,
-  "githubRunId": "40971972612",
+  "ioSyscalls": 11,
+  "githubRunId": "40976864123",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-29T23:21:18.8730242+00:00",
-    "finished": "2026-10-29T23:21:28.1319011+00:00",
-    "durationMs": 9258
+    "start": "2026-10-30T00:08:30.1715389+00:00",
+    "finished": "2026-10-30T00:08:44.8857759+00:00",
+    "durationMs": 14714
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T23:30:30.6573567+00:00",
-    "finished": "2026-10-29T23:30:31.237648+00:00",
-    "durationMs": 580
+    "start": "2026-10-30T00:13:52.8692552+00:00",
+    "finished": "2026-10-30T00:13:53.4503101+00:00",
+    "durationMs": 581
   }
 }

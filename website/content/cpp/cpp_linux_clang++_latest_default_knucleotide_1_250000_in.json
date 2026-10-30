@@ -7,28 +7,28 @@
   "test": "knucleotide",
   "code": "1.cpp",
   "input": "250000_in",
-  "timeMS": 94.5751,
-  "timeStdDevMS": 0.5964646874152099,
-  "memBytes": 10862592,
-  "cpuTimeMS": 79.9999,
-  "cpuTimeUserMS": 76.6666,
-  "cpuTimeKernelMS": 3.3333,
+  "timeMS": 98.508,
+  "timeStdDevMS": 3.756230123852012,
+  "memBytes": 10936320,
+  "cpuTimeMS": 83.3333,
+  "cpuTimeUserMS": 83.3333,
+  "cpuTimeKernelMS": 0.0,
   "ioReadChars": 2548505,
   "ioWriteChars": 0,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 325,
-  "githubRunId": "40971972612",
+  "githubRunId": "40976864123",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-29T23:16:58.0451509+00:00",
-    "finished": "2026-10-29T23:16:58.7237933+00:00",
-    "durationMs": 678
+    "start": "2026-10-30T00:01:39.9216692+00:00",
+    "finished": "2026-10-30T00:01:40.5464692+00:00",
+    "durationMs": 624
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T23:30:18.0749857+00:00",
-    "finished": "2026-10-29T23:30:18.208026+00:00",
-    "durationMs": 133
+    "start": "2026-10-30T00:13:39.9710918+00:00",
+    "finished": "2026-10-30T00:13:40.1011485+00:00",
+    "durationMs": 130
   }
 }

@@ -1,0 +1,34 @@
+{
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "lang": "go",
+  "os": "linux",
+  "compiler": "go",
+  "compilerVersion": "latest",
+  "test": "mandelbrot",
+  "code": "3-m.go",
+  "input": "5000",
+  "timeMS": 1395.6423,
+  "timeStdDevMS": 1.817190780664812,
+  "memBytes": 19611648,
+  "cpuTimeMS": 5476.6666,
+  "cpuTimeUserMS": 5466.6666,
+  "cpuTimeKernelMS": 10.0,
+  "ioReadChars": 3729,
+  "ioWriteChars": 13,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 8,
+  "githubRunId": "40976864123",
+  "buildLog": {
+    "compilerVersion": "go version go1.26.10 linux/amd64",
+    "start": "2026-10-30T00:03:18.2255227+00:00",
+    "finished": "2026-10-30T00:03:23.9176175+00:00",
+    "durationMs": 5692
+  },
+  "testLog": {
+    "runtimeVersion": null,
+    "start": "2026-10-30T00:13:44.264707+00:00",
+    "finished": "2026-10-30T00:13:44.290039+00:00",
+    "durationMs": 25
+  }
+}

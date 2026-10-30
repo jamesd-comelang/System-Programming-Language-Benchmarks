@@ -7,9 +7,9 @@
   "test": "pidigits",
   "code": "1.c",
   "input": "8000",
-  "timeMS": 170.7801,
-  "timeStdDevMS": 1.1635677648221947,
-  "memBytes": 1798144,
+  "timeMS": 170.1419,
+  "timeStdDevMS": 1.1348890445031725,
+  "memBytes": 1380352,
   "cpuTimeMS": 160.0,
   "cpuTimeUserMS": 160.0,
   "cpuTimeKernelMS": 0.0,
@@ -18,17 +18,17 @@
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 10,
-  "githubRunId": "40971972612",
+  "githubRunId": "40976864123",
   "buildLog": {
     "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-10-29T23:17:25.7998002+00:00",
-    "finished": "2026-10-29T23:17:25.9005564+00:00",
-    "durationMs": 100
+    "start": "2026-10-30T00:02:13.2048511+00:00",
+    "finished": "2026-10-30T00:02:13.2673152+00:00",
+    "durationMs": 62
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T23:30:10.9299017+00:00",
-    "finished": "2026-10-29T23:30:10.9334346+00:00",
+    "start": "2026-10-30T00:13:32.7783878+00:00",
+    "finished": "2026-10-30T00:13:32.781915+00:00",
     "durationMs": 3
   }
 }

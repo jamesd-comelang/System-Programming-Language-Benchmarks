@@ -7,28 +7,28 @@
   "test": "fasta",
   "code": "5-m.rs",
   "input": "250000",
-  "timeMS": 19.8225,
-  "timeStdDevMS": 0.671402703301082,
+  "timeMS": 20.0865,
+  "timeStdDevMS": 1.2941831413418046,
   "memBytes": 3670016,
-  "cpuTimeMS": 43.3333,
-  "cpuTimeUserMS": 43.3333,
+  "cpuTimeMS": 33.3333,
+  "cpuTimeUserMS": 33.3333,
   "cpuTimeKernelMS": 0.0,
   "ioReadChars": 11736,
-  "ioWriteChars": 2416084,
+  "ioWriteChars": 2402448,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 116,
-  "githubRunId": "40971972612",
+  "githubRunId": "40976864123",
   "buildLog": {
     "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-    "start": "2026-10-29T23:19:52.1447008+00:00",
-    "finished": "2026-10-29T23:19:55.7858837+00:00",
-    "durationMs": 3641
+    "start": "2026-10-30T00:04:37.7225777+00:00",
+    "finished": "2026-10-30T00:04:41.4366456+00:00",
+    "durationMs": 3714
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T23:30:28.6467595+00:00",
-    "finished": "2026-10-29T23:30:28.6507826+00:00",
-    "durationMs": 4
+    "start": "2026-10-30T00:13:50.6949203+00:00",
+    "finished": "2026-10-30T00:13:50.6988677+00:00",
+    "durationMs": 3
   }
 }

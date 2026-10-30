@@ -7,28 +7,28 @@
   "test": "spectral-norm",
   "code": "5-im.c",
   "input": "4000",
-  "timeMS": 372.792,
-  "timeStdDevMS": 40.60567066609455,
-  "memBytes": 3694592,
-  "cpuTimeMS": 1389.9999,
-  "cpuTimeUserMS": 1386.6666,
+  "timeMS": 371.9047,
+  "timeStdDevMS": 8.890387889363081,
+  "memBytes": 3698688,
+  "cpuTimeMS": 1386.6665,
+  "cpuTimeUserMS": 1383.3332,
   "cpuTimeKernelMS": 3.3333,
   "ioReadChars": 6704,
   "ioWriteChars": 0,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 13,
-  "githubRunId": "40971972612",
+  "githubRunId": "40976864123",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-10-29T23:17:23.078487+00:00",
-    "finished": "2026-10-29T23:17:23.2512719+00:00",
-    "durationMs": 172
+    "start": "2026-10-30T00:02:11.2880127+00:00",
+    "finished": "2026-10-30T00:02:11.3981068+00:00",
+    "durationMs": 110
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-29T23:30:09.9639997+00:00",
-    "finished": "2026-10-29T23:30:09.9703543+00:00",
-    "durationMs": 6
+    "start": "2026-10-30T00:13:31.794766+00:00",
+    "finished": "2026-10-30T00:13:31.7990485+00:00",
+    "durationMs": 4
   }
 }
