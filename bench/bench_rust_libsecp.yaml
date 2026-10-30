@@ -1,0 +1,29 @@
+lang: rust
+problems:
+  - name: secp256k1
+    source:
+      - 0-ffi.rs
+source_rename_to: main.rs
+compiler_version_command: rustc -V
+compiler_version_regex:
+runtime_version_parameter:
+runtime_version_regex:
+environments:
+  - os: linux
+    compiler: rustc
+    version: stable
+    # docker: rust:1-slim
+    # docker_volumns:
+    #   - /tmp/rsl/target:/tmp/rsl/target
+    #   - /tmp/.cargo/registry:/usr/local/cargo/registry
+    env:
+      RUSTFLAGS: -Ctarget-cpu=broadwell
+      CC: clang
+      CXX: clang++
+    include: rust-libsecp
+    include_sub_dir: src
+    build: cargo build --release --target-dir /tmp/rsl/target
+    after_build:
+      - sudo mv /tmp/rsl/target/release/_app out
+    out_dir: out
+    run_cmd: _app

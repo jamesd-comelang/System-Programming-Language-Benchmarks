@@ -1,0 +1,40 @@
+lang: cpp
+problems:
+  - name: secp256k1
+    source:
+      - 0-ffi.cpp
+compiler_version_command:
+compiler_version_regex:
+runtime_version_parameter:
+runtime_version_regex:
+source_rename_to: app.cpp
+environments:
+  - os: linux
+    compiler: clang++
+    compiler_version_command: clang++ --version
+    version: latest
+    docker:
+    include: libsecp256k1
+    # The library sources are C and must not be compiled as C++ (the
+    # library errors out under __cplusplus), so precompile them with
+    # the matching C compiler first; the C++ link then uses the objects.
+    before_build:
+      - clang -pipe -O3 -fomit-frame-pointer -march=broadwell -Iinclude -DSECP256K1_WIDEMUL_INT128 -c src/secp256k1.c src/precomputed_ecmult.c src/precomputed_ecmult_gen.c
+    build: clang++ @app_libsecp_cpp.rsp
+    after_build:
+      - mv app out
+    out_dir: out
+    run_cmd: app
+  - os: linux
+    compiler: g++
+    compiler_version_command: g++ --version
+    version: latest
+    docker:
+    include: libsecp256k1
+    before_build:
+      - gcc -pipe -O3 -fomit-frame-pointer -march=broadwell -Iinclude -DSECP256K1_WIDEMUL_INT128 -c src/secp256k1.c src/precomputed_ecmult.c src/precomputed_ecmult_gen.c
+    build: g++ @app_libsecp_cpp.rsp
+    after_build:
+      - mv app out
+    out_dir: out
+    run_cmd: app

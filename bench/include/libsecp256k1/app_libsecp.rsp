@@ -1,0 +1,1 @@
+-pipe -O3 -fomit-frame-pointer -march=broadwell -Iinclude -DSECP256K1_WIDEMUL_INT128 -o app app.c src/secp256k1.c src/precomputed_ecmult.c src/precomputed_ecmult_gen.c -lm

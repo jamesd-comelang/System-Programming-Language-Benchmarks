@@ -1,0 +1,1 @@
+-pipe -O3 -fomit-frame-pointer -march=broadwell -std=c++20 -static-libstdc++ -Iinclude -o app app.cpp secp256k1.o precomputed_ecmult.o precomputed_ecmult_gen.o

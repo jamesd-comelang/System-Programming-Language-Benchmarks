@@ -1,0 +1,7 @@
+!.gitignore
+!COPYING
+!VENDORED.md
+!app_libsecp.rsp
+!app_libsecp_cpp.rsp
+!include/
+!src/

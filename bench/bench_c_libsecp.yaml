@@ -1,0 +1,46 @@
+lang: c
+problems:
+  - name: secp256k1
+    source:
+      - 0-ffi.c
+compiler_version_command:
+compiler_version_regex:
+runtime_version_parameter:
+runtime_version_regex:
+source_rename_to: app.c
+environments:
+  - os: linux
+    compiler: clang
+    compiler_version_command: clang --version
+    version: latest
+    docker:
+    include: libsecp256k1
+    build: clang @app_libsecp.rsp
+    after_build:
+      - mv app out
+    out_dir: out
+    run_cmd: app
+  - os: linux
+    compiler: gcc
+    compiler_version_command: gcc --version
+    version: latest
+    # No docker image: same GLIBC mismatch as bench_c.yaml — the
+    # gcc image's glibc is newer than the ubuntu-22.04 host's.
+    docker:
+    include: libsecp256k1
+    build: gcc @app_libsecp.rsp
+    after_build:
+      - mv app out
+    out_dir: out
+    run_cmd: app
+  - os: linux
+    compiler: zigcc
+    version: latest
+    compiler_version_command: zig version
+    docker:
+    include: libsecp256k1
+    build: zig cc @app_libsecp.rsp
+    after_build:
+      - mv app out
+    out_dir: out
+    run_cmd: app
