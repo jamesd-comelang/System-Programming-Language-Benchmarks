@@ -27,6 +27,7 @@ problems:
   - name: mandelbrot
     source:
       - 8.rs
+      - 10-m.rs
   - name: fasta
     source:
       - 1.rs

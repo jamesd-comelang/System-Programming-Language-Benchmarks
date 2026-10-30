@@ -29,6 +29,7 @@ problems:
     source:
       - 1.go
       - 2-m.go
+      - 3-m.go
   - name: fannkuch-redux
     source:
       - 3.go

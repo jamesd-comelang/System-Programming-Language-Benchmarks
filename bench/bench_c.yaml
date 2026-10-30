@@ -44,6 +44,7 @@ problems:
   - name: mandelbrot
     source:
       - 1.c
+      - 2-m.c
   - name: merkletrees
     source:
       - 1.c
