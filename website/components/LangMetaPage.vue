@@ -191,7 +191,6 @@
               <th class="px-2 py-1">IO</th>
               <th class="px-2 py-1">Conc</th>
               <th class="px-2 py-1">
-                <span class="mr-1">All</span>
                 <label class="radar-switch" aria-label="Toggle all languages">
                   <input
                     type="checkbox"
