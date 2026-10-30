@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 9V45 96-Core Processor (Model 2)",
   "lang": "rust",
   "os": "linux",
   "compiler": "rustc",
@@ -7,28 +7,28 @@
   "test": "fasta",
   "code": "5-m.rs",
   "input": "2500000",
-  "timeMS": 95.5758,
-  "timeStdDevMS": 1.3139194648074983,
-  "memBytes": 3670016,
-  "cpuTimeMS": 286.6666,
-  "cpuTimeUserMS": 283.3333,
-  "cpuTimeKernelMS": 3.3333,
-  "ioReadChars": 11736,
-  "ioWriteChars": 25242854,
+  "timeMS": 72.4862,
+  "timeStdDevMS": 0.2988008032117854,
+  "memBytes": 3637248,
+  "cpuTimeMS": 230.0,
+  "cpuTimeUserMS": 230.0,
+  "cpuTimeKernelMS": 0.0,
+  "ioReadChars": 11744,
+  "ioWriteChars": 25180390,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
-  "ioSyscalls": 968,
-  "githubRunId": "40976864123",
+  "ioSyscalls": 967,
+  "githubRunId": "40983243298",
   "buildLog": {
     "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-    "start": "2026-10-30T00:04:37.7225777+00:00",
-    "finished": "2026-10-30T00:04:41.4366456+00:00",
-    "durationMs": 3714
+    "start": "2026-10-30T01:04:11.9993649+00:00",
+    "finished": "2026-10-30T01:04:15.9693324+00:00",
+    "durationMs": 3969
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-30T00:13:50.6949203+00:00",
-    "finished": "2026-10-30T00:13:50.6988677+00:00",
-    "durationMs": 3
+    "start": "2026-10-30T01:15:36.6691019+00:00",
+    "finished": "2026-10-30T01:15:36.6706253+00:00",
+    "durationMs": 1
   }
 }

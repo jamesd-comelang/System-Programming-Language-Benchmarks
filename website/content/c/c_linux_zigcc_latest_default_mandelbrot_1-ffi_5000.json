@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 9V45 96-Core Processor (Model 2)",
   "lang": "c",
   "os": "linux",
   "compiler": "zigcc",
@@ -7,28 +7,28 @@
   "test": "mandelbrot",
   "code": "1-ffi.c",
   "input": "5000",
-  "timeMS": 367.1591,
-  "timeStdDevMS": 2.274976771310026,
-  "memBytes": 6397952,
-  "cpuTimeMS": 356.6666,
-  "cpuTimeUserMS": 356.6666,
+  "timeMS": 263.5758,
+  "timeStdDevMS": 2.5076253328597655,
+  "memBytes": 6389760,
+  "cpuTimeMS": 256.6666,
+  "cpuTimeUserMS": 256.6666,
   "cpuTimeKernelMS": 0.0,
   "ioReadChars": 4928,
   "ioWriteChars": 0,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 11,
-  "githubRunId": "40976864123",
+  "githubRunId": "40983243298",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-30T00:02:05.6294804+00:00",
-    "finished": "2026-10-30T00:02:07.9303696+00:00",
-    "durationMs": 2300
+    "start": "2026-10-30T01:01:49.9158858+00:00",
+    "finished": "2026-10-30T01:01:52.3139886+00:00",
+    "durationMs": 2398
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-30T00:13:23.3292602+00:00",
-    "finished": "2026-10-30T00:13:23.3403741+00:00",
-    "durationMs": 11
+    "start": "2026-10-30T01:15:21.3929089+00:00",
+    "finished": "2026-10-30T01:15:21.3990333+00:00",
+    "durationMs": 6
   }
 }
