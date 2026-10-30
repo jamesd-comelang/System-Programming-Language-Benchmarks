@@ -595,9 +595,9 @@ export default class LangMetaPage extends Vue {
   }
 
   get buildLogUrl() {
-    // const buildId = this.activeBenchmarks[0].appveyorBuildId
-    const runId = this.activeBenchmarks[0].githubRunId
-    return `https://github.com/jamesd-comelang/System-Programming-Language-Benchmarks/actions/runs/${runId}`
+    // The full log is the per-result JSON data, published under
+    // website/content (one file per language/env/problem/code/input).
+    return 'https://github.com/jamesd-comelang/System-Programming-Language-Benchmarks/tree/main/website/content'
   }
 
   get benchmarkDate() {
