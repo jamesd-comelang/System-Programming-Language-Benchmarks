@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 9V45 96-Core Processor (Model 2)",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
   "lang": "go",
   "os": "linux",
   "compiler": "go",
@@ -7,28 +7,28 @@
   "test": "json-serde",
   "code": "1.go",
   "input": "sample 5000",
-  "timeMS": 82.3246,
-  "timeStdDevMS": 3.2751202303630467,
-  "memBytes": 18341888,
-  "cpuTimeMS": 73.3333,
-  "cpuTimeUserMS": 73.3333,
-  "cpuTimeKernelMS": 0.0,
-  "ioReadChars": 6157,
+  "timeMS": 163.5303,
+  "timeStdDevMS": 1.6660401625811012,
+  "memBytes": 18354176,
+  "cpuTimeMS": 166.6666,
+  "cpuTimeUserMS": 150.0,
+  "cpuTimeKernelMS": 16.6666,
+  "ioReadChars": 6148,
   "ioWriteChars": 33,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 10,
-  "githubRunId": "40983243298",
+  "githubRunId": "40991992466",
   "buildLog": {
     "compilerVersion": "go version go1.26.10 linux/amd64",
-    "start": "2026-10-30T01:03:11.2251308+00:00",
-    "finished": "2026-10-30T01:03:17.8311105+00:00",
-    "durationMs": 6605
+    "start": "2026-10-30T02:31:57.4405906+00:00",
+    "finished": "2026-10-30T02:32:03.9575216+00:00",
+    "durationMs": 6516
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-30T01:15:32.8871709+00:00",
-    "finished": "2026-10-30T01:15:32.9951065+00:00",
-    "durationMs": 107
+    "start": "2026-10-30T02:44:30.1854913+00:00",
+    "finished": "2026-10-30T02:44:30.4072299+00:00",
+    "durationMs": 221
   }
 }

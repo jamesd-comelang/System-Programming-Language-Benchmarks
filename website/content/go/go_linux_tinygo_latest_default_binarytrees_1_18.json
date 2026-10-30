@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 9V45 96-Core Processor (Model 2)",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
   "lang": "go",
   "os": "linux",
   "compiler": "tinygo",
@@ -7,28 +7,28 @@
   "test": "binarytrees",
   "code": "1.go",
   "input": "18",
-  "timeMS": 1730.957,
-  "timeStdDevMS": 27.466114146162067,
-  "memBytes": 54530048,
-  "cpuTimeMS": 1716.6666,
-  "cpuTimeUserMS": 1713.3333,
-  "cpuTimeKernelMS": 3.3333,
+  "timeMS": 1909.0941,
+  "timeStdDevMS": 4.807023407820314,
+  "memBytes": 54538240,
+  "cpuTimeMS": 1896.6666,
+  "cpuTimeUserMS": 1873.3333,
+  "cpuTimeKernelMS": 23.3333,
   "ioReadChars": 704,
   "ioWriteChars": 357,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 11,
-  "githubRunId": "40983243298",
+  "githubRunId": "40991992466",
   "buildLog": {
     "compilerVersion": "tinygo version 0.44.0 linux/amd64 (using go version go1.27.3 and LLVM version 22.1.4)",
-    "start": "2026-10-30T01:05:36.9477571+00:00",
-    "finished": "2026-10-30T01:06:19.8758796+00:00",
-    "durationMs": 42928
+    "start": "2026-10-30T02:34:24.207011+00:00",
+    "finished": "2026-10-30T02:35:07.24422+00:00",
+    "durationMs": 43037
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-30T01:15:34.3847696+00:00",
-    "finished": "2026-10-30T01:15:34.389768+00:00",
-    "durationMs": 4
+    "start": "2026-10-30T02:44:32.9710642+00:00",
+    "finished": "2026-10-30T02:44:32.9781098+00:00",
+    "durationMs": 7
   }
 }
