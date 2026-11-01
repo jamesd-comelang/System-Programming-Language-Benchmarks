@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "cpuInfo": "[x86_64][4 cores] Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz (Model 106)",
   "lang": "zig",
   "os": "linux",
   "compiler": "zig",
@@ -7,28 +7,28 @@
   "test": "fannkuch-redux",
   "code": "4.zig",
   "input": "11",
-  "timeMS": 1903.4303,
-  "timeStdDevMS": 17.828316215504017,
-  "memBytes": 1921024,
-  "cpuTimeMS": 1893.3333,
-  "cpuTimeUserMS": 1893.3333,
+  "timeMS": 2027.7434,
+  "timeStdDevMS": 10.05732892289666,
+  "memBytes": 1912832,
+  "cpuTimeMS": 2019.9999,
+  "cpuTimeUserMS": 2019.9999,
   "cpuTimeKernelMS": 0.0,
   "ioReadChars": 4152,
   "ioWriteChars": 0,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 10,
-  "githubRunId": "40991992466",
+  "githubRunId": "41267638556",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-30T02:32:28.2996662+00:00",
-    "finished": "2026-10-30T02:32:38.0553945+00:00",
-    "durationMs": 9755
+    "start": "2026-11-01T03:08:15.1650645+00:00",
+    "finished": "2026-11-01T03:08:30.7922116+00:00",
+    "durationMs": 15627
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-30T02:44:38.7260568+00:00",
-    "finished": "2026-10-30T02:44:38.8848095+00:00",
-    "durationMs": 158
+    "start": "2026-11-01T03:16:36.582324+00:00",
+    "finished": "2026-11-01T03:16:36.7466851+00:00",
+    "durationMs": 164
   }
 }

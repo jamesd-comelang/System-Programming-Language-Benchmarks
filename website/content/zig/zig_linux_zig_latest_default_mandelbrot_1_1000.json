@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "cpuInfo": "[x86_64][4 cores] Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz (Model 106)",
   "lang": "zig",
   "os": "linux",
   "compiler": "zig",
@@ -7,9 +7,9 @@
   "test": "mandelbrot",
   "code": "1.zig",
   "input": "1000",
-  "timeMS": 12.8098,
-  "timeStdDevMS": 0.10407143380069908,
-  "memBytes": 2064384,
+  "timeMS": 15.0805,
+  "timeStdDevMS": 0.25251318777442056,
+  "memBytes": 2056192,
   "cpuTimeMS": 10.0,
   "cpuTimeUserMS": 10.0,
   "cpuTimeKernelMS": 0.0,
@@ -18,17 +18,17 @@
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 10,
-  "githubRunId": "40991992466",
+  "githubRunId": "41267638556",
   "buildLog": {
     "compilerVersion": "0.17.0",
-    "start": "2026-10-30T02:33:40.5584488+00:00",
-    "finished": "2026-10-30T02:33:50.4505245+00:00",
-    "durationMs": 9892
+    "start": "2026-11-01T03:10:10.7406409+00:00",
+    "finished": "2026-11-01T03:10:26.6514093+00:00",
+    "durationMs": 15910
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-30T02:44:39.3655422+00:00",
-    "finished": "2026-10-30T02:44:39.3748328+00:00",
-    "durationMs": 9
+    "start": "2026-11-01T03:16:37.0052326+00:00",
+    "finished": "2026-11-01T03:16:37.0132303+00:00",
+    "durationMs": 7
   }
 }

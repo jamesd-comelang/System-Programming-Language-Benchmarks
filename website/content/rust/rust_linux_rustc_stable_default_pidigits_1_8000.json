@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "cpuInfo": "[x86_64][4 cores] Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz (Model 106)",
   "lang": "rust",
   "os": "linux",
   "compiler": "rustc",
@@ -9,26 +9,26 @@
   "input": "8000",
   "timeMS": 0.0,
   "timeStdDevMS": 0.0,
-  "memBytes": 3264512,
-  "cpuTimeMS": 4970.0,
-  "cpuTimeUserMS": 3960.0,
-  "cpuTimeKernelMS": 1010.0,
+  "memBytes": 3231744,
+  "cpuTimeMS": 4963.3333,
+  "cpuTimeUserMS": 4113.3333,
+  "cpuTimeKernelMS": 850.0,
   "ioReadChars": 8612,
   "ioWriteChars": 8188,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 16,
-  "githubRunId": "40991992466",
+  "githubRunId": "41267638556",
   "buildLog": {
     "compilerVersion": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-    "start": "2026-10-30T02:36:48.536097+00:00",
-    "finished": "2026-10-30T02:36:52.4867074+00:00",
-    "durationMs": 3950
+    "start": "2026-11-01T03:11:09.8565845+00:00",
+    "finished": "2026-11-01T03:11:13.7073459+00:00",
+    "durationMs": 3850
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-10-30T02:44:38.0439346+00:00",
-    "finished": "2026-10-30T02:44:38.0484258+00:00",
-    "durationMs": 4
+    "start": "2026-11-01T03:16:35.9834824+00:00",
+    "finished": "2026-11-01T03:16:35.9867149+00:00",
+    "durationMs": 3
   }
 }
