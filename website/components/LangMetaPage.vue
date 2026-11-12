@@ -136,8 +136,8 @@
         <p class="text-sm italic">
           Each axis runs 0–1, higher is better. CPU is fastest time,
           Memory is smallest peak memory<span v-if="radarHasMaterialIo"
-            >, IO is most bytes per read/write call</span
-          ><span v-if="radarHasConc"
+            >, IO is most bytes per read/write call</span><span
+            v-if="radarHasConc"
             >, Concurrency is parallel speedup over the language's own
             single-thread time</span
           >. Each score combines per-input ratios against the best
