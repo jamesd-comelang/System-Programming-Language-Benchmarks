@@ -8,6 +8,7 @@ problems:
   - name: binarytrees
     source:
       - 1.c
+      - 3-m.c
   - name: knucleotide
     source:
       - 1-m.c
@@ -26,15 +27,18 @@ problems:
   - name: nsieve
     source:
       - 1.c
+      - 2-m.c
   - name: edigits
     source:
       - 1.c
   - name: fannkuch-redux
     source:
       - 1.c
+      - 2-m.c
   - name: fasta
     source:
       - 1.c
+      - 2-m.c
   - name: json-serde
     source:
       - 1.c
@@ -48,13 +52,16 @@ problems:
   - name: merkletrees
     source:
       - 1.c
+      - 2-m.c
   - name: pidigits
     source:
       - 1.c
+      - 1-m.c
   - name: regex-redux
     source:
       - 1.c
       - 2.c
+      - 3-m.c
   - name: secp256k1
     source:
       - 1.c

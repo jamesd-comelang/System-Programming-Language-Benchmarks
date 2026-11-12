@@ -18,9 +18,11 @@ problems:
   - name: nsieve
     source:
       - 1.cpp
+      - 3-m.cpp
   - name: binarytrees
     source:
       - 1.cpp
+      - 2-m.cpp
   - name: edigits
     source:
       - 1.cpp
@@ -28,12 +30,14 @@ problems:
   - name: fasta
     source:
       - 1.cpp
+      - 2-m.cpp
   - name: json-serde
     source:
       - 1.cpp
   - name: knucleotide
     source:
       - 1.cpp
+      - 2-m.cpp
   - name: lru
     source:
       - 1.cpp
@@ -44,14 +48,17 @@ problems:
   - name: merkletrees
     source:
       - 1.cpp
+      - 2-m.cpp
   - name: pidigits
     source:
       - 1.cpp
       - 2.cpp
+      - 2-m.cpp
   - name: regex-redux
     source:
       - 1.cpp
       - 2.cpp
+      - 3-m.cpp
   - name: secp256k1
     source:
       - 1.cpp

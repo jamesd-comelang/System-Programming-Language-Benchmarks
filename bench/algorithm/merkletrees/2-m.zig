@@ -1,0 +1,171 @@
+const std = @import("std");
+const builtin = @import("builtin");
+const math = std.math;
+const Allocator = std.mem.Allocator;
+const MIN_DEPTH = 4;
+
+const global_allocator = std.heap.c_allocator;
+
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    var out_buf: [65536]u8 = undefined;
+    var out = std.Io.File.stdout().writer(io, &out_buf);
+    const stdout = &out.interface;
+    const n = try get_n(init);
+    const max_depth = @max(MIN_DEPTH + 2, n);
+    {
+        const stretch_depth = max_depth + 1;
+        const stretch_tree = Node.make(stretch_depth, global_allocator).?;
+        defer stretch_tree.deinit();
+        stretch_tree.cal_hash();
+        try stdout.print("stretch tree of depth {d}\t root hash: {d} check: {}\n", .{ stretch_depth, stretch_tree.get_hash(), stretch_tree.check() });
+    }
+    const long_lived_tree = Node.make(max_depth, global_allocator).?;
+    defer long_lived_tree.deinit();
+
+    const task_count = std.Thread.getCpuCount() catch |err| {
+        std.debug.print("merkletrees: cannot determine CPU count: {}\n", .{err});
+        std.process.exit(1);
+    };
+
+    var depth: usize = MIN_DEPTH;
+    while (depth <= max_depth) : (depth += 2) {
+        const iterations = @as(usize, 1) << @as(u6, @intCast(max_depth - depth + MIN_DEPTH));
+        const workers = @min(task_count, iterations);
+        const base = iterations / workers;
+        const rem = iterations % workers;
+        const states = try global_allocator.alloc(WorkerState, workers);
+        defer global_allocator.free(states);
+        const threads = try global_allocator.alloc(std.Thread, workers);
+        defer global_allocator.free(threads);
+        var w: usize = 0;
+        var spawned: usize = 0;
+        var spawn_failed = false;
+        while (w < workers) : (w += 1) {
+            // Every tree of a given depth is identical, so a worker
+            // only needs its count, not its starting index.
+            const count = base + @as(usize, if (w < rem) 1 else 0);
+            states[w] = .{ .depth = depth, .count = count, .sum = 0, .failed = false };
+            threads[w] = std.Thread.spawn(.{}, loop_worker, .{&states[w]}) catch |err| {
+                std.debug.print("merkletrees: thread spawn failed at worker {d}: {}\n", .{ w, err });
+                spawn_failed = true;
+                break;
+            };
+            spawned += 1;
+        }
+        for (threads[0..spawned]) |t| t.join();
+        if (spawn_failed) {
+            std.process.exit(1);
+        }
+        var sum: i64 = 0;
+        for (states) |st| {
+            if (st.failed) {
+                std.debug.print("merkletrees: worker ran out of memory\n", .{});
+                std.process.exit(1);
+            }
+            sum += st.sum;
+        }
+        try stdout.print("{d}\t trees of depth {d}\t root hash sum: {d}\n", .{ iterations, depth, sum });
+    }
+    long_lived_tree.cal_hash();
+    try stdout.print("long lived tree of depth {d}\t root hash: {d} check: {}\n", .{ max_depth, long_lived_tree.get_hash(), long_lived_tree.check() });
+    try out.interface.flush();
+}
+
+const WorkerState = struct {
+    depth: usize,
+    count: usize,
+    sum: i64,
+    failed: bool,
+};
+
+fn loop_worker(state: *WorkerState) void {
+    var sum: i64 = 0;
+    var i: usize = 0;
+    while (i < state.count) : (i += 1) {
+        const tree = Node.make(state.depth, global_allocator) orelse {
+            state.failed = true;
+            return;
+        };
+        defer tree.deinit();
+        tree.cal_hash();
+        sum += tree.get_hash();
+    }
+    state.sum = sum;
+}
+
+fn get_n(init: std.process.Init) !usize {
+    var arg_it = std.process.Args.Iterator.init(init.minimal.args);
+    _ = arg_it.skip();
+    const arg = arg_it.next() orelse return 10;
+    return try std.fmt.parseInt(u32, arg, 10);
+}
+
+const Node = struct {
+    const Self = @This();
+
+    allocator: Allocator,
+
+    hash: ?i64 = null,
+    value: ?i64 = null,
+    left: ?*Self = null,
+    right: ?*Self = null,
+
+    pub fn init(allocator: Allocator) !*Self {
+        const node = try allocator.create(Self);
+        node.* = .{ .allocator = allocator };
+        return node;
+    }
+
+    pub fn deinit(self: *Self) void {
+        if (self.left != null) {
+            self.left.?.deinit();
+        }
+        if (self.right != null) {
+            self.right.?.deinit();
+        }
+        self.allocator.destroy(self);
+    }
+
+    pub fn make(depth: usize, allocator: Allocator) ?*Self {
+        var node = Self.init(allocator) catch return null;
+        if (depth > 0) {
+            const d = depth - 1;
+            node.left = Self.make(d, allocator);
+            node.right = Self.make(d, allocator);
+        } else {
+            node.value = 1;
+        }
+        return node;
+    }
+
+    pub fn check(self: *Self) bool {
+        if (self.hash == null) {
+            return false;
+        }
+        if (self.value != null) {
+            return true;
+        }
+        return self.left.?.check() and self.right.?.check();
+    }
+
+    pub fn cal_hash(self: *Self) void {
+        if (self.hash != null) {
+            return;
+        }
+        if (self.value != null) {
+            self.hash = self.value;
+        } else {
+            self.left.?.cal_hash();
+            self.right.?.cal_hash();
+            self.hash = self.left.?.get_hash() + self.right.?.get_hash();
+        }
+    }
+
+    pub fn get_hash(self: *Self) i64 {
+        if (self.hash == null) {
+            return 0;
+        }
+        return self.hash.?;
+    }
+};

@@ -13,6 +13,7 @@ problems:
       - 1.go
       - 2.go
       - 3.go
+      - 4-m.go
   - name: nbody
     source:
       - 1.go
@@ -33,6 +34,7 @@ problems:
   - name: fannkuch-redux
     source:
       - 3.go
+      - 4-m.go
   # - name: fasta
   #   source:
   #     - 3-m.go
@@ -43,6 +45,7 @@ problems:
     source:
       - 3.go
       - 4.go
+      - 5-m.go
   - name: coro-prime-sieve
     source:
       - 1.go
@@ -53,6 +56,7 @@ problems:
     source:
       - 1.go
       - 2.go
+      - 3-m.go
   - name: lru
     source:
       - 3.go

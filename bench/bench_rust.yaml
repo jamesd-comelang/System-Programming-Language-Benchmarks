@@ -9,9 +9,11 @@ problems:
       - 4.rs
       - 5.rs
       - 6.rs
+      - 7-m.rs
   - name: merkletrees
     source:
       - 1.rs
+      - 2-m.rs
   - name: nbody
     source:
       - 1.rs
@@ -83,6 +85,7 @@ problems:
     source:
       - 1.rs
       - 2.rs
+      - 3-m.rs
   - name: lru
     source:
       - 0-unsafe.rs
