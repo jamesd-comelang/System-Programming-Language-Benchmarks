@@ -130,11 +130,14 @@
         {{ problemDescriptionText }}
       </p>
       <div v-if="problem && radarRows.length > 0" class="mt-6">
-        <h2 class="text-2xl my-5 mb-2">Capability radar</h2>
+        <h2 class="text-2xl my-5 mb-2">
+          {{ radarShowChart ? 'Capability radar' : 'Capability scores' }}
+        </h2>
         <p class="text-sm italic">
           Each axis runs 0–1, higher is better. CPU is fastest time,
-          Memory is smallest peak memory, IO is most bytes per
-          read/write call<span v-if="radarHasConc"
+          Memory is smallest peak memory<span v-if="radarHasMaterialIo"
+            >, IO is most bytes per read/write call</span
+          ><span v-if="radarHasConc"
             >, Concurrency is parallel speedup over the language's own
             single-thread time</span
           >. Each score combines per-input ratios against the best
@@ -146,7 +149,12 @@
           >
         </p>
         <div class="flex flex-wrap items-start gap-6">
-        <svg viewBox="0 0 320 320" class="w-full" style="max-width: 420px">
+        <svg
+          v-if="radarShowChart"
+          viewBox="0 0 320 320"
+          class="w-full"
+          style="max-width: 420px"
+        >
           <circle
             v-for="r in [30, 60, 90, 120]"
             :key="r"
@@ -193,7 +201,7 @@
               <th class="text-left px-2 py-1">Language</th>
               <th class="px-2 py-1">CPU</th>
               <th class="px-2 py-1">Mem</th>
-              <th class="px-2 py-1">IO</th>
+              <th v-if="radarHasMaterialIo" class="px-2 py-1">IO</th>
               <th v-if="radarHasConc" class="px-2 py-1">Conc</th>
               <th class="px-2 py-1">
                 <label class="radar-switch" aria-label="Toggle all languages">
@@ -220,7 +228,9 @@
               </td>
               <td class="px-2 py-1">{{ radarScoreText(row.cpu) }}</td>
               <td class="px-2 py-1">{{ radarScoreText(row.mem) }}</td>
-              <td class="px-2 py-1">{{ radarScoreText(row.io) }}</td>
+              <td v-if="radarHasMaterialIo" class="px-2 py-1">
+                {{ radarScoreText(row.io) }}
+              </td>
               <td v-if="radarHasConc" class="px-2 py-1">
                 {{ radarScoreText(row.conc) }}
               </td>
@@ -241,6 +251,10 @@
           </tbody>
         </table>
         </div>
+        <p v-if="!radarShowChart" class="text-sm italic mt-2">
+          Only CPU and memory scores apply to this problem — too few
+          dimensions for a radar chart, so the scores are in the table.
+        </p>
         <p v-if="!radarHasIo" class="text-sm italic mt-2">
           IO data is not in the current results yet — it appears after
           the next bench run, which records per-process IO.
@@ -486,6 +500,7 @@ import { getFullCompilerVersion, mergeLangBenchResults } from '~/contentUtils'
 import {
   barWidth,
   hasIoData,
+  hasMaterialIoData,
   isVisible,
   largestInput,
   matrixForProblem,
@@ -829,57 +844,69 @@ export default class LangMetaPage extends Vue {
   }
 
   // Concurrency is shown only when at least one language has a
-  // parallel variant for this problem. Inherently sequential problems
-  // (no -m variant anywhere) render a 3-axis radar and no Conc
-  // column, instead of a column of dashes and a dead fourth axis.
-  // Data-driven, not a hardcoded problem list: the axis reappears
-  // automatically if a parallel variant is ever added.
+  // parallel variant for this problem; IO only when the problem's IO
+  // is material (see hasMaterialIoData). Both are data-driven, not a
+  // hardcoded problem list: an axis reappears automatically if the
+  // underlying data ever shows up.
   get radarHasConc() {
     return this.radarRows.some((row) => row.conc !== null)
   }
 
+  get radarHasMaterialIo() {
+    return hasMaterialIoData(this.problemBenchesAll)
+  }
+
+  // Axes clockwise from the top: CPU and Memory always, then IO and
+  // Concurrency when they qualify. Fewer than 3 axes cannot make a
+  // radar chart (the polygon collapses to a line), so the chart is
+  // hidden then and the score table stands alone.
+  get radarAxes(): string[] {
+    const axes = ['cpu', 'mem']
+    if (this.radarHasMaterialIo) axes.push('io')
+    if (this.radarHasConc) axes.push('conc')
+    return axes
+  }
+
+  get radarShowChart() {
+    return this.radarAxes.length >= 3
+  }
+
   get radarDirs() {
-    if (this.radarHasConc) {
-      // Axes clockwise from the top: CPU, Memory, IO, Concurrency.
-      return [
-        [0, -1],
-        [1, 0],
-        [0, 1],
-        [-1, 0],
-      ]
-    }
-    // 3-axis triangle: CPU top, Memory bottom-right, IO bottom-left.
-    return [
-      [0, -1],
-      [0.866, 0.5],
-      [-0.866, 0.5],
-    ]
+    const n = this.radarAxes.length
+    return this.radarAxes.map((_, i) => {
+      const a = -Math.PI / 2 + (i * 2 * Math.PI) / n
+      return [Math.cos(a), Math.sin(a)]
+    })
   }
 
   get radarLabels() {
     const dirs = this.radarDirs
-    const texts = this.radarHasConc
-      ? ['CPU', 'Memory', 'IO', 'Concurrency']
-      : ['CPU', 'Memory', 'IO']
-    const anchors = this.radarHasConc
-      ? ['middle', 'end', 'middle', 'start']
-      : ['middle', 'start', 'end']
-    return texts.map((text, i) => ({
-      text,
+    const texts: { [axis: string]: string } = {
+      cpu: 'CPU',
+      mem: 'Memory',
+      io: 'IO',
+      conc: 'Concurrency',
+    }
+    return this.radarAxes.map((axis, i) => ({
+      text: texts[axis],
       x: 160 + dirs[i][0] * 142,
-      y: 160 + dirs[i][1] * 142 + (i % 2 === 0 ? 0 : 5),
-      anchor: anchors[i],
+      y: 160 + dirs[i][1] * 142 + (Math.abs(dirs[i][1]) < 0.9 ? 5 : 0),
+      anchor:
+        dirs[i][0] < -0.3 ? 'start' : dirs[i][0] > 0.3 ? 'end' : 'middle',
     }))
   }
 
   radarPoints(row: any) {
-    const values = this.radarHasConc
-      ? [row.cpu, row.mem, row.io, row.conc]
-      : [row.cpu, row.mem, row.io]
-    return values
-      .map((v, i) => {
+    const values: { [axis: string]: number | null } = {
+      cpu: row.cpu,
+      mem: row.mem,
+      io: row.io,
+      conc: row.conc,
+    }
+    return this.radarAxes
+      .map((axis, i) => {
         const d = this.radarDirs[i]
-        const s = (v ?? 0) * 120
+        const s = (values[axis] ?? 0) * 120
         return `${160 + d[0] * s},${160 + d[1] * s}`
       })
       .join(' ')

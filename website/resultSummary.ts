@@ -274,6 +274,20 @@ export function hasIoData(benches: BenchResult[]): boolean {
   )
 }
 
+// IO is material only when the problem moves a non-trivial amount of
+// data. Below this, measured totals (~4-17 KB) are dominated by a ~4 KB
+// loader/runtime floor plus polling misses, and the bytes-per-call
+// score ranks languages on buffering trivia. Measured maxima per
+// problem: fasta/knucleotide/regex-redux ~25 MB, json-serde 2.2 MB,
+// edigits 368 KB, pidigits 17 KB, everything else <= 12 KB.
+export const IO_MATERIAL_CHARS = 100_000
+
+export function hasMaterialIoData(benches: BenchResult[]): boolean {
+  return benches.some(
+    (b) => (b.ioReadChars ?? 0) + (b.ioWriteChars ?? 0) >= IO_MATERIAL_CHARS
+  )
+}
+
 // `visibleBenches` is the problem's benches after the page's OS and
 // single/parallel toggles (so the radar tracks the matrix on screen);
 // `allBenches` is the same problem without the toggles, because the
