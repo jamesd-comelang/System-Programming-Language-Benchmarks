@@ -140,7 +140,8 @@
             v-if="radarHasPar"
             >, Parallel is fastest parallel version</span
           >. Each score combines per-input ratios against the best
-          language in that input, like the leaderboard.<span
+          language in that input, like the leaderboard, and each axis
+          is stretched so its best language scores 1.00.<span
             v-if="radarHasPar"
           >
             Parallel is — when a language ships no parallel variant

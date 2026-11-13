@@ -244,6 +244,9 @@ export function leaderboard(langs: LangBenchResults[]): LeaderboardRow[] {
 //   single-thread time is flagged parSlower (geometric mean of
 //   parallel/single-thread across inputs where both exist > 1);
 //   the flag marks the score, it does not change it.
+//   Scores are then rescaled per axis so the best language on it is
+//   1.00; without this, split winners across inputs leave every
+//   vertex short of the outer ring. Order within an axis is unchanged.
 // CPU/memory/IO count only inputs where at least two languages have
 // a value, like the leaderboard.
 export type RadarRow = {
@@ -360,7 +363,7 @@ export function radarForProblem(
   // A language with no counted input on any axis (e.g. it only has
   // parallel results and the parallel toggle is off) has no polygon
   // to draw; the matrix already shows it as missing.
-  return keys
+  const rows = keys
     .map((key) => {
       const cpuRatios: number[] = []
       const memRatios: number[] = []
@@ -423,6 +426,24 @@ export function radarForProblem(
         row.io !== null ||
         row.par !== null
     )
+
+  // Rescale each axis so the best language on it scores 1.00. Split
+  // winners across inputs would otherwise leave every vertex short
+  // of the outer ring; the order within an axis is unchanged.
+  for (const axis of ['cpu', 'mem', 'io', 'par'] as const) {
+    const best = Math.max.apply(
+      null,
+      rows.map((row) => row[axis] ?? -Infinity)
+    )
+    if (best > 0) {
+      rows.forEach((row) => {
+        const v = row[axis]
+        if (v !== null) row[axis] = v / best
+      })
+    }
+  }
+
+  return rows
 }
 
 const LANG_COLORS: { [lang: string]: string } = {
