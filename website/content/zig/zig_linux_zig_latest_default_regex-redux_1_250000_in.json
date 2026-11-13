@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "cpuInfo": "[x86_64][4 cores] INTEL(R) XEON(R) PLATINUM 8573C (Model 207)",
   "lang": "zig",
   "os": "linux",
   "compiler": "zig",
@@ -7,28 +7,28 @@
   "test": "regex-redux",
   "code": "1.zig",
   "input": "250000_in",
-  "timeMS": 531.8042,
-  "timeStdDevMS": 3.317866997032786,
-  "memBytes": 20086784,
-  "cpuTimeMS": 516.6666,
-  "cpuTimeUserMS": 516.6666,
-  "cpuTimeKernelMS": 0.0,
+  "timeMS": 554.5249,
+  "timeStdDevMS": 1.8072795172117793,
+  "memBytes": 19841024,
+  "cpuTimeMS": 539.9999,
+  "cpuTimeUserMS": 536.6666,
+  "cpuTimeKernelMS": 3.3333,
   "ioReadChars": 2545897,
-  "ioWriteChars": 0,
+  "ioWriteChars": 282,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
-  "ioSyscalls": 11,
-  "githubRunId": "43287706608",
+  "ioSyscalls": 12,
+  "githubRunId": "43483395745",
   "buildLog": {
     "compilerVersion": "0.17.1",
-    "start": "2026-11-13T01:15:02.9468486+00:00",
-    "finished": "2026-11-13T01:15:18.9664488+00:00",
-    "durationMs": 16019
+    "start": "2026-11-13T18:41:11.2357148+00:00",
+    "finished": "2026-11-13T18:41:27.4778272+00:00",
+    "durationMs": 16242
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-11-13T01:19:46.1431067+00:00",
-    "finished": "2026-11-13T01:19:46.7280941+00:00",
-    "durationMs": 584
+    "start": "2026-11-13T18:44:48.421386+00:00",
+    "finished": "2026-11-13T18:44:49.03148+00:00",
+    "durationMs": 610
   }
 }

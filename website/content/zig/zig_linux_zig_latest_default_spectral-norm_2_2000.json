@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "cpuInfo": "[x86_64][4 cores] INTEL(R) XEON(R) PLATINUM 8573C (Model 207)",
   "lang": "zig",
   "os": "linux",
   "compiler": "zig",
@@ -7,28 +7,28 @@
   "test": "spectral-norm",
   "code": "2.zig",
   "input": "2000",
-  "timeMS": 60.3167,
-  "timeStdDevMS": 0.7792126881239361,
-  "memBytes": 1916928,
-  "cpuTimeMS": 50.0,
-  "cpuTimeUserMS": 50.0,
+  "timeMS": 110.4595,
+  "timeStdDevMS": 0.5446533698907191,
+  "memBytes": 1908736,
+  "cpuTimeMS": 100.0,
+  "cpuTimeUserMS": 100.0,
   "cpuTimeKernelMS": 0.0,
   "ioReadChars": 4152,
   "ioWriteChars": 0,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 10,
-  "githubRunId": "43287706608",
+  "githubRunId": "43483395745",
   "buildLog": {
     "compilerVersion": "0.17.1",
-    "start": "2026-11-13T01:16:07.8145107+00:00",
-    "finished": "2026-11-13T01:16:24.2271032+00:00",
-    "durationMs": 16412
+    "start": "2026-11-13T18:42:17.9643383+00:00",
+    "finished": "2026-11-13T18:42:34.785931+00:00",
+    "durationMs": 16821
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-11-13T01:19:47.0449476+00:00",
-    "finished": "2026-11-13T01:19:47.047678+00:00",
+    "start": "2026-11-13T18:44:49.3284252+00:00",
+    "finished": "2026-11-13T18:44:49.3308329+00:00",
     "durationMs": 2
   }
 }

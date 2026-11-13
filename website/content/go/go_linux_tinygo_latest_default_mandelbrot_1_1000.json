@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "cpuInfo": "[x86_64][4 cores] INTEL(R) XEON(R) PLATINUM 8573C (Model 207)",
   "lang": "go",
   "os": "linux",
   "compiler": "tinygo",
@@ -7,28 +7,28 @@
   "test": "mandelbrot",
   "code": "1.go",
   "input": "1000",
-  "timeMS": 150.6098,
-  "timeStdDevMS": 7.75992734587981,
+  "timeMS": 178.9085,
+  "timeStdDevMS": 1.2599925647928953,
   "memBytes": 540672,
-  "cpuTimeMS": 143.3333,
-  "cpuTimeUserMS": 143.3333,
+  "cpuTimeMS": 170.0,
+  "cpuTimeUserMS": 170.0,
   "cpuTimeKernelMS": 0.0,
   "ioReadChars": 704,
   "ioWriteChars": 13,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 3,
-  "githubRunId": "43287706608",
+  "githubRunId": "43483395745",
   "buildLog": {
     "compilerVersion": "tinygo version 0.44.0 linux/amd64 (using go version go1.27.3 and LLVM version 22.1.4)",
-    "start": "2026-11-13T01:12:47.3261797+00:00",
-    "finished": "2026-11-13T01:13:08.5527955+00:00",
-    "durationMs": 21226
+    "start": "2026-11-13T18:38:19.0442566+00:00",
+    "finished": "2026-11-13T18:38:39.4735293+00:00",
+    "durationMs": 20429
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-11-13T01:19:39.8738322+00:00",
-    "finished": "2026-11-13T01:19:39.9219197+00:00",
-    "durationMs": 48
+    "start": "2026-11-13T18:44:41.4352157+00:00",
+    "finished": "2026-11-13T18:44:41.4919182+00:00",
+    "durationMs": 56
   }
 }

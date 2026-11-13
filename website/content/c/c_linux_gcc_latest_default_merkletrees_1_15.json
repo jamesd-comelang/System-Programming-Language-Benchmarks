@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "cpuInfo": "[x86_64][4 cores] INTEL(R) XEON(R) PLATINUM 8573C (Model 207)",
   "lang": "c",
   "os": "linux",
   "compiler": "gcc",
@@ -7,28 +7,28 @@
   "test": "merkletrees",
   "code": "1.c",
   "input": "15",
-  "timeMS": 34.9727,
-  "timeStdDevMS": 2.444009854726453,
-  "memBytes": 6901760,
-  "cpuTimeMS": 26.6666,
-  "cpuTimeUserMS": 26.6666,
+  "timeMS": 41.711,
+  "timeStdDevMS": 0.8414025493186934,
+  "memBytes": 6893568,
+  "cpuTimeMS": 30.0,
+  "cpuTimeUserMS": 30.0,
   "cpuTimeKernelMS": 0.0,
   "ioReadChars": 4208,
   "ioWriteChars": 0,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 10,
-  "githubRunId": "43287706608",
+  "githubRunId": "43483395745",
   "buildLog": {
     "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
-    "start": "2026-11-13T01:05:59.1463266+00:00",
-    "finished": "2026-11-13T01:05:59.209625+00:00",
-    "durationMs": 63
+    "start": "2026-11-13T18:32:38.0699596+00:00",
+    "finished": "2026-11-13T18:32:38.1686488+00:00",
+    "durationMs": 98
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-11-13T01:19:23.1955538+00:00",
-    "finished": "2026-11-13T01:19:23.2006654+00:00",
+    "start": "2026-11-13T18:44:27.3123876+00:00",
+    "finished": "2026-11-13T18:44:27.3174052+00:00",
     "durationMs": 5
   }
 }

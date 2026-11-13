@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "cpuInfo": "[x86_64][4 cores] INTEL(R) XEON(R) PLATINUM 8573C (Model 207)",
   "lang": "rust",
   "os": "linux",
   "compiler": "rustc",
@@ -7,28 +7,28 @@
   "test": "fasta",
   "code": "5-m.rs",
   "input": "250000",
-  "timeMS": 21.8521,
-  "timeStdDevMS": 0.7403457458061979,
-  "memBytes": 3674112,
+  "timeMS": 18.6541,
+  "timeStdDevMS": 2.610210875261484,
+  "memBytes": 3645440,
   "cpuTimeMS": 40.0,
   "cpuTimeUserMS": 40.0,
   "cpuTimeKernelMS": 0.0,
   "ioReadChars": 11735,
-  "ioWriteChars": 2444090,
+  "ioWriteChars": 2423269,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 117,
-  "githubRunId": "43287706608",
+  "githubRunId": "43483395745",
   "buildLog": {
     "compilerVersion": "rustc 1.100.0 (0ef1bc386 2026-11-09)",
-    "start": "2026-11-13T01:09:50.031109+00:00",
-    "finished": "2026-11-13T01:09:53.8204772+00:00",
-    "durationMs": 3789
+    "start": "2026-11-13T18:35:21.8777797+00:00",
+    "finished": "2026-11-13T18:35:24.9481771+00:00",
+    "durationMs": 3070
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-11-13T01:19:43.9324631+00:00",
-    "finished": "2026-11-13T01:19:43.9364+00:00",
+    "start": "2026-11-13T18:44:45.1979404+00:00",
+    "finished": "2026-11-13T18:44:45.2012316+00:00",
     "durationMs": 3
   }
 }
