@@ -1,0 +1,34 @@
+{
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "lang": "cpp",
+  "os": "linux",
+  "compiler": "g++",
+  "compilerVersion": "latest",
+  "test": "merkletrees",
+  "code": "2-m.cpp",
+  "input": "15",
+  "timeMS": 28.6287,
+  "timeStdDevMS": 1.0431769792321912,
+  "memBytes": 17895424,
+  "cpuTimeMS": 60.0,
+  "cpuTimeUserMS": 50.0,
+  "cpuTimeKernelMS": 10.0,
+  "ioReadChars": 5100,
+  "ioWriteChars": 0,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 12,
+  "githubRunId": "43287706608",
+  "buildLog": {
+    "compilerVersion": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "start": "2026-11-13T01:06:46.0430183+00:00",
+    "finished": "2026-11-13T01:06:46.9941377+00:00",
+    "durationMs": 951
+  },
+  "testLog": {
+    "runtimeVersion": null,
+    "start": "2026-11-13T01:19:34.7984214+00:00",
+    "finished": "2026-11-13T01:19:34.8043019+00:00",
+    "durationMs": 5
+  }
+}

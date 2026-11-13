@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz (Model 106)",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
   "lang": "go",
   "os": "linux",
   "compiler": "go",
@@ -7,28 +7,28 @@
   "test": "merkletrees",
   "code": "2.go",
   "input": "17",
-  "timeMS": 1769.5889,
-  "timeStdDevMS": 3.139699374143943,
-  "memBytes": 39411712,
-  "cpuTimeMS": 3573.3333,
-  "cpuTimeUserMS": 3523.3333,
+  "timeMS": 1709.7018,
+  "timeStdDevMS": 25.296429797107663,
+  "memBytes": 38113280,
+  "cpuTimeMS": 3440.0,
+  "cpuTimeUserMS": 3390.0,
   "cpuTimeKernelMS": 50.0,
-  "ioReadChars": 3732,
-  "ioWriteChars": 391,
+  "ioReadChars": 3728,
+  "ioWriteChars": 388,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
-  "ioSyscalls": 16,
-  "githubRunId": "41267638556",
+  "ioSyscalls": 15,
+  "githubRunId": "43287706608",
   "buildLog": {
-    "compilerVersion": "go version go1.26.10 linux/amd64",
-    "start": "2026-11-01T03:06:34.4002727+00:00",
-    "finished": "2026-11-01T03:06:38.9910625+00:00",
-    "durationMs": 4590
+    "compilerVersion": "go version go1.26.11 linux/amd64",
+    "start": "2026-11-13T01:07:54.9535194+00:00",
+    "finished": "2026-11-13T01:08:00.0352432+00:00",
+    "durationMs": 5081
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-11-01T03:16:29.5511976+00:00",
-    "finished": "2026-11-01T03:16:29.5653842+00:00",
-    "durationMs": 14
+    "start": "2026-11-13T01:19:37.1697443+00:00",
+    "finished": "2026-11-13T01:19:37.187449+00:00",
+    "durationMs": 17
   }
 }

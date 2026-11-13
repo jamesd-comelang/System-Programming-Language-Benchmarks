@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz (Model 106)",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
   "lang": "cpp",
   "os": "linux",
   "compiler": "clang++",
@@ -7,28 +7,28 @@
   "test": "nbody",
   "code": "1.cpp",
   "input": "500000",
-  "timeMS": 29.1815,
-  "timeStdDevMS": 4.286428177787811,
-  "memBytes": 2420736,
-  "cpuTimeMS": 23.3333,
-  "cpuTimeUserMS": 23.3333,
+  "timeMS": 34.8655,
+  "timeStdDevMS": 0.7766216410410751,
+  "memBytes": 2461696,
+  "cpuTimeMS": 30.0,
+  "cpuTimeUserMS": 30.0,
   "cpuTimeKernelMS": 0.0,
   "ioReadChars": 6704,
   "ioWriteChars": 0,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 13,
-  "githubRunId": "41267638556",
+  "githubRunId": "43287706608",
   "buildLog": {
     "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
-    "start": "2026-11-01T03:04:48.3309662+00:00",
-    "finished": "2026-11-01T03:04:48.6560338+00:00",
-    "durationMs": 325
+    "start": "2026-11-13T01:06:17.1345046+00:00",
+    "finished": "2026-11-13T01:06:17.5816104+00:00",
+    "durationMs": 447
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-11-01T03:16:25.8486579+00:00",
-    "finished": "2026-11-01T03:16:25.8521886+00:00",
-    "durationMs": 3
+    "start": "2026-11-13T01:19:32.6194393+00:00",
+    "finished": "2026-11-13T01:19:32.6242174+00:00",
+    "durationMs": 4
   }
 }

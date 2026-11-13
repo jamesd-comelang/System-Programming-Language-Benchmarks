@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz (Model 106)",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
   "lang": "c",
   "os": "linux",
   "compiler": "zigcc",
@@ -7,9 +7,9 @@
   "test": "mandelbrot",
   "code": "1-mffi.c",
   "input": "1000",
-  "timeMS": 21.2284,
-  "timeStdDevMS": 1.7644910918826797,
-  "memBytes": 3350528,
+  "timeMS": 18.4397,
+  "timeStdDevMS": 0.3087840885365257,
+  "memBytes": 3293184,
   "cpuTimeMS": 10.0,
   "cpuTimeUserMS": 10.0,
   "cpuTimeKernelMS": 0.0,
@@ -18,17 +18,17 @@
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 11,
-  "githubRunId": "41267638556",
+  "githubRunId": "43287706608",
   "buildLog": {
-    "compilerVersion": "0.17.0",
-    "start": "2026-11-01T03:04:35.4023303+00:00",
-    "finished": "2026-11-01T03:04:35.5738929+00:00",
-    "durationMs": 171
+    "compilerVersion": "0.17.1",
+    "start": "2026-11-13T01:05:52.6810087+00:00",
+    "finished": "2026-11-13T01:05:52.9273489+00:00",
+    "durationMs": 246
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-11-01T03:16:05.0057897+00:00",
-    "finished": "2026-11-01T03:16:05.0169475+00:00",
+    "start": "2026-11-13T01:19:12.0639274+00:00",
+    "finished": "2026-11-13T01:19:12.0752811+00:00",
     "durationMs": 11
   }
 }

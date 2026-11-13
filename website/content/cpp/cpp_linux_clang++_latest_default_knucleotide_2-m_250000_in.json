@@ -1,0 +1,34 @@
+{
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "lang": "cpp",
+  "os": "linux",
+  "compiler": "clang++",
+  "compilerVersion": "latest",
+  "test": "knucleotide",
+  "code": "2-m.cpp",
+  "input": "250000_in",
+  "timeMS": 214.4729,
+  "timeStdDevMS": 5.366188094914279,
+  "memBytes": 36102144,
+  "cpuTimeMS": 426.6665,
+  "cpuTimeUserMS": 393.3332,
+  "cpuTimeKernelMS": 33.3333,
+  "ioReadChars": 2548534,
+  "ioWriteChars": 0,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 333,
+  "githubRunId": "43287706608",
+  "buildLog": {
+    "compilerVersion": "Ubuntu clang version 14.0.0-1ubuntu1.1\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin",
+    "start": "2026-11-13T01:06:11.1061264+00:00",
+    "finished": "2026-11-13T01:06:12.6135661+00:00",
+    "durationMs": 1507
+  },
+  "testLog": {
+    "runtimeVersion": null,
+    "start": "2026-11-13T01:19:32.2913101+00:00",
+    "finished": "2026-11-13T01:19:32.5376977+00:00",
+    "durationMs": 246
+  }
+}

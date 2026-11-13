@@ -1,5 +1,5 @@
 {
-  "cpuInfo": "[x86_64][4 cores] Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz (Model 106)",
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
   "lang": "go",
   "os": "linux",
   "compiler": "go",
@@ -7,28 +7,28 @@
   "test": "fannkuch-redux",
   "code": "3.go",
   "input": "10",
-  "timeMS": 82.208,
-  "timeStdDevMS": 3.4595307138396594,
+  "timeMS": 110.6377,
+  "timeStdDevMS": 0.3618527647169963,
   "memBytes": 2576384,
-  "cpuTimeMS": 226.6666,
-  "cpuTimeUserMS": 226.6666,
+  "cpuTimeMS": 183.3333,
+  "cpuTimeUserMS": 183.3333,
   "cpuTimeKernelMS": 0.0,
-  "ioReadChars": 3729,
+  "ioReadChars": 3728,
   "ioWriteChars": 0,
   "ioReadBytes": 0,
   "ioWriteBytes": 0,
   "ioSyscalls": 7,
-  "githubRunId": "41267638556",
+  "githubRunId": "43287706608",
   "buildLog": {
-    "compilerVersion": "go version go1.26.10 linux/amd64",
-    "start": "2026-11-01T03:05:04.9332068+00:00",
-    "finished": "2026-11-01T03:05:09.7155518+00:00",
-    "durationMs": 4782
+    "compilerVersion": "go version go1.26.11 linux/amd64",
+    "start": "2026-11-13T01:06:12.4493372+00:00",
+    "finished": "2026-11-13T01:06:17.7270504+00:00",
+    "durationMs": 5277
   },
   "testLog": {
     "runtimeVersion": null,
-    "start": "2026-11-01T03:16:28.946574+00:00",
-    "finished": "2026-11-01T03:16:29.0237363+00:00",
-    "durationMs": 77
+    "start": "2026-11-13T01:19:36.4079507+00:00",
+    "finished": "2026-11-13T01:19:36.5191622+00:00",
+    "durationMs": 111
   }
 }

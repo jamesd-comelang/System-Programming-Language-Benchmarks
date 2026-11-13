@@ -1,0 +1,34 @@
+{
+  "cpuInfo": "[x86_64][4 cores] AMD EPYC 7763 64-Core Processor (Model 1)",
+  "lang": "c",
+  "os": "linux",
+  "compiler": "gcc",
+  "compilerVersion": "latest",
+  "test": "fasta",
+  "code": "2-m.c",
+  "input": "250000",
+  "timeMS": 15.5003,
+  "timeStdDevMS": 0.36934224417649936,
+  "memBytes": 4288512,
+  "cpuTimeMS": 23.3333,
+  "cpuTimeUserMS": 23.3333,
+  "cpuTimeKernelMS": 0.0,
+  "ioReadChars": 4212,
+  "ioWriteChars": 0,
+  "ioReadBytes": 0,
+  "ioWriteBytes": 0,
+  "ioSyscalls": 11,
+  "githubRunId": "43287706608",
+  "buildLog": {
+    "compilerVersion": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "start": "2026-11-13T01:05:58.3133092+00:00",
+    "finished": "2026-11-13T01:05:58.4034314+00:00",
+    "durationMs": 90
+  },
+  "testLog": {
+    "runtimeVersion": null,
+    "start": "2026-11-13T01:19:22.4311204+00:00",
+    "finished": "2026-11-13T01:19:22.4338038+00:00",
+    "durationMs": 2
+  }
+}
