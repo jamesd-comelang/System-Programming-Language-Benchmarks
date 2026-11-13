@@ -137,14 +137,13 @@
           Each axis runs 0–1, higher is better. CPU is fastest time,
           Memory is smallest peak memory<span v-if="radarHasMaterialIo"
             >, IO is most bytes per read/write call</span><span
-            v-if="radarHasConc"
-            >, Concurrency is parallel speedup over the language's own
-            single-thread time</span
+            v-if="radarHasPar"
+            >, Parallel is fastest parallel version</span
           >. Each score combines per-input ratios against the best
           language in that input, like the leaderboard.<span
-            v-if="radarHasConc"
+            v-if="radarHasPar"
           >
-            Concurrency is 0 when a language ships no parallel variant
+            Parallel is — when a language ships no parallel variant
             for this problem.</span
           >
         </p>
@@ -183,6 +182,29 @@
             :stroke="colorFor(row.key, ridx)"
             stroke-width="2"
           />
+          <g
+            v-for="(row, ridx) in radarRows"
+            v-if="row.parSlower && row.par !== null"
+            v-show="!isRadarHidden(row.key)"
+            :key="'par-slower-' + row.key"
+          >
+            <polygon
+              :points="parMarkerPoints(row)"
+              :fill="colorFor(row.key, ridx)"
+              stroke="#155e75"
+              stroke-width="1"
+            />
+            <text
+              :x="parMarkerPoint(row)[0]"
+              :y="parMarkerPoint(row)[1] - 14"
+              text-anchor="middle"
+              font-size="13"
+              font-weight="700"
+              :fill="colorFor(row.key, ridx)"
+            >
+              ↓
+            </text>
+          </g>
           <text
             v-for="(label, li) in radarLabels"
             :key="'label-' + li"
@@ -202,7 +224,7 @@
               <th class="px-2 py-1">CPU</th>
               <th class="px-2 py-1">Mem</th>
               <th v-if="radarHasMaterialIo" class="px-2 py-1">IO</th>
-              <th v-if="radarHasConc" class="px-2 py-1">Conc</th>
+              <th v-if="radarHasPar" class="px-2 py-1">Par</th>
               <th class="px-2 py-1">
                 <label class="radar-switch" aria-label="Toggle all languages">
                   <input
@@ -231,8 +253,8 @@
               <td v-if="radarHasMaterialIo" class="px-2 py-1">
                 {{ radarScoreText(row.io) }}
               </td>
-              <td v-if="radarHasConc" class="px-2 py-1">
-                {{ radarScoreText(row.conc) }}
+              <td v-if="radarHasPar" class="px-2 py-1">
+                {{ radarScoreText(row.par) }}<span v-if="row.parSlower"> ↓</span>
               </td>
               <td class="px-2 py-1">
                 <label
@@ -251,6 +273,14 @@
           </tbody>
         </table>
         </div>
+        <p v-if="radarHasParSlower" class="text-sm italic mt-2">
+          ↓ Parallel version slower than its serial on this problem:
+          the language's fastest parallel time is slower than its
+          fastest serial time (geometric mean across inputs). The
+          Parallel score still compares its parallel time against the
+          other languages — the mark only flags that parallelizing
+          made this language slower.
+        </p>
         <p v-if="!radarShowChart" class="text-sm italic mt-2">
           Only CPU and memory scores apply to this problem — too few
           dimensions for a radar chart, so the scores are in the table.
@@ -843,13 +873,17 @@ export default class LangMetaPage extends Vue {
     return hasIoData(this.problemBenchesAll)
   }
 
-  // Concurrency is shown only when at least one language has a
+  // Parallel is shown only when at least one language has a
   // parallel variant for this problem; IO only when the problem's IO
   // is material (see hasMaterialIoData). Both are data-driven, not a
   // hardcoded problem list: an axis reappears automatically if the
   // underlying data ever shows up.
-  get radarHasConc() {
-    return this.radarRows.some((row) => row.conc !== null)
+  get radarHasPar() {
+    return this.radarRows.some((row) => row.par !== null)
+  }
+
+  get radarHasParSlower() {
+    return this.radarRows.some((row) => row.parSlower)
   }
 
   get radarHasMaterialIo() {
@@ -857,13 +891,13 @@ export default class LangMetaPage extends Vue {
   }
 
   // Axes clockwise from the top: CPU and Memory always, then IO and
-  // Concurrency when they qualify. Fewer than 3 axes cannot make a
+  // Parallel when they qualify. Fewer than 3 axes cannot make a
   // radar chart (the polygon collapses to a line), so the chart is
   // hidden then and the score table stands alone.
   get radarAxes(): string[] {
     const axes = ['cpu', 'mem']
     if (this.radarHasMaterialIo) axes.push('io')
-    if (this.radarHasConc) axes.push('conc')
+    if (this.radarHasPar) axes.push('par')
     return axes
   }
 
@@ -885,7 +919,7 @@ export default class LangMetaPage extends Vue {
       cpu: 'CPU',
       mem: 'Memory',
       io: 'IO',
-      conc: 'Concurrency',
+      par: 'Parallel',
     }
     return this.radarAxes.map((axis, i) => ({
       text: texts[axis],
@@ -901,7 +935,7 @@ export default class LangMetaPage extends Vue {
       cpu: row.cpu,
       mem: row.mem,
       io: row.io,
-      conc: row.conc,
+      par: row.par,
     }
     return this.radarAxes
       .map((axis, i) => {
@@ -910,6 +944,19 @@ export default class LangMetaPage extends Vue {
         return `${160 + d[0] * s},${160 + d[1] * s}`
       })
       .join(' ')
+  }
+
+  parMarkerPoint(row: any): [number, number] {
+    const i = this.radarAxes.indexOf('par')
+    if (i === -1 || row.par === null) return [160, 160]
+    const d = this.radarDirs[i]
+    const s = row.par * 120
+    return [160 + d[0] * s, 160 + d[1] * s]
+  }
+
+  parMarkerPoints(row: any) {
+    const [x, y] = this.parMarkerPoint(row)
+    return `${x},${y - 8} ${x - 6},${y + 5} ${x + 6},${y + 5}`
   }
 
   radarScoreText(v: number | null) {

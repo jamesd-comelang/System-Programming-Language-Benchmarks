@@ -231,16 +231,19 @@ export function leaderboard(langs: LangBenchResults[]): LeaderboardRow[] {
 //   the same bytes, so bytes/second would just restate CPU. Rows
 //   without IO data (results from before IO capture) are skipped, so
 //   the axis is empty until a bench run with IO capture lands.
-// - Concurrency: parallel speedup over the language's own
-//   single-thread time in the same input (best parallel time vs best
-//   single-thread time), scaled against the best speedup on the page.
-//   Parallel means an explicit parallel variant: a code name matching
-//   /-\w?m/ (e.g. -m, -im, -mffi). The site's i.par flag is NOT used
-//   here, because its CPU-time rule also marks GC-threaded runtimes
-//   as parallel (Go's binarytrees shows a 1.68x "speedup" with no
-//   parallel variant at all). Unlike CPU/memory/IO, concurrency
-//   counts unopposed inputs: a language with the only parallel
-//   variant scores 1.0, the rest 0.
+// - Parallel: fastest parallel version (best time among explicit
+//   parallel variants), scaled against the fastest parallel time on
+//   the page. Parallel means an explicit parallel variant: a code
+//   name matching /-\w?m/ (e.g. -m, -im, -mffi). The site's i.par
+//   flag is NOT used here, because its CPU-time rule also marks
+//   GC-threaded runtimes as parallel (Go's binarytrees shows a
+//   1.68x "speedup" with no parallel variant at all). Unlike
+//   CPU/memory/IO, parallel counts unopposed inputs: a language
+//   with the only parallel variant scores 1.0, the rest —.
+//   A language whose best parallel time is slower than its best
+//   single-thread time is flagged parSlower (geometric mean of
+//   parallel/single-thread across inputs where both exist > 1);
+//   the flag marks the score, it does not change it.
 // CPU/memory/IO count only inputs where at least two languages have
 // a value, like the leaderboard.
 export type RadarRow = {
@@ -249,7 +252,8 @@ export type RadarRow = {
   cpu: number | null
   mem: number | null
   io: number | null
-  conc: number | null
+  par: number | null
+  parSlower: boolean
 }
 
 function geomean(ratios: number[]): number | null {
@@ -291,7 +295,9 @@ export function hasMaterialIoData(benches: BenchResult[]): boolean {
 // `visibleBenches` is the problem's benches after the page's OS and
 // single/parallel toggles (so the radar tracks the matrix on screen);
 // `allBenches` is the same problem without the toggles, because the
-// concurrency score needs both sides of the comparison.
+// parallel score needs the parallel rows even when the parallel
+// toggle hides them, and the slower-than-serial flag needs both
+// sides of the comparison.
 export function radarForProblem(
   visibleBenches: BenchResult[],
   allBenches: BenchResult[],
@@ -308,7 +314,7 @@ export function radarForProblem(
 
   // Per (key, input): best time, best memory, best IO rate among the
   // visible rows; and best single-thread / parallel times among all
-  // rows for the concurrency split.
+  // rows for the parallel split.
   const best: {
     [key: string]: {
       [input: string]: {
@@ -359,7 +365,8 @@ export function radarForProblem(
       const cpuRatios: number[] = []
       const memRatios: number[] = []
       const ioRatios: number[] = []
-      const concRatios: number[] = []
+      const parRatios: number[] = []
+      const slowRatios: number[] = []
       inputs.forEach((input) => {
         const times = keys
           .map((k) => best[k][input].time)
@@ -386,26 +393,27 @@ export function radarForProblem(
           )
         }
         const cell = best[key][input]
-        if (cell.st !== null && cell.mt !== null) {
-          const speedup = cell.st / cell.mt
-          const speeds = keys
-            .map((k) => {
-              const c = best[k][input]
-              return c.st !== null && c.mt !== null ? c.st / c.mt : null
-            })
-            .filter((s): s is number => s !== null)
-          if (speeds.length > 0) {
-            concRatios.push(speedup / Math.max.apply(null, speeds))
+        if (cell.mt !== null) {
+          const mts = keys
+            .map((k) => best[k][input].mt)
+            .filter((t): t is number => t !== null)
+          if (mts.length > 0) {
+            parRatios.push(Math.min.apply(null, mts) / (cell.mt as number))
           }
         }
+        if (cell.st !== null && cell.mt !== null) {
+          slowRatios.push((cell.mt as number) / (cell.st as number))
+        }
     })
+      const slow = geomean(slowRatios)
       return {
         key,
         label: labelOf(key),
         cpu: geomean(cpuRatios),
         mem: geomean(memRatios),
         io: geomean(ioRatios),
-        conc: geomean(concRatios),
+        par: geomean(parRatios),
+        parSlower: slow !== null && slow > 1,
       }
     })
     .filter(
@@ -413,13 +421,13 @@ export function radarForProblem(
         row.cpu !== null ||
         row.mem !== null ||
         row.io !== null ||
-        row.conc !== null
+        row.par !== null
     )
 }
 
 const LANG_COLORS: { [lang: string]: string } = {
   c: '#2563eb',
-  cpp: '#7c3aed',
+  cpp: '#16a34a',
   go: '#0891b2',
   rust: '#ea580c',
   zig: '#ca8a04',
